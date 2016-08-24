@@ -1,0 +1,180 @@
+
+/* ================================================
+   VI. WIDGETS
+	  A. Table Widget
+	  B. Search Bar Widget
+	  C. Tile Widget
+	  D. Calendar Widget
+===================================================
+  A. Table Widget
+  -------------------------------------------------
+  This is a multi-purpose widget. Apply it to
+  any table to access table styles. Commonly
+  inside a panel.
+=================================================== */
+.table-checklist td { cursor: pointer }
+.table-widget .tab-content {
+    padding: 0;
+    border: 0;
+    overflow: hidden;
+}
+/* Table items (labels, badges, progress bars etc) */
+.table-widget .progress {
+    width: 80%;
+    height: 13px;
+    margin: 0;
+}
+.table-widget .label, .table-widget .badge { margin-right: 7px }
+/* Tables with the .table-checklist class become clickable
+ * if you want text to have a line-through effect on click
+ * add the .text-slash class to the element */
+.table-checklist tr.task-checked { color: #BBB }
+.table-checklist tr.task-checked .text-slash { text-decoration: line-through }
+/* Table item checked state - class added via JS */
+.table-checklist tr.task-checked .label, .table-checklist tr.task-checked .progress { opacity: 0.3 }
+
+/*===============================================
+  D. Search Bar Widget
+================================================= */
+.search-widget { position: relative }
+#search-widget {
+    height: 85px;
+    margin-bottom: 50px;
+    padding: 20px 25px;
+    background: #f4f7fa;
+    border: 1px solid #d8dee6;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 3px rgba(0,0,0, 0.05) inset;
+    box-shadow: 0 0 3px rgba(0,0,0, 0.05) inset;
+}
+.search-bar-widget {
+    float: left;
+    width: 82%;
+    min-height: 43px;
+    padding: 9px 12px 9px 40px;
+}
+#search-widget .search-widget-icon {
+    position: absolute;
+    top: 14px;
+    left: 15px;
+    color: #999;
+    font-size: 16px;
+}
+#search-widget button {
+    float: left;
+    width: 16%;
+    margin-left: 2%;
+    padding: 10px;
+    font-weight: 600;
+}
+
+/*===============================================
+  B. Widget Tile - Full Icon BG
+================================================= */
+.icon-bg {
+	position: absolute;
+	opacity: 0.5;
+	right: 0;
+	top: 0;
+	line-height: 100px;
+	font-size: 100px;
+}
+
+/*===============================================
+  D. Calendar Widget
+================================================= */
+#calendar { position: relative }
+#external-events {
+	padding: 15px 10px;
+	border: 1px dashed #CCC;
+	background: #eee;
+	min-height: 65px;
+	margin-bottom: 20px;
+}
+.external-event {
+	display: inline-block;
+	width: 200px;
+	max-width: 20%;
+	font-weight: 600;
+    margin-right: 10px;
+    padding: 7px 10px;
+    color: #FFF;
+    cursor: pointer;
+    border-radius: 2px;
+    background-color: #a389d5;
+}
+.fc-header .fc-button {
+    height: 26px;
+    padding: 1px 10px;
+    background-color: #f7f7f7;
+    color: #666;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    border: 1px solid #CCC;
+	border-radius: 1px;
+    text-shadow: 0 1px #ffffff;
+    background-repeat: repeat-x;
+    background-image: -webkit-linear-gradient(top, #ffffff 1%,#f1f1f1 100%);
+    background-image: linear-gradient(to bottom, #ffffff 1%,#f1f1f1 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f1f1f1',GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+	margin: 0;
+}
+
+table.fc-header {
+	background: #f5f5f5;
+	border-radius: 4px;
+	border: 1px solid #CCC;
+	margin-bottom: 20px;
+}
+.fc-header td.fc-header-left,
+.fc-header td.fc-header-center,
+.fc-header td.fc-header-right {
+	padding: 15px;
+	vertical-align: center;
+}
+.fc-header-title h2 {
+	margin: 0;
+	font-size: 14px;
+	font-weight: 700;
+	color: #a87fc6;	
+	line-height: 24px;
+}
+.fc-header-left .fc-button,
+.fc-header-right .fc-button { 
+	margin-left: 0 
+}
+.fc-button.fc-state-down, .fc-button.fc-state-active {
+    background-color: #EEE;
+    -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.fc-event {
+	font-weight: 600;
+    margin: 4px;
+    background-color: #c384dd;
+	border-color: transparent;
+}
+.fc-state-highlight { background-color: #f8f8f8 }
+.fc-event-inner { padding: 7px }
+
+/* Content Header */
+.fc-content .fc-grid .fc-day-header {
+	color: #999;
+	font-weight: 600;
+    border: 0;
+    border-bottom: 1px solid #DDD;
+	padding-bottom: 10px;
+}
+/* Content Body/Container */
+.fc-content .fc-grid table tbody {
+	background: #FFF;
+}
+/* Content Day Number */
+.fc-grid .fc-day-number {
+    font-size: 13px;
+    font-weight: 400;
+	color: #AAA;
+	padding: 5px 11px;
+}

@@ -1,0 +1,26 @@
+
+/*===============================================
+   B. Right SideMenu
+================================================= */
+#sidebar_right {
+	position: fixed;
+	z-index: 1031;
+	width: 250px;
+	height: 100%;	
+	top: 0;
+	right: -250px;
+	background: #363c47;
+}
+#sidebar_right .sidebar-right-header {
+	width: 100%;
+	height: 59px;
+	background: #454d5d;
+	border-bottom: 1px solid #555d6d;
+	padding: 4px 10px 4px 20px;
+}
+#sidebar_right .sidebar_right_content a:hover {
+	text-decoration: none;
+}
+body.sidebar-right-open #sidebar_right {
+	right: 0;	
+}

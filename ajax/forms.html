@@ -1,0 +1,751 @@
+<!-- Required Plugin CSS
+<link rel="stylesheet" type="text/css" href="vendor/plugins/multiselect/bootstrap-multiselect.css">
+<link rel="stylesheet" type="text/css" href="vendor/plugins/timepicker/bootstrap-timepicker.min.css">
+<link rel="stylesheet" type="text/css" href="vendor/plugins/colorpicker/colorpicker.css">
+<link rel="stylesheet" type="text/css" href="vendor/plugins/datepicker/datepicker.css">
+<link rel="stylesheet" type="text/css" href="vendor/plugins/daterange/daterangepicker.css">
+<link rel="stylesheet" type="text/css" href="vendor/plugins/formswitch/css/bootstrap-switch.css">
+<link rel="stylesheet" type="text/css" href="vendor/plugins/tags/tagmanager.css">
+-->
+
+<div id="topbar">
+  <div class="topbar-left">
+    <ol class="breadcrumb">
+      <li class="crumb-active"><a href="forms.html">Forms</a></li>
+      <li class="crumb-icon"><a href="dashboard.html"><span class="glyphicon glyphicon-home"></span></a></li>
+      <li class="crumb-link"><a href="index.html">Home</a></li>
+      <li class="crumb-trail">Forms</li>
+    </ol>
+  </div>
+</div>
+<div id="content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-lock"></span> Field Validation </span> </div>
+        <div class="panel-body">
+          <div class="alert alert-theme">Validating a form with Fusion Admin is simple! </div>
+          <form class="cmxform" id="altForm" method="get">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input id="name" name="name" type="text" class="form-control" placeholder="Roger Awesome" required />
+            </div>
+            <div class="form-group">
+              <label for="wage">Desired Wage</label>
+              <input id="wage" name="wage" type="text" class="form-control" placeholder="$100.00" required/>
+            </div>
+            <div class="form-group">
+              <label> Your Phone Number </label>
+              <input type="text" class="form-control" maxlength="10" autocomplete="off" placeholder="* Optional">
+            </div>
+            <div class="form-group">
+              <label> Your Email </label>
+              <input type="text" class="form-control" maxlength="10" autocomplete="off" placeholder="* Optional">
+            </div>
+            <div class="form-group">
+              <input class="submit btn bg-purple pull-right" type="submit" value="Submit" />
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-pencil"></span> Default Inputs </span> </div>
+        <div class="panel-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label class="col-md-3 control-label">Radios</label>
+              <div class="col-md-9">
+                <label class="radio-inline mr10">
+                  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                  1 </label>
+                <label class="radio-inline mr10">
+                  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                  2 </label>
+                <label class="radio-inline mr10">
+                  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+                  3 </label>
+                <label class="radio-inline mr10">
+                  <input type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
+                  4 </label>
+                <label class="radio-inline mr10">
+                  <input type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5">
+                  5 </label>
+              </div>
+            </div>
+            <div class="form-group mb25">
+              <label class="col-md-3 control-label">Checkboxes</label>
+              <div class="col-md-9">
+                <label class="checkbox-inline mr10">
+                  <input type="checkbox" id="inlineCheckbox1" value="option1">
+                  1 </label>
+                <label class="checkbox-inline mr10">
+                  <input type="checkbox" id="inlineCheckbox2" value="option2">
+                  2 </label>
+                <label class="checkbox-inline mr10">
+                  <input type="checkbox" id="inlineCheckbox3" value="option3">
+                  3 </label>
+                <label class="checkbox-inline mr10">
+                  <input type="checkbox" id="inlineCheckbox4" value="option4">
+                  4 </label>
+                <label class="checkbox-inline mr10">
+                  <input type="checkbox" id="inlineCheckbox5" value="option5">
+                  5 </label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-pencil"></span> Custom Inputs </span> </div>
+        <div class="panel-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group mb15">
+              <label class="col-md-3 control-label">Default</label>
+              <div class="col-md-9 pt5">
+                <div class="cBox cBox-inline">
+                  <input type="checkbox" id="examplecBox1" name="check" value="None"/>
+                  <label for="examplecBox1">1</label>
+                </div>
+                <div class="cBox cBox-inline">
+                  <input type="checkbox" id="examplecBox2" name="check" value="None"/>
+                  <label for="examplecBox2">1</label>
+                </div>
+                <div class="cBox cBox-inline">
+                  <input type="checkbox" id="examplecBox3" name="check" value="None"/>
+                  <label for="examplecBox3">3</label>
+                </div>
+                <div class="cBox cBox-inline">
+                  <input type="checkbox" id="examplecBox4" name="check" value="None"/>
+                  <label for="examplecBox4">4</label>
+                </div>
+                <div class="cBox cBox-inline">
+                  <input type="checkbox" id="examplecBox5" name="check" value="None"/>
+                  <label for="examplecBox5">5</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mb25">
+              <label class="col-md-3 control-label">Styled</label>
+              <div class="col-md-9 pt5">
+                <div class="cBox cBox-teal cBox-inline">
+                  <input type="checkbox" id="examplecBox6" name="check" value="None"/>
+                  <label for="examplecBox6">Teal</label>
+                </div>
+                <div class="cBox cBox-blue cBox-inline">
+                  <input type="checkbox" id="examplecBox7" name="check" value="None"/>
+                  <label for="examplecBox7">Blue</label>
+                </div>
+                <div class="cBox cBox-purple cBox-inline">
+                  <input type="checkbox" id="examplecBox8" name="check" value="None"/>
+                  <label for="examplecBox8">Purple</label>
+                </div>
+                <div class="cBox cBox-orange cBox-inline">
+                  <input type="checkbox" id="examplecBox9" name="check" value="None"/>
+                  <label for="examplecBox9">Orange</label>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-pencil"></span> Checkboxes and Switches </span> </div>
+        <div class="panel-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label class="col-md-3 control-label">Switches</label>
+              <div class="col-md-9">
+                <div class="switch switch-teal switch-inline">
+                  <input id="exampleCheckboxSwitch1" type="checkbox" checked>
+                  <label for="exampleCheckboxSwitch1"></label>
+                </div>
+                <div class="switch switch-blue switch-inline">
+                  <input id="exampleCheckboxSwitch2" type="checkbox" checked>
+                  <label for="exampleCheckboxSwitch2"></label>
+                </div>
+                <div class="switch switch-grey switch-inline">
+                  <input id="exampleCheckboxSwitch3" type="checkbox" checked>
+                  <label for="exampleCheckboxSwitch3"></label>
+                </div>
+                <div class="switch switch-purple switch-inline">
+                  <input id="exampleCheckboxSwitch4" type="checkbox" checked>
+                  <label for="exampleCheckboxSwitch4"></label>
+                </div>
+                <div class="switch switch-green switch-inline">
+                  <input id="exampleCheckboxSwitch5" type="checkbox" checked>
+                  <label for="exampleCheckboxSwitch5"></label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label">Radio Switches</label>
+              <div class="col-md-9"> 
+                
+                <!-- Using radio buttons Ã¢â‚¬â€œ each switch turns off the other two -->
+                <div class="switch switch-red switch-inline">
+                  <input id="exampleRadioSwitch6" type="radio" name="testGroup" checked>
+                  <label for="exampleRadioSwitch6"></label>
+                </div>
+                <div class="switch switch-orange switch-inline">
+                  <input id="exampleRadioSwitch7" type="radio" name="testGroup">
+                  <label for="exampleRadioSwitch7"></label>
+                </div>
+                <div class="switch switch-grey switch-inline">
+                  <input id="exampleRadioSwitch8" type="radio" name="testGroup">
+                  <label for="exampleRadioSwitch8"></label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mbn">
+              <label class="col-md-3 control-label">Sizes</label>
+              <div class="col-md-9"> 
+                
+                <!-- Using radio buttons Ã¢â‚¬â€œ each switch turns off the other two -->
+                <div class="switch switch-orange switch-lg switch-inline">
+                  <input id="exampleRadioSwitch11" type="radio" name="testGroup2" checked>
+                  <label for="exampleRadioSwitch11"></label>
+                </div>
+                <div class="switch switch-orange switch-sm switch-inline">
+                  <input id="exampleRadioSwitch10" type="radio" name="testGroup2">
+                  <label for="exampleRadioSwitch10"></label>
+                </div>
+                <div class="switch switch-red switch-xs switch-inline">
+                  <input id="exampleRadioSwitch9" type="radio" name="testGroup2">
+                  <label for="exampleRadioSwitch9"></label>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-pencil"></span> Tag manager </span> </div>
+        <div class="panel-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label for="tagmanager" class="col-md-2 control-label">Tag Field</label>
+              <div class="col-md-10">
+                <input type="text" id="tagmanager" class="form-control tm-input" placeholder="Create a new tag..">
+                <div class="tag-container tags"> </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-pencil"></span> Easy Icons </span> </div>
+        <div class="panel-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label class="col-md-2 text-right">With Icons</label>
+              <div class="col-md-10">
+                <div class="input-group mb10"> <span class="input-group-addon"><i class="fa fa-envelope-o"></i> </span>
+                  <input class="form-control" type="text" placeholder="Email address">
+                </div>
+                <div class="input-group mb10"> <span class="input-group-addon"><i class="fa fa-key"></i> </span>
+                  <input class="form-control" type="password" placeholder="Password">
+                </div>
+                <div class="input-group mb10">
+                  <input class="form-control" type="text" placeholder="Numbers">
+                  <span class="input-group-addon">00</span> </div>
+                <div class="input-group">
+                  <input class="form-control" type="password" placeholder="Money">
+                  <span class="input-group-addon"><i class="fa fa-usd"></i> </span> </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-pencil"></span> Select Lists </span> </div>
+        <div class="panel-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label for="spinner1" class="col-md-3 control-label">Single</label>
+              <div class="col-md-8">
+                <select id="multiselect1">
+                  <option value="cheese" selected>Cheese</option>
+                  <option value="tomatoes">Tomatoes</option>
+                  <option value="mozarella">Mozzarella</option>
+                  <option value="mushrooms">Mushrooms</option>
+                  <option value="pepperoni">Pepperoni</option>
+                  <option value="onions">Onions</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="spinner2" class="col-md-3 control-label">Multiple</label>
+              <div class="col-md-8">
+                <select id="multiselect2" multiple="multiple">
+                  <option value="cheese">Cheese</option>
+                  <option value="tomatoes">Tomatoes</option>
+                  <option value="mozarella">Mozzarella</option>
+                  <option value="mushrooms">Mushrooms</option>
+                  <option value="pepperoni">Pepperoni</option>
+                  <option value="onions">Onions</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="spinner3" class="col-md-3 control-label">With Labels</label>
+              <div class="col-md-8">
+                <select id="multiselect3" multiple="multiple">
+                  <optgroup label="Mathematics">
+                  <option value="analysis">Analysis</option>
+                  <option value="discrete">Discrete Mathematics</option>
+                  <option value="probability">Probability Theory</option>
+                  </optgroup>
+                  <optgroup label="Computer Science">
+                  <option value="programming">Introduction to Programming</option>
+                  <option value="automata">Automata Theory</option>
+                  <option value="complexity">Complexity Theory</option>
+                  </optgroup>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="spinner4" class="col-md-3 control-label">With Sorting</label>
+              <div class="col-md-8">
+                <select id="multiselect4" multiple="multiple">
+                  <option value="cheese">Cheese</option>
+                  <option value="tomatoes">Tomatoes</option>
+                  <option value="mozarella">Mozzarella</option>
+                  <option value="mushrooms">Mushrooms</option>
+                  <option value="pepperoni">Pepperoni</option>
+                  <option value="onions">Onions</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-pencil"></span> Speciality Spinners </span> </div>
+        <div class="panel-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label for="spinner1" class="col-lg-2 control-label">Default</label>
+              <div class="col-lg-6">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-level-up"></i> </span>
+                  <input id="spinner1" class="form-control ui-spinner-input" name="spinner" value="15" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="spinner2" class="col-lg-2 control-label">Currenc</label>
+              <div class="col-lg-6">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-usd"></i> </span>
+                  <input id="spinner2" class="form-control ui-spinner-input" name="spinner" value="35" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="spinner3" class="col-lg-2 control-label">Decimal</label>
+              <div class="col-lg-6">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-signal"></i> </span>
+                  <input id="spinner3" class="form-control ui-spinner-input" name="spinner" value="13.5" />
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="spinner4" class="col-lg-2 control-label">Time</label>
+              <div class="col-lg-6">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-clock-o"></i> </span>
+                  <input id="spinner4" class="form-control ui-spinner-input" name="spinner" value="08:30 PM" />
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-pencil"></span> Picker Fields </span> </div>
+        <div class="panel-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label for="cp" class="col-lg-2 control-label">Color</label>
+              <div class="col-lg-10">
+                <div class="input-group"><span class="input-group-addon"><i class="fa fa-hand-o-right"></i></span>
+                  <input type="text" class="form-control colorpicker mtn" id="cp" placeholder="#37a8e8" value="#37a8e8">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="cp2" class="col-lg-2 control-label">RGBa</label>
+              <div class="col-lg-10">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-hand-o-right"></i> </span>
+                  <input type="text" class="form-control rgbapicker" value="rgb(0,194,255,1.00)" id="cp2" data-color-format="rgba" data-colorpicker-guid="2">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="timepicker" class="col-lg-2 control-label">Time</label>
+              <div class="col-lg-10">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-calendar "></i> </span>
+                  <input type="text" id="timepicker" class="form-control timepicker" placeholder="9:00 PM" >
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="datepicker" class="col-lg-2 control-label">Date</label>
+              <div class="col-lg-10">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                  <input type="text" id="datepicker" class="form-control datepicker mtn" placeholder="23/9/2013">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="datepicker_2" class="col-lg-2 control-label">Date Range</label>
+              <div class="col-lg-10">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-calendar "></i> </span>
+                  <input type="text" id="datepicker_2" class="form-control rangepicker mtn" placeholder="10/25/2013 - 10/25/2013" name="daterange">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-pencil"></span> Standard Fields </span> </div>
+        <div class="panel-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label class="col-lg-2 control-label">Static Field</label>
+              <div class="col-lg-10">
+                <p class="form-control-static text-muted">email@example.com</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputStandard" class="col-lg-2 control-label">Standard</label>
+              <div class="col-lg-10">
+                <input type="text" id="inputStandard" class="form-control" placeholder="Type Here...">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputPassword" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group has-warning">
+              <label class="col-lg-2 control-label" for="inputWarning">Warning</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputWarning" placeholder="A Warning Form">
+              </div>
+            </div>
+            <div class="form-group has-success">
+              <label class="col-lg-2 control-label" for="inputSuccess">Success</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputSuccess" placeholder="A Success Form">
+              </div>
+            </div>
+            <div class="form-group has-error">
+              <label class="col-lg-2 control-label" for="inputError">Error</label>
+              <div class="col-lg-10">
+                <input type="text" class="form-control" id="inputError" placeholder="An Error Form">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="focusedInput" class="col-lg-2 control-label">Focused</label>
+              <div class="col-lg-10">
+                <input class="form-control" id="focusedInput" type="text" placeholder="A Focused Form">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="disabledInput" class="col-lg-2 control-label">Disabled</label>
+              <div class="col-lg-10">
+                <input class="form-control" id="disabledInput" type="text" placeholder="A Disabled Form" disabled>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label" for="textArea">Text Area</label>
+              <div class="col-lg-10">
+                <textarea class="form-control" id="textArea" rows="3"></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-pencil"></span> Masked Input Fields </span> </div>
+        <div class="panel-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label for="maskedDate" class="col-lg-2 control-label">Date</label>
+              <div class="col-lg-10">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-calendar"></i> </span>
+                  <input type="text" id="maskedDate" class="form-control date" maxlength="10" autocomplete="off" placeholder="11/11/1111">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="maskedTime" class="col-lg-2 control-label">Time</label>
+              <div class="col-lg-10">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-clock-o"></i> </span>
+                  <input type="text" id="maskedTime" class="form-control time" maxlength="10" autocomplete="off" placeholder="00:00:00">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="maskedMultiple" class="col-lg-2 control-label">Date and Time</label>
+              <div class="col-lg-10">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-clock-o"></i> </span>
+                  <input type="text" id="maskedMultiple" class="form-control date_time" maxlength="10" autocomplete="off" placeholder="99/99/9999 00:00:00">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="maskedZip" class="col-lg-2 control-label">Zip Code</label>
+              <div class="col-lg-10">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-bolt"></i> </span>
+                  <input type="text" id="maskedZip" class="form-control zip" maxlength="10" autocomplete="off" placeholder="99999-999">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="maskedPhone" class="col-lg-2 control-label">Phone</label>
+              <div class="col-lg-10">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-phone"></i> </span>
+                  <input type="text" id="maskedPhone" class="form-control phone" maxlength="10" autocomplete="off" placeholder="(999) 999-9999">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="maskedExt" class="col-lg-2 control-label">Phone + Ext</label>
+              <div class="col-lg-10">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-phone"></i> </span>
+                  <input type="text" id="maskedExt" class="form-control phoneext" maxlength="10" autocomplete="off" placeholder="9999-9999">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="maskedMoney" class="col-lg-2 control-label">Money</label>
+              <div class="col-lg-10">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-usd"></i> </span>
+                  <input type="text" id="maskedMoney" class="form-control money" maxlength="10" autocomplete="off" placeholder="000.000.000.000">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="maskedKey" class="col-lg-2 control-label">Product Key</label>
+              <div class="col-lg-10">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-key"></i> </span>
+                  <input type="text" id="maskedKey" class="form-control product" maxlength="10" autocomplete="off" placeholder="000.000.000.000,00">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="maskedID" class="col-lg-2 control-label">Tax ID</label>
+              <div class="col-lg-10">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-gavel"></i> </span>
+                  <input type="text" id="maskedID" class="form-control tin" maxlength="10" autocomplete="off" placeholder="99999-999">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="maskedSSN" class="col-lg-2 control-label">SSN</label>
+              <div class="col-lg-10">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-exclamation"></i> </span>
+                  <input type="text" id="maskedSSN" class="form-control ssn" maxlength="10" autocomplete="off" placeholder="999-99-9999">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="maskedScript" class="col-lg-2 control-label">Eye Script</label>
+              <div class="col-lg-10">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-eye"></i> </span>
+                  <input type="text" id="maskedScript" class="form-control eyescript" maxlength="10" autocomplete="off" placeholder="0ZZ.0ZZ.0ZZ.0ZZ">
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="maskedCustom" class="col-lg-2 control-label">Custom</label>
+              <div class="col-lg-10">
+                <div class="input-group"> <span class="input-group-addon"><i class="fa fa-flask"></i> </span>
+                  <input type="text" id="maskedCustom" class="form-control custom" maxlength="10" autocomplete="off" placeholder="1-22-333-4444">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-pencil"></span> Fields Options </span> </div>
+        <div class="panel-body">
+          <form class="form-horizontal" role="form">
+            <div class="form-group">
+              <label class="col-lg-2 control-label" for="inputSmall">Small</label>
+              <div class="col-lg-10">
+                <input id="inputSmall" class="form-control input-sm" type="text" placeholder=".input-sm">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label" for="inputDefault">Default</label>
+              <div class="col-lg-10">
+                <input id="inputDefault" class="form-control" type="text" placeholder="default style">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label" for="inputLarge">Large</label>
+              <div class="col-lg-10">
+                <input id="inputLarge" class="form-control input-lg" type="text" placeholder=".input-lg">
+              </div>
+            </div>
+            <div class="row form-group">
+              <label class="col-md-2 text-right">Input Lengths</label>
+              <div class="col-xs-2">
+                <input type="text" class="form-control" placeholder=".col-xs-2">
+              </div>
+              <div class="col-xs-3">
+                <input type="text" class="form-control" placeholder=".col-xs-3">
+              </div>
+              <div class="col-xs-5">
+                <input type="text" class="form-control" placeholder=".col-xs-4">
+              </div>
+            </div>
+            <hr />
+            <div class="form-group">
+              <label for="inputInline" class="col-lg-2 control-label">Inline Help Text</label>
+              <div class="col-lg-5">
+                <input id="inputInline" type="text" class="form-control" placeholder="Text Field">
+              </div>
+              <div class="col-lg-4 pl5"><span class="help-block mt5"><i class="fa fa-bell"></i> A block of help text!</span> </div>
+            </div>
+            <div class="form-group">
+              <label for="inputHelp" class="col-lg-2 control-label">Help Text</label>
+              <div class="col-lg-10">
+                <input id="inputHelp" type="text" class="form-control" placeholder="Text Field">
+                <span class="help-block mt5"><i class="fa fa-bell"></i> A block of help text that can help the user</span> </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Plugins --> 
+<script type="text/javascript" src="vendor/plugins/globalize/globalize.js"></script> <!-- Required by jQuery TimeSpinner --> 
+<script type="text/javascript" src="vendor/plugins/validate/jquery.validate.js"></script> 
+<script type="text/javascript" src="vendor/plugins/multiselect/bootstrap-multiselect.js"></script> 
+<script type="text/javascript" src="vendor/plugins/daterange/moment.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/daterange/daterangepicker.js"></script> 
+<script type="text/javascript" src="vendor/plugins/colorpicker/bootstrap-colorpicker.js"></script> 
+<script type="text/javascript" src="vendor/plugins/timepicker/bootstrap-timepicker.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/datepicker/bootstrap-datepicker.js"></script> 
+<script type="text/javascript" src="vendor/plugins/jquerymask/jquery.maskedinput.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/tags/tagmanager.js"></script> 
+
+<!-- Theme Javascript --> 
+<!--<script type="text/javascript" src="js/utility/uniform.min.js"></script> --> 
+<script type="text/javascript" src="js/utility/spin.min.js"></script> 
+<script type="text/javascript" src="js/utility/underscore-min.js"></script> 
+<script type="text/javascript" src="js/main.js"></script> 
+<script type="text/javascript" src="js/ajax.js"></script> 
+<script type="text/javascript" src="js/custom.js"></script> 
+<script type="text/javascript">
+jQuery(document).ready(function () {
+	  
+	 "use strict";     
+     
+	 
+	 	
+	 // validate the comment form when it is submitted
+	 $("#altForm").validate();
+
+	 //Init jquery Date Picker
+	 $('.datepicker').datepicker()
+	 
+	 //Init jquery Date Range Picker
+	 $('.rangepicker').daterangepicker();
+	 
+	 //Init jquery Color Picker
+	 $('.colorpicker').colorpicker() 
+	 $('.rgbapicker').colorpicker() 
+	 
+	 //Init jquery Time Picker
+	 $('.timepicker').timepicker();
+	  
+	 //Init jquery Tags Manager 
+	 $(".tm-input").tagsManager({
+        tagsContainer: '.tags',
+		prefilled: ["Miley Cyrus", "Apple", "Wow This is a really Long tag", "Na uh"],
+		tagClass: 'tm-tag-success',
+     });
+	 			        	
+	//Init Boostrap Multiselect
+	$('#multiselect1').multiselect();
+	
+	$('#multiselect2').multiselect({
+		includeSelectAllOption: true
+	});
+	
+	$('#multiselect3').multiselect();
+	
+	$('#multiselect4').multiselect({
+		enableFiltering: true,
+	});
+	  
+	  
+	//Init jquery spinner init - default
+	$("#spinner1").spinner();
+	
+	//Init jquery spinner init - currency 
+	$("#spinner2").spinner({
+      min: 5,
+      max: 2500,
+      step: 25,
+      start: 1000,
+      //numberFormat: "C"
+    });
+	
+	//Init jquery spinner init - decimal  
+	$( "#spinner3" ).spinner({
+      step: 0.01,
+      numberFormat: "n"
+    });
+	
+	//Init jquery time spinner
+    $.widget( "ui.timespinner", $.ui.spinner, {
+		options: {
+		  // seconds
+		  step: 60 * 1000,
+		  // hours
+		  page: 60
+		},
+		_parse: function( value ) {
+		  if ( typeof value === "string" ) {
+			// already a timestamp
+			if ( Number( value ) == value ) {
+			  return Number( value );
+			}
+			return +Globalize.parseDate( value );
+		  }
+		  return value;
+		},
+	 
+		_format: function( value ) {
+		  return Globalize.format( new Date(value), "t" );
+		}
+	  });
+    $( "#spinner4" ).timespinner();
+
+	//Init jquery masked inputs
+	$('.date').mask('99/99/9999');
+	$('.time').mask('99:99:99');
+	$('.date_time').mask('99/99/9999 99:99:99');
+	$('.zip').mask('99999-999');
+	$('.phone').mask('(999) 999-9999');
+	$('.phoneext').mask("(999) 999-9999 x99999");
+	$(".money").mask("999,999,999.999"); 
+	$(".product").mask("999.999.999.999"); 
+	$(".tin").mask("99-9999999");
+	$(".ssn").mask("999-99-9999");
+	$(".ip").mask("9ZZ.9ZZ.9ZZ.9ZZ");
+	$(".eyescript").mask("~9.99 ~9.99 999");
+	$(".custom").mask("9.99.999.9999");
+	
+});
+</script> 

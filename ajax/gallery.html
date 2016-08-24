@@ -1,0 +1,264 @@
+<!-- Required Plugin CSS
+<link rel="stylesheet" type="text/css" href="vendor/plugins/mfpopup/dist/magnific-popup.css" media="screen" />
+-->
+
+<div id="topbar">
+  <div class="topbar-left">
+    <ol class="breadcrumb">
+      <li class="crumb-active"><a href="gallery.html">Gallery</a></li>
+      <li class="crumb-icon"><a href="dashboard.html"><span class="glyphicon glyphicon-home"></span></a></li>
+      <li class="crumb-link"><a href="index.html">Home</a></li>
+      <li class="crumb-trail">Gallery</li>
+    </ol>
+  </div>
+</div>
+<div id="content">
+  <div class="row">
+    <div class="col-md-12"> 
+      
+      <!-- GALLERY HEADER -->
+      <div class="content-header mb25">
+        <div class="pull-left">
+          <div class="tab-btns hidden"><a href="#email-compose" role="tab" data-toggle="tab" class="btn bg-purple2 btn-sm mr10 compose-toggle"><span class="glyphicons glyphicons-share mr5"></span> Compose Mail </a> </div>
+          <input type="text" class="form-control ib va-m mw200 mr15" placeholder="Filter Results...">
+          <div class="btn-group mr10">
+            <button type="button" class="btn btn-default btn-gradient btn-sm pr10 pl10"><span class="glyphicons glyphicons-chevron-left"></span> </button>
+            <button type="button" class="btn btn-default btn-gradient btn-sm pr10 pl10"><span class="glyphicons glyphicons-chevron-right"></span> </button>
+          </div>
+          <div class="btn-group mr15">
+            <button type="button" class="btn btn-default btn-gradient btn-sm"><i class="fa fa-user"></i></button>
+            <button type="button" class="btn btn-default btn-gradient btn-sm dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+            <ul class="dropdown-menu pull-right" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div>
+          <input type="text" class="email-search input-unstyled" placeholder="Search..." value="Search...">
+        </div>
+        <div class="pull-right"> <span class="text-light7 mr15">Filter:</span>
+          <div class="btn-group">
+            <button class="btn btn-default btn-sm text-light7 mr5 filter" data-filter="all">All</button>
+            <button class="btn btn-default btn-sm text-light7 mr5 filter" data-filter=".category-1">Category 1</button>
+            <button class="btn btn-default btn-sm text-light7 mr5 filter" data-filter=".category-2">Category 2</button>
+            <button class="btn btn-default btn-sm text-light7 mr5 sort" data-sort="myorder:asc">Asc</button>
+            <button class="btn btn-default btn-sm text-light7 mr5 sort" data-sort="myorder:desc">Desc</button>
+            <button id="toggleList" class="btn bg-purple2 btn-sm text-light ml15 mr10"><span class="glyphicons glyphicons-show_lines fs16"></span></button>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 p15 pt5 hidden"> <img src="img/stock/1.jpg" class="img-responsive mb20" alt="...">
+      <h5><b class="text-">Title</b> - HappyDays.jpg, <small>3MB</small></h5>
+      <p class="text-muted"><b>Uploaded -</b> on 8/12/15</p>
+      <p class="text-muted"> <b>Copyright -</b> CC</p>
+      <p class="text-muted"> <b>Desc -</b> Est, ipsam, in, consectetur. </p>
+    </div>
+    <div class="col-md-12">
+      <div class="panel">
+        <div class="panel-body">
+          <div id="Grid">
+            <div class="mix category-1" data-myorder="1"> <a href="img/stock/1.jpg"><img src="img/stock/1.jpg" class="img-responsive" alt="..."></a>
+              <div class="mix-desc">
+                <h5>Typewriter.jpg<br/>
+                  <small>3MB</small></h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, ipsam, in, consectetur.</p>
+              </div>
+            </div>
+            <div class="mix category-1" data-myorder="2"> <a href="img/stock/2.jpg"><img src="img/stock/2.jpg" class="img-responsive" alt="..."></a>
+              <div class="mix-desc">
+                <h5>Subway.jpg<br/>
+                  <small>1MB</small></h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, ipsam, in, consectetur.</p>
+              </div>
+            </div>
+            <div class="mix category-1" data-myorder="3"> <a href="img/stock/3.jpg"><img src="img/stock/3.jpg" class="img-responsive" alt="..."></a>
+              <div class="mix-desc">
+                <h5>Chain-fence.jpg<br/>
+                  <small>2MB</small></h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, ipsam, in, consectetur.</p>
+              </div>
+            </div>
+            <div class="mix category-2" data-myorder="4"> <a href="img/stock/4.jpg"><img src="img/stock/4.jpg" class="img-responsive" alt="..."></a>
+              <div class="mix-desc">
+                <h5>CofeeLove.jpg<br/>
+                  <small>5MB</small></h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, ipsam, in, consectetur.</p>
+              </div>
+            </div>
+            <div class="mix category-1" data-myorder="5"> <a href="img/stock/5.jpg"><img src="img/stock/5.jpg" class="img-responsive" alt="..."></a>
+              <div class="mix-desc">
+                <h5>OldStars.jpg<br/>
+                  <small>3MB</small></h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, ipsam, in, consectetur.</p>
+              </div>
+            </div>
+            <div class="mix category-2" data-myorder="6"> <a href="img/stock/6.jpg"><img src="img/stock/6.jpg" class="img-responsive" alt="..."></a>
+              <div class="mix-desc">
+                <h5>OldRoad.jpg<br/>
+                  <small>1MB</small></h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, ipsam, in, consectetur.</p>
+              </div>
+            </div>
+            <div class="mix category-2" data-myorder="7"> <a href="img/stock/7.jpg"><img src="img/stock/7.jpg" class="img-responsive" alt="..."></a>
+              <div class="mix-desc">
+                <h5>Yosemite.jpg<br/>
+                  <small>4MB</small></h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, ipsam, in, consectetur.</p>
+              </div>
+            </div>
+            <div class="mix category-1" data-myorder="8"> <a href="img/stock/6.jpg"><img src="img/stock/8.jpg" class="img-responsive" alt="..."></a>
+              <div class="mix-desc">
+                <h5>Scrool-Stairs.jpg<br/>
+                  <small>2MB</small></h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, ipsam, in, consectetur.</p>
+              </div>
+            </div>
+            <div class="mix category-2" data-myorder="9"> <a href="img/stock/7.jpg"><img src="img/stock/9.jpg" class="img-responsive" alt="..."></a>
+              <div class="mix-desc">
+                <h5>EpicPath.jpg<br/>
+                  <small>2MB</small></h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, ipsam, in, consectetur.</p>
+              </div>
+            </div>
+            <div class="mix category-2" data-myorder="10"> <a href="img/stock/8.jpg"><img src="img/stock/10.jpg" class="img-responsive" alt="..."></a>
+              <div class="mix-desc">
+                <h5>Treats.jpg<br/>
+                  <small>1MB</small></h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, ipsam, in, consectetur.</p>
+              </div>
+            </div>
+            <div class="gap"></div>
+            <div class="gap"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Plugins --> 
+<script type="text/javascript" src="vendor/plugins/mfpopup/jquery.magnific-popup.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/mixitup/jquery.mixitup.min.js"></script> 
+<script type="text/javascript">
+jQuery(document).ready(function () {
+	  
+	 "use strict";     
+     
+	// We will be using MixItUp's 'changeLayout' API method to add and remove a 'list' class
+	// to the container. This class changes the styling of our target elements (see CSS).
+	// NB: Changing layout doesn't have to be between grid/list only, we can add any
+	// class we want and use it to affect the styling of our elements.
+	function initMix(){
+	
+	  var layout = 'grid', // Store the current layout as a variable
+		  $container = $('#Grid'), // Cache the MixItUp container
+		  $changeLayout = $('#toggleList'); // Cache the changeLayout button
+	  
+	  // Instantiate MixItUp with some custom options:
+	  $container.mixItUp({
+		animation: {
+		  animateChangeLayout: false, // Animate the positions of targets as the layout changes
+		  animateResizeTargets: true, // Animate the width/height of targets as the layout changes
+		  effects: 'fade'
+		},
+		layout: {
+		  containerClass: 'grid' // Add the class 'list' to the container on load
+		}
+	  });
+	  
+	  // MixItUp does not provide a default "change layout" button, so we need to make our own and bind it with a click handler:
+	  $changeLayout.on('click', function(){
+		
+		// If the current layout is a list, change to grid:
+		if(layout == 'list'){
+		  layout = 'grid';
+		  
+		  $changeLayout.children('span').replaceWith('<span class="glyphicons glyphicons-show_lines fs16"></span>');
+		  
+		  $container.mixItUp('changeLayout', {
+			containerClass: layout // change the container class to "grid"
+		  });
+		  
+		// Else if the current layout is a grid, change to list:  
+		} else {
+		  layout = 'list';
+
+		  $changeLayout.children('span').replaceWith('<span class="glyphicons glyphicons-show_thumbnails fs16"></span>');
+		  
+		  $container.mixItUp('changeLayout', {
+			containerClass: layout // Change the container class to 'list'
+		  });
+		  $('#Grid .mix-desc').addClass('animated fadeIn animated-shortest')
+ 
+		}
+	  });
+	  
+	};
+	
+	// Add each image item to a gallery popup
+	$('#Grid').magnificPopup({
+	  delegate: 'a', 
+	  type: 'image',
+	  disableOn: function() {
+		  if ($('#Grid .mix').hasClass('dragging')) {
+			 return false;
+		  }
+		  return true;
+	  },
+	  gallery: {
+		enabled: true
+	  }
+	});
+
+	// Add sortable ability to image items
+	function sortable(){
+		$('#Grid').sortable({
+			
+			// enable placeholders 
+			placeholder: 'placeholder',
+			
+			// specifically select item images and not their padding/margins
+			items: '.mix',
+			
+			// animate items to new positions
+			revert: 150,
+			
+			start: function(event, ui) {
+				// add a special dragging class at start. We use this
+				// to prevent opening an img gallery when dragging or sorting
+				ui.item.addClass('dragging');
+				
+				ui.placeholder.height(ui.item.height());
+				
+				ui.placeholder.width(ui.item.width());
+				
+			},
+			change: function(event, ui){
+				// maintains whitespace between inline-blocks
+				ui.placeholder.before('\n').after('\n');
+			},
+			stop: function(event, ui) {
+				// remove applied dragging class when finished
+				ui.item.removeClass('dragging');
+      			  
+				// maintains whitespace between inline-blocks
+				ui.item.before('\n').after('\n');
+			}
+		});
+	};
+	
+	// Init mixItUp Plugin
+	initMix();
+
+	// Init jQuery Sortable
+	sortable(); 
+	
+	
+});
+</script> 

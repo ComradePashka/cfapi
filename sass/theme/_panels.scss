@@ -1,0 +1,283 @@
+
+/* ================================================
+   III. PANELS
+	  A. Heading
+	  B. Panel Addon - Menu
+	  C. Panel Addon - Sidemenu
+	  D. Panel Addon - Tray
+	  E. Panel Tabs
+	  F. Panel Accordion 
+	  G. Alternate Styles
+	  
+  * Bootstrap Panels are a vital element in this
+  * theme. Please read the documentation provided
+  * with Fusion Admin to learn more
+===================================================
+  A. Heading
+=================================================== */
+.panel {
+    position: relative;
+    margin-bottom: 20px;
+    border-color: #d5d5d5;
+	border-radius: 2px;
+}
+/* panel helper class */
+.panel-overflow {
+	overflow: hidden;
+}
+.panel-heading {
+    position: relative;
+    padding: 0;
+	min-height: 40px;
+	line-height: 40px;
+    color: #666;
+    font-size: 13px;
+    font-weight: 600;
+	border-bottom: 1px solid #e5e5e5;
+    border-radius: 2px 2px 0 0;
+	background: #fafafa;
+}
+.panel-heading + .panel-body {
+	border-top-color: #e5e5e5;
+}
+.panel-title { font-size: 13px; padding-left: 15px; }
+.panel-title > .fa,
+.panel-title > .glyphicon,
+.panel-title > .glyphicons,
+.panel-title > .imoon, {
+	min-width: 25px;
+	margin-right: 8px;
+	border-right: 1px solid #ddd;
+	color: #a87fc6;
+	font-size: 16px;
+	top: 2px;
+}
+.panel-body {
+	position: relative;
+}
+/* Colored headers - via bg-* classes */
+.panel-heading[class*='bg-']{
+	margin: -1px;
+}
+.panel-heading[class*='bg-'],
+.panel-heading[class*='bg-'] .glyphicon {
+	color: #FFF;
+	border: none;
+}
+.panel-heading[class*='bg-'] + .panel-body {
+	border-top: none;
+}
+
+.panel-footer {
+	background-color: #fafafa;
+}
+
+/*===============================================
+  B. Panel Addon - Menu
+  -----------------------------------------------
+  Typically placed under the panel header 
+  and used to hold buttons or menus 
+================================================= */
+.panel-menu {
+    padding: 10px 13px;
+    background-color: #fafafa;
+    border-bottom: 1px solid #DDD;
+}
+.panel .panel-menu .btn.active {
+    background-color: #FFF;
+    box-shadow: none;
+}
+
+/*===============================================
+  C. Panel Addon - Sidemenu
+  -----------------------------------------------
+  A side column great for housing an
+  extra nav list. When used its sibling
+  panel body (content) is modified 
+================================================= */
+.panel-sidemenu + .panel-body {}
+/* Sidemenu and content are both floated. 
+ * to create equal heights we use the 
+ * "Table Layout" css helpers. These helpers
+ * can be found in _helpers.scss */
+.panel-sidemenu {
+    padding: 15px;
+    background-color: #f6f6f6;
+}
+.panel-sidemenu ul.nav li {
+    margin-bottom: 4px;
+    list-style: none;
+}
+.panel-sidemenu ul.nav li.nav-title {
+    padding: 10px 0;
+    color: #777;
+    font-weight: 700;
+    text-decoration: none;
+    text-shadow: 0 1px #FFF;
+}
+.panel-sidemenu ul.nav li.nav-title:hover { color: #777 }
+.panel-sidemenu ul.nav li a {
+    padding: 5px 0;
+    color: #888;
+}
+.panel-sidemenu ul.nav .divider {
+    width: 80%;
+    height: 1px;
+    margin: 9px 0;
+    overflow: hidden;
+    background: #e2e2e2;
+}
+
+/*===============================================
+  D. Panel Addon - Tray
+  -----------------------------------------------
+  A special slide out tray used to store 
+  additional information. Such as online users.
+================================================= */
+.panel-tray {
+	z-index: 11;
+	position: absolute;
+	top: 0;
+	right: -210px;
+	height: 100%;
+	width: 210px;
+	padding: 15px;
+	border-left: 1px solid #DDD;
+	background: #fafafa;
+
+	-webkit-transition: right .1s ease-in-out;
+	transition: right .1s ease-in-out;
+}
+.panel-tray.tray-open {	right: 0px; }
+.panel-tray-toggle {
+	z-index: 999;
+	cursor: pointer;
+	position: absolute;
+	overflow: hidden;
+	left: -28px;
+	top: -1px;
+	width: 28px;
+	height: 29px;
+	border: 1px solid #DDD;
+	border-right: none;
+	border-radius: 0 0 0 3px;
+	background: #fafafa;
+}
+.panel-tray-toggle .fa,
+.panel-tray-toggle .glyphicon,
+.panel-tray-toggle .glyphicons,
+.panel-tray-toggle .imoon {
+	font-size: 16px;
+	color: $purple-color;
+	text-align: center;
+	padding: 6px;
+}
+
+/*===============================================
+  E. PANEL TABS
+  -----------------------------------------------
+  Panel Tab Navigation must be placed inside
+  ".panel-heading" see Fusion Docs for example 
+================================================= */
+.panel-tabs {
+    position: absolute;
+	bottom: 0;
+	right: 0;
+}
+.panel-tabs > li {
+	position: relative;
+    float: left;
+    margin-bottom: -1px;
+}
+.panel-tabs > li > a {
+    line-height: 1.428571429;
+    border-radius: 0;
+	padding: 11px 18px 9px;
+    border: 1px solid transparent;
+    border-left: 1px solid #DDD;
+    font-size: 12px;
+    color: #777;
+}
+.panel-tabs > li > a:hover {
+    background-color: transparent;
+}
+/* hover and active states */
+.panel-tabs > li.active > a, .panel-tabs > li.active > a:hover, .panel-tabs > li.active > a:focus {
+    color: #555555;
+    cursor: default;
+    background: #ffffff;
+	padding: 11px 18px 10px;
+}
+.panel-tabs > li.active:after {
+	content: "";
+	position: absolute;
+	top: -1px;
+	left: 0;
+	height: 2px;
+	background: #a87fc6;
+	width: 100%;
+}
+/* PANEL TAB CORRECTION */
+/* If you want a panel-like footer inside a tababble
+ * area you need to wrap the content in a ".tab-body"
+ * class. See timeline.html for an example(event panel) */
+.tab-body { padding: 15px }
+.tab-footer {
+    padding: 10px 15px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #dddddd;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+/*===============================================
+  F. Accordion 
+  -----------------------------------------------
+  Created with Bootstrap Panels
+================================================= */
+.accordion.panel-group .panel {
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.accordion.panel-group .panel + .panel { margin-top: 10px }
+/* Accordion Header */
+.accordion .panel-heading a {
+    text-decoration: none;
+    display: block;
+}
+.accordion .panel-heading a:hover {
+    color: inherit;
+}
+/* Accordion Widget Toggle Arrows */
+.accordion .accordion-toggle-icon {
+	padding: 12px 12px 7px;
+    font-size: 18px
+}
+/* Accordion Toggle Arrow States */
+.accordion .accordion-toggle-icon i:first-child { display: block }
+.accordion .accordion-toggle-icon i:last-child { display: none }
+.accordion .collapsed .accordion-toggle-icon i:first-child { display: none }
+.accordion .collapsed .accordion-toggle-icon i:last-child { display: block }
+
+/*===============================================
+  G. Alternate Panel Styles
+================================================= */
+/* Minimal - Style */
+.panel.panel-alt {
+    border-color: #DDD;
+    box-shadow: none;
+    background: #FFF;
+}
+.panel.panel-alt > .panel-heading {
+    height: 40px;
+    padding-right: 15px;
+    background-color: #FFF;
+    font-size: 14px;
+    line-height: 40px;
+    box-shadow: none;
+}
+.panel.panel-alt .panel-body {
+    padding: 20px 30px;
+    background-color: #fcfcfc;
+    line-height: 22px;
+}

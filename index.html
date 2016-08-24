@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Meta, title, CSS, favicons, etc. -->
+<meta charset="utf-8">
+<title>Cloudflare Zone File Management</title>
+<meta name="keywords" content="Cloudflare Zone File Management" />
+<meta name="description" content="Cloudflare Zone File Management - Internal Only">
+<meta name="author" content="ManagedAdmin.com">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Font CSS (Via CDN) -->
+<link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800'>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+
+<!-- Required Plugin CSS 
+<link rel="stylesheet" type="text/css" href="vendor/plugins/datatables/css/datatables.min.css">
+<link rel="stylesheet" type="text/css" href="vendor/plugins/datatables/extras/TableTools/media/css/TableTools.css">
+<link rel="stylesheet" type="text/css" href="vendor/editors/xeditable/css/bootstrap-editable.css">
+-->
+
+<!-- Theme CSS -->
+<link rel="stylesheet" type="text/css" href="css/vendor.css">
+<link rel="stylesheet" type="text/css" href="css/theme.css">
+<link rel="stylesheet" type="text/css" href="css/utility.css">
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="img/favicon.ico">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="datatables-page">
+<script> var boxtest = localStorage.getItem('boxed'); if (boxtest === 'true') {document.body.className+=' boxed-layout';} </script> 
+
+
+<!-- Start: Header -->
+<header class="navbar navbar-fixed-top">
+  <div class="navbar-branding"> <span id="toggle_sidemenu_l" class="glyphicons glyphicons-show_lines"></span> <a class="navbar-brand" href="index.html"></a> </div>
+  <div class="navbar-left">
+  </div>
+</header>
+<!-- End: Header --> 
+<!-- Start: Main -->
+<div id="main"> 
+  <!-- Start: Sidebar -->
+  <aside id="sidebar_left">
+    <div class="sidebar-menu">
+      <ul class="nav sidebar-nav">
+        <li> <a href="index.html"><span class="glyphicons glyphicons-home"></span><span class="sidebar-title">Dashboard</span></a> </li>
+        <li> <a href="logs.html"><span class="glyphicons glyphicons-home"></span><span class="sidebar-title">Logs</span></a> </li>
+        <li> <a href="forms.html"><span class="glyphicons glyphicons-home"></span><span class="sidebar-title">My Account</span></a> </li>
+      </ul>
+    </div>
+  </aside>
+  <!-- End: Sidebar --> 
+  <!-- Start: Content -->
+  <section id="content_wrapper">
+    <div id="content">
+      <div id="widget-dropdown" class="row">
+        <div class="col-sm-3">
+          <div class="panel panel-overflow mb10">
+            <div class="panel-body pn pl20">
+              <div class="icon-bg"><i class="fa fa-bar-chart-o text-blue"></i></div>
+              <h2 class="mt15 lh15 text-grey2"><b>60</b></h2>
+              <h5 class="text-muted">Domains</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="panel panel-overflow mb10">
+            <div class="panel-body pn pl20">
+              <div class="icon-bg"><i class="fa fa-bar-chart-o text-blue"></i></div>
+              <h2 class="mt15 lh15 text-teal2"><b>2</b></h2>
+              <h5 class="text-muted">Record Discrepancies <a style="text-decoration:underline" href="#">Fix It!</a></h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="panel panel-overflow mb10">
+            <div class="panel-body pn pl20">
+              <div class="icon-bg"><i class="fa fa-bar-chart-o text-blue"></i></div>
+              <h2 class="mt15 lh15 text-blue2"><b>4</b></h2>
+              <h5 class="text-muted">NameServers Not Resolving <a style="text-decoration:underline" href="#">Re-Check!</a></h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="panel panel-overflow mb10">
+            <div class="panel-body pn pl20">
+              <div class="icon-bg"><i class="fa fa-bar-chart-o text-blue"></i></div>
+              <h2 class="mt15 lh15 text-blue2"><b>1</b></h2>
+              <h5 class="text-muted">Inactive <a style="text-decoration:underline" href="#">Try Again!</a></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel panel-visible">
+            <div class="panel-heading">
+              <div class="panel-title hidden-xs"> <span class="glyphicon glyphicon-tasks"></span> CloudFlare Zone Management
+
+<div class="panel-header-menu pull-right mr10">
+<div class="btn-group"><button type="button" class="btn btn-xs bg-grey2 dropdown-toggle" data-toggle="dropdown"> Options</button>
+<ul class="dropdown-menu checkbox-persist pull-right text-left" role="menu">
+  <li><a data-toggle="modal" data-target="#adddomains"><i class="fa fa-user"></i> Bulk Add Domains </a></li>
+  <li><a data-toggle="modal" data-target="#editdomains"><i class="fa fa-user"></i> Bulk Edit Domains </a></li>
+  <li><a data-toggle="modal" data-target="#deletedomains"><i class="fa fa-user"></i> Bulk Delete Domains </a></li>
+  <li><a data-toggle="modal" data-target="#downloadCSV"><i class="fa fa-user"></i> Download Full CSV </a></li>
+</ul>
+</div>
+</div>
+
+
+              </div>
+            </div>
+            <div class="panel-body pbn">
+<table class="table table-striped table-bordered table-hover" id="datatable">
+<thead>
+<tr>
+<th>Domain</th>
+<th>CF NameServers</th>
+<th>@ IP</th>
+<th>www IP</th>
+<th>WildCard * IP</th>
+<th>w cname</th>
+<th>Status</th>
+</tr>
+</thead
+<tbody>
+<?php
+	$cfname = "dimitry.lukin@gmail.com";
+	$quotedCfname = "'".$cfname."'";
+	include dirname(__FILE__)."/phpscripts/Db.php";	
+	$db = new Db() or die($db->error()."\n");
+	$rows = $db->select("select cfkey, id from users where cfname = ".$quotedCfname) or die($db->error()."\n");
+	$key = $rows[0]['cfkey'];
+	$id = $rows[0]['id'];
+	$rows = $db->select("select zonename from zones where userid = ".$id) or die($db->error()."\n");
+	foreach($rows as $i => $r) {
+
+		echo "<tr>";
+		echo "<td>".$r['zonename']."</td>";
+		echo "<td>NONE</td>";
+		echo "<td>NONE</td>";
+		echo "<td>NONE</td>";
+		echo "<td>NONE</td>";
+		echo "<td>NONE</td>";
+		echo "<td><span class='label bg-green'>Active</span></td>";
+		echo "</tr>";
+	}
+	
+?>
+</tbody>
+</table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End: Content --> 
+  
+</div>
+<!-- End: Main --> 
+
+<!-- Google Map API --> 
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script> 
+
+<!-- jQuery --> 
+<script type="text/javascript" src="vendor/jquery/jquery-1.11.1.min.js"></script> 
+<script type="text/javascript" src="vendor/jquery/jquery_ui/jquery-ui.min.js"></script> <!-- Bootstrap --> 
+<script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script> 
+
+<!-- Page Plugins --> 
+<script type="text/javascript" src="vendor/plugins/datatables/js/jquery.dataTables.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/datatables/js/datatables.js"></script><!-- Datatable Bootstrap Addon --> 
+<script type="text/javascript" src="vendor/plugins/datatables/extras/TableTools/media/js/TableTools.min.js"></script><!-- Datatable TableTools Addon --> 
+<script type="text/javascript" src="vendor/plugins/datatables/extras/TableTools/media/js/ZeroClipboard.js"></script><!-- Datatable TableTools Addon --> 
+<script type="text/javascript" src="vendor/editors/xeditable/js/bootstrap-editable.js"></script> 
+<script type="text/javascript" src="vendor/plugins/chosen/chosen.jquery.js"></script> 
+
+<!-- Theme Javascript --> 
+<script type="text/javascript" src="js/utility/spin.min.js"></script> 
+<script type="text/javascript" src="js/utility/underscore-min.js"></script> 
+<script type="text/javascript" src="js/main.js"></script> 
+<script type="text/javascript" src="js/ajax.js"></script> 
+<script type="text/javascript" src="js/custom.js"></script> 
+<script type="text/javascript">
+jQuery(document).ready(function () {
+	  
+	 "use strict";
+
+   // Init Theme Core 	  
+   Core.init();     
+     
+
+  // Init Datatables with Tabletools Addon	
+  $('#datatable').dataTable( {
+	"aoColumnDefs": [{ 'bSortable': false, 'aTargets': [ -1 ] }],
+	"oLanguage": { "oPaginate": {"sPrevious": "", "sNext": ""} },
+	"iDisplayLength": 25,
+	"aLengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]]
+  });	
+  
+  // Add Placeholder text to datatables filter bar
+  $('.dataTables_filter input').attr("placeholder", "Enter Filter Terms Here....");
+  
+  // Manually Init Chosen on Datatables Filters
+  $("select[name='datatable_length']").chosen();	
+  
+  // Init Xeditable Plugin
+  $.fn.editable.defaults.mode = 'popup';
+  $('.xedit').editable();
+
+});
+</script>
+
+
+
+
+<!-- Start Add Domains Modal -->
+<div class="modal fade" id="adddomains" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form class="cmxform" method="post" action="/dashboard">
+        <div class="modal-header">
+          <div class="modal-title"><i class="fa fa-lock pr5"></i>Add Domain Names</div>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user"></i> </span>
+              <textarea class="form-control" rows="8" name="ADD_DomainNames" placeholder="Enter 1 domain per line"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer"> <span class="panel-title-sm pull-left" style="padding-top: 7px;"></span>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary bg-grey2">Add Domains</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- END Add Domains Modal -->
+
+<!-- Start Edit Domains Modal -->
+<div class="modal fade" id="editdomains" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form class="cmxform" method="post" action="/dashboard">
+        <div class="modal-header">
+          <div class="modal-title"><i class="fa fa-lock pr5"></i>Edit Domain Names</div>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user"></i> </span>
+              <textarea class="form-control" rows="8" name="ADD_DomainNames" placeholder="Enter 1 domain per line"></textarea>
+            </div>
+            <div class="form-group">
+            <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user"></i> </span>
+<br />
+              <div class="btn-group">
+              <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="RecordType">DNS Record Type <b class="caret"></b></button>
+              <ul class="multiselect-container dropdown-menu"><div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span><input class="form-control multiselect-search" type="text" placeholder="Search"></div>
+                <li class="active"><a href="javascript:void(0);"><label class="radio"><input type="radio" name="multiselect" value="0"> A Record</label></a></li>
+                <li><a href="javascript:void(0);"><label class="radio"><input type="radio" name="multiselect" value="1"> Cname</label></a></li>
+                <li><a href="javascript:void(0);"><label class="radio"><input type="radio" name="multiselect" value="1"> MX Record</label></a></li>
+                <li><a href="javascript:void(0);"><label class="radio"><input type="radio" name="multiselect" value="1"> Txt Record</label></a></li>
+                </ul>
+                </div>
+            </div>
+          </div>
+            <div class="form-group">
+              <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user"></i> </span>
+                <input type="dnsrecordvalue" class="form-control" placeholder="Host" name="dnshost" />
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user"></i> </span>
+                <input type="dnsrecordvalue" class="form-control" placeholder="Points To" name="dnsvalue" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer"> <span class="panel-title-sm pull-left" style="padding-top: 7px;"></span>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary bg-grey2">Edit Domains</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- END Edit Domains Modal -->
+
+<!-- Start Delete Domains Modal -->
+<div class="modal fade" id="deletedomains" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form class="cmxform" method="post" action="/dashboard">
+        <div class="modal-header">
+          <div class="modal-title"><i class="fa fa-lock pr5"></i>Delete Domain Names</div>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user"></i> </span>
+              <textarea class="form-control" rows="8" name="ADD_DomainNames" placeholder="Enter 1 domain per line"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer"> <span class="panel-title-sm pull-left" style="padding-top: 7px;"></span>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary bg-grey2">Delete Domains</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- END Delete Domains Modal -->
+
+
+
+
+
+</body>
+</html>

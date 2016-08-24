@@ -1,0 +1,362 @@
+
+<div id="topbar" class="hidden">
+  <div class="topbar-left">
+    <ol class="breadcrumb">
+      <li class="crumb-active"><a href="timeline.html">Timeline</a></li>
+      <li class="crumb-icon"><a href="dashboard.html"><span class="glyphicon glyphicon-home"></span></a></li>
+      <li class="crumb-link"><a href="index.html">Home</a></li>
+      <li class="crumb-trail">Timeline</li>
+    </ol>
+  </div>
+</div>
+<div id="content" class="pt40">
+  <div class="" id="timeline">
+    <div class="timeline-divider mtn">
+      <div class="divider-label">2013</div>
+      <div class="pull-right">
+        <button id="timeline-toggle" class="btn btn-default btn-sm text-light7 ml15 mr10"><span class="glyphicons glyphicons-show_lines fs16"></span></button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 left-column">
+        <div class="timeline-item">
+          <div class="timeline-icon"><span class="glyphicons glyphicons-user text-purple"></span></div>
+          <div class="panel">
+            <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-comment"></span> User Posting </span>
+              <div class="panel-header-menu pull-right mr10 text-muted fs12"> July 30, 2013 </div>
+            </div>
+            <div class="panel-body">
+              <div class="media pb30"> <a class="pull-left" href="#"> <img class="media-object thumbnail thumbnail-sm rounded" src="img/avatars/4.jpg" alt="..."> </a>
+                <div class="media-body">
+                  <h5 class="media-heading mb20">Simon Rivers Posted <small> - 3 hours ago</small> <span class="pull-right fs11 text-muted pr25"><i class="fa fa-circle text-green2 pr5"></i>Online</span></h5>
+                  <img src="img/stock/10.jpg" class="mw180 mr25"> <img src="img/stock/14.jpg" class="mw180">
+                  <div class="media-links mt20"> <span class="text-light6 fs12 mr10"> <span class="glyphicons glyphicons-thumbs_up text-purple mr5"></span> Like </span> <span class="text-light6 fs12 mr10"> <span class="glyphicons glyphicons-share text-purple mr5"></span> Share </span> <span class="text-light6 fs12 mr10"> <span class="glyphicon glyphicon-floppy-save text-purple mr5"></span> Save </span> <span class="text-light6 fs12 mr10"> <span class="glyphicons glyphicons-chat text-purple mr5"></span> Comment </span> </div>
+                </div>
+              </div>
+              <div class="media mt15"> <a class="pull-left" href="#"> <img class="media-object thumbnail thumbnail-sm rounded mw40" src="img/avatars/3.jpg" alt="..."> </a>
+                <div class="media-body mb5">
+                  <h5 class="media-heading mbn">Simon Rivers Posted <small> - 3 hours ago</small></h5>
+                  <p> Omg so freaking sweet dude.</p>
+                </div>
+              </div>
+              <div class="media mt15"> <a class="pull-left" href="#"> <img class="media-object thumbnail thumbnail-sm rounded mw40" src="img/avatars/7.jpg" alt="..."> </a>
+                <div class="media-body mb5">
+                  <h5 class="media-heading mbn">Jessica Wong <small> - 3 hours ago</small></h5>
+                  <p>Omgosh I'm in love</p>
+                </div>
+              </div>
+              <input type="text" class="form-control mt20 bg-light2" placeholder="Write a comment..">
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon"><span class="glyphicons glyphicons-picture text-blue"></span></div>
+          <div class="panel">
+            <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-picture"></span> Gallery </span>
+              <div class="panel-header-menu pull-right mr10 text-muted fs12"> August 7, 2013 </div>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-4"> <a class="gallery-item" href="img/stock/1.jpg"><img src="img/stock/1.jpg" class="img-responsive" alt=""></a> </div>
+                <div class="col-xs-4"> <a class="gallery-item" href="img/stock/4.jpg"><img src="img/stock/4.jpg" class="img-responsive" alt=""></a> </div>
+                <div class="col-xs-4"> <a class="gallery-item" href="img/stock/2.jpg"><img src="img/stock/2.jpg" class="img-responsive" alt=""></a> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon"><span class="glyphicons glyphicons-user text-purple"></span></div>
+          <div class="panel">
+            <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-facetime-video"></span> Timeline Video! </span>
+              <div class="panel-header-menu pull-right mr10 text-muted fs12"> November 27, 2012 </div>
+            </div>
+            <div class="panel-body p10">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="http://www.youtube.com/embed/q94n3eWOWXM?rel=0" allowfullscreen=""></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 right-column">
+        <div class="timeline-item">
+          <div class="timeline-icon"><span class="glyphicons glyphicons-compass text-green"></span></div>
+          <div class="panel">
+            <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-camera"></span> Map Posting</span>
+              <div class="panel-header-menu pull-right mr10 text-muted fs12"> August 7, 2013 </div>
+            </div>
+            <div class="panel-body">
+              <div id="map_canvas" class="map" style="height: 275px; width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon"><span class="glyphicons glyphicons-edit text-orange"></span></div>
+          <div class="panel">
+            <div class="panel-heading"> <span class="panel-title">Event Form</span>
+              <ul class="nav panel-tabs">
+                <li class="active"><a href="#tab1" data-toggle="tab">Basic</a></li>
+                <li><a href="#tab2" data-toggle="tab">Image</a></li>
+                <li><a href="#tab3" data-toggle="tab">Video</a></li>
+                <li><a href="#tab4" data-toggle="tab">Map</a></li>
+              </ul>
+            </div>
+            <div class="panel-body pn">
+              <div class="tab-content pn border-none">
+                <div id="tab1" class="tab-pane active">
+                  <form id="timeline-basic-form" role="form">
+                    <div class="tab-body mt5">
+                      <div class="row mb20">
+                        <div class="col-md-6">
+                          <input type="text" class="form-control event-name" placeholder="Event Name">
+                        </div>
+                        <div class="col-md-6">
+                          <input type="text" class="form-control datepicker mtn" placeholder="Event Date">
+                        </div>
+                      </div>
+                      <div class="form-group mb10">
+                        <textarea class="form-control event-desc" placeholder="Event Description"></textarea>
+                      </div>
+                    </div>
+                    <div class="tab-footer">
+                      <button type="submit" class="submit-btn btn-sm btn bg-purple2 pull-right">Create Event</button>
+                      <div class="clearfix"></div>
+                    </div>
+                  </form>
+                </div>
+                <div id="tab2" class="tab-pane">
+                  <form id="timeline-image-form" class="horizontal-form">
+                    <div class="tab-body">
+                      <div class="fileupload fileupload-new" data-provides="fileupload">
+                        <div class="fileupload-preview thumbnail"><img data-src="holder.js/100%x140" alt="holder"></div>
+                        <div class="row mt15">
+                          <div class="col-md-6">
+                            <input type="text" class="form-control event-name" placeholder="Event Name">
+                          </div>
+                          <div class="col-md-6">
+                            <input type="text" class="form-control datepicker" placeholder="Event Date">
+                          </div>
+                        </div>
+                        <span class="btn btn-default btn-gradient btn-file mt10"> <span class="fileupload-new">Select image</span> <span class="fileupload-exists">Change File</span>
+                        <input type="file">
+                        </span> <a href="#" class="btn btn-danger btn-gradient fileupload-exists mt10 ml5" data-dismiss="fileupload">Remove</a> </div>
+                    </div>
+                    <div class="tab-footer">
+                      <button type="submit" class="submit-btn btn-sm btn bg-purple2 pull-right">Create New Event</button>
+                      <div class="clearfix"></div>
+                    </div>
+                  </form>
+                </div>
+                <div id="tab3" class="tab-pane">
+                  <form id="timeline-video-form">
+                    <div class="tab-body mt5">
+                      <div class="form-group">
+                        <input type="text" class="form-control event-name" placeholder="Event Name">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" class="form-control datepicker mtn" placeholder="Event Date">
+                      </div>
+                      <div class="form-group">
+                        <textarea class="form-control event-video" placeholder="<iframe></iframe>"></textarea>
+                      </div>
+                    </div>
+                    <div class="tab-footer">
+                      <button type="submit" class="submit-btn btn-sm btn bg-purple2 pull-right">Create New Event</button>
+                      <div class="clearfix"></div>
+                    </div>
+                  </form>
+                </div>
+                <div id="tab4" class="tab-pane">
+                  <form id="timeline-map-form">
+                    <div class="tab-body mt5">
+                      <div class="form-group">
+                        <input type="text" class="form-control event-name" placeholder="Event Name">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" class="form-control datepicker mtn" placeholder="Event Date">
+                      </div>
+                      <div class="form-group">
+                        <input type="text" class="form-control event-map" placeholder="Accepts Coordinates, Click an Example Below">
+                      </div>
+                      <div class="form-group"> <a class="btn btn-default btn-gradient btn-sm example-loc-1">Los Angeles</a> <a class="btn btn-default btn-gradient btn-sm ml5 example-loc-2">New York</a> <a class="btn btn-default btn-gradient btn-sm ml5 example-loc-3">Tokyo</a> </div>
+                    </div>
+                    <div class="tab-footer">
+                      <button type="submit" class="submit-btn btn-sm btn bg-purple2 pull-right">Create New Event</button>
+                      <div class="clearfix"></div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon"><span class="glyphicons glyphicons-dislikes text-purple"></span></div>
+          <div class="panel">
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-xs-6"> <a class="gallery-item" href="img/stock/9.jpg"><img src="img/stock/5.jpg" class="img-responsive" alt=""></a> </div>
+                <div class="col-xs-6"> <a class="gallery-item" href="img/stock/7.jpg"><img src="img/stock/7.jpg" class="img-responsive" alt=""></a> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-icon"><span class="glyphicons glyphicons-link text-red"></span></div>
+          <div class="panel">
+            <div class="panel-body p10">
+              <blockquote class="mbn ml10">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat Lorem ipsum dolor sit amet, dolor sit amet lorem adpiz. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean felis sapien, vestibulum in dignissim vitae, condimentum eu nibh. </p>
+                <small>Someone famous</small> </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-divider">
+      <div class="divider-label">2012</div>
+    </div>
+  </div>
+</div>
+<div class="timeline-item panel-clone" id="clone">
+  <div class="panel">
+    <div class="panel-heading"> <span class="panel-title"> <i class="fa fa-pencil"></i> A Title </span>
+      <div class="panel-header-menu pull-right mr10 text-muted fs12"> November 27, 2013 </div>
+    </div>
+    <div class="panel-body">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean felis sapien, vestibulum in dignissim vitae, condimentum eu nibh.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Page Plugins --> 
+<script type="text/javascript" src="vendor/plugins/gmap/jquery.ui.map.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/mfpopup/jquery.magnific-popup.js"></script> 
+<script type="text/javascript" src="vendor/plugins/datepicker/bootstrap-datepicker.js"></script> 
+<script type="text/javascript" src="vendor/bootstrap/plugins/fileupload/fileupload.js"></script> 
+<script type="text/javascript" src="vendor/bootstrap/js/holder.js"></script> 
+
+<!-- Theme Javascript --> 
+<script type="text/javascript">
+jQuery(document).ready(function () {
+	  
+	 "use strict";
+ 
+	 
+	 $('#timeline-toggle').on('click',function() {
+		$('#timeline').toggleClass('timeline-single'); 
+		createMap()// Redraw map to adjust For window resize
+	 });
+     
+	// All of the event creation forms attached to the timeline
+    var forms =  '#timeline-basic-form, #timeline-image-form, #timeline-video-form, #timeline-map-form';
+   
+    // Cancel Form Submit and pass required variables 
+    // to event creation function
+    $(forms).submit(function (e) {
+	   var This = $(this);   
+	   createEvent(e, This);
+    });
+	
+	// Initilize Gmap1 - basic
+	if ($('#map_canvas').length) {
+	  $('#map_canvas').gmap({'center': '57.7973333,12.0502107', 'zoom': 10, 'disableDefaultUI':true, 'callback': function() {
+		  var self = this;
+		  self.addMarker({'position': this.get('map').getCenter() }).click(function() {
+			  self.openInfoWindow({ 'content': 'Hello World!' }, this);
+		  });	
+	  }});   
+	}
+	
+	// unique ID counter for Panel Clones
+	var counter = 0;
+	
+	function createEvent(e, This) {
+		e.preventDefault(); 
+		// shared event field data
+		var eventTitle = This.find('.event-name').val(),
+		    eventDate = This.find('.datepicker').val();
+		
+		if (eventTitle == '') {var eventTitle = "Example Title";}
+		if (eventDate == '') {var eventDate = "01/01/2014";}
+		
+		// The form creation panel simply collects data from the user
+		// proccesses it and then creates a new panel to place it in.
+		// That new panel is simply a clone of one which already exists.
+		var clone = $('#clone' ).clone(true).attr('id', 'clone-' + counter).removeClass('panel-clone');
+		clone.find('.panel-heading .panel-title').text(eventTitle);
+		clone.find('.panel-heading .panel-title-sm').text(eventDate)
+		
+		// append clone to container and display it
+		var setClone = function setClone() {
+			clone.insertAfter(This.parents('.timeline-item')).hide();
+			clone.fadeIn();
+			This[0].reset();
+		}
+				
+		// unique event field data
+		var id = This.attr('id');
+		
+		switch (id) {
+			case 'timeline-basic-form': 
+				var eventDesc = This.find('.event-desc').val();
+				clone.find('.panel-body p').text(eventDesc);
+				setClone()
+				break;
+			case 'timeline-image-form': 
+				var eventImage = This.find('.fileupload-preview img').clone().addClass('img-responsive');
+				clone.find('.panel-body p').html(eventImage);
+				setClone()
+				break;
+			case 'timeline-video-form': 
+			    // cache form value
+				var eventVideo = This.find('.event-video').val();
+				// Create responsive video container
+				var eventCont = clone.find('.panel-body').html('<div class="embed-responsive embed-responsive-16by9"></div>');		
+				// Fill container with iframe url from eventVideo Val
+				eventCont.find('.embed-responsive').html(eventVideo);
+				setClone()
+				break;
+			case 'timeline-map-form': 
+				var eventMap = This.find('.event-map').val();
+				clone.find('.panel-body p').html('<div id="map_canvas1" class="map"></div>');
+				setClone();
+				$('#map_canvas1').gmap({'center': ''+ eventMap +'', 'zoom': 10, 'disableDefaultUI':true, 'callback': function() {
+					var self = this;
+					self.addMarker({'position': this.get('map').getCenter() }).click(function() {
+						self.openInfoWindow({ 'content': 'Hello World!' }, this);
+					});	
+				}}); 
+				break;
+		}	
+		// add to unique ID counter
+		counter++;	
+	}
+		
+   // buttons for example map event creator
+   $( ".example-loc-1" ).click(function () { 
+	  $('.event-map').val('34.0522342,-118.2436849');
+   });
+	$( ".example-loc-2" ).click(function () { 
+	  $('.event-map').val('40.7143528,-74.0059731');
+   });
+	$( ".example-loc-3" ).click(function () { 
+	  $('.event-map').val('35.6894875,139.69170639999993');
+   });
+
+   // Init plugins
+	$('.datepicker').datepicker();
+	$('a.gallery-item').magnificPopup({ 
+	  type: 'image',
+	  gallery: {enabled: true}
+	});
+
+	// Demo purposes. Runs holder.js (temp images) after 
+	// a tab has been clicked. Fixes content hidden bug
+	$('a[data-toggle="tab"]').click(function() {
+		var tabDelay = setTimeout(function() {Holder.run();},20);	
+	});
+
+});
+</script>
+</body></html>

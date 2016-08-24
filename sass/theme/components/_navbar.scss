@@ -1,0 +1,306 @@
+.navbar {
+    z-index: 1030;
+    margin-bottom: 0;
+    border-radius: 0;
+    min-height: 60px;
+	max-height: 60px;
+    background-color: #FFF;
+	border: 0;
+    border-bottom: 1px solid #c9c9c9;
+    box-shadow: none;
+    background-repeat: repeat-x;
+    background-image: -webkit-linear-gradient(top, #ffffff 1%,#f3f3f3 100%);
+    background-image: linear-gradient(to bottom, #ffffff 1%,#f3f3f3 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f3f3f3',GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+/* Navbar Logo Container */
+.navbar-branding {
+	float: left;
+	width: 230px;
+}
+/* Navbar Logo */
+.navbar-brand {
+	height: 60px;
+	line-height: 48px;
+	padding: 0;
+	color: #5d5d5d;
+	font-size: 19px;
+	font-weight: 400;
+	letter-spacing: 0.5px;
+}
+/* Navbar Toggle Button for Sidebar */
+#toggle_sidemenu_l {
+	float: left;
+    cursor: pointer;
+    font-size: 19px;
+    color: #7e46a7;
+	line-height: 64px;
+	max-height: 60px;
+	width: 40px;
+	margin-left: 25px;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	-ms-transition: all 0.3s ease;
+}
+.sidebar-collapsed #toggle_sidemenu_l {
+    font-size: 24px;
+}
+
+/* Left Navbar Container */
+.navbar-left {
+	float: left;
+	position: relative;
+	width: 150px;
+	max-height: 60px;
+}
+/* Navbar Left Divider */
+.navbar-divider {
+	position: absolute;
+	left: 0;
+	top: 15px;
+	height: 30px;
+	width: 1px;
+	border-left: 1px solid #ebebeb;
+}
+/* Left Side Menus */
+#settings_menu,
+#language_menu {
+	float: left;
+	position: relative;
+	padding: 19px 0;
+	margin-left: 28px;
+	color: #888;
+	font-size: 15px;
+	font-weight: 600;
+}
+#settings_menu a,
+#language_menu a {
+	text-decoration: none;
+}
+#settings_menu .dropdown-menu,
+#language_menu .dropdown-menu {
+	border: 1px solid #CCC;
+	border-radius: 2px;
+	padding: 2px 0;
+	box-shadow: none;
+	margin-left: -10px;
+}
+#settings_menu .dropdown-menu li,
+#language_menu .dropdown-menu li {
+	margin-bottom: 3px;	
+}
+
+/* Settings Menu */
+#settings_menu {margin-left: 25px;}
+#settings_menu .glyphicons {font-size: 14px;}
+
+#settings_menu.open  >.glyphicons {
+    color: #f9892e;
+}
+
+#settings_menu .dropdown-menu {margin-left: -20px;}
+
+/* Language Menu */
+#language_menu {top: -1px;}
+#language_menu a:hover {
+	text-decoration: none;
+	outline: none;	
+}
+/* Language Menu Text */
+#language_menu a > span {
+	color: #a287d4;
+}
+/* Language Menu Icon */
+#language_menu .fa {
+	font-size: 14px;
+	color: #999;
+}
+
+/* Right Navbar Container */
+.navbar-right {
+	float: right;	
+	width: 410px;
+}
+
+/* Header Search Area */
+.navbar-search {
+	position: relative;
+	float: left;
+	overflow: hidden;
+	width: 230px;
+	height: 60px;
+	padding: 15px;
+	padding-right: 25px;
+}
+.navbar-search:after {
+	content: "";
+	position: absolute;
+	right: 0;
+	top: 15px;
+	height: 32px;
+	border-right: 1px solid #ebebeb;
+}
+.navbar-search input {
+	outline: none;
+	color: #AAA;
+	font-size: 18px;
+	font-weight: 300;
+	background: #FFF;
+	border: 1px solid #DDD;
+	border-radius: 15px;
+	padding: 1px 13px;
+	width: 100%;
+}
+/* Navbar Menus */
+.navbar-menus { float: right; margin-right: 10px; }
+.navbar-menus > .btn-group {
+    float: left;
+	margin-right: 0;
+}
+.navbar-menus > .btn-group.open .glyphicons {
+    color: #f9892e;
+}
+/* Reduces the size of the Right SideMenu Toggle button */
+.navbar-menus > .btn-group:last-child {
+	max-width: 55px;
+}
+.navbar-menus > .btn-group > button {
+	position: relative;
+	color: #666;
+	padding: 21px 20px 18px;
+	background: transparent;
+	border: none;
+	border-radius: 0;
+	outline: none;	
+}
+.navbar-menus > .btn-group.open .dropdown-toggle {box-shadow: none;}
+
+/* Header Menu Number Text */
+.navbar-menus > .btn-group > button > b {
+	position: absolute;
+	top: 14px;
+	left: 30px;
+	display: block;
+	width: 20px;
+	height: 20px;
+	line-height: 16px;
+	color: #FFF;
+	font-size: 13px;
+	font-weight: 600;
+	border: 1px solid #FFF;
+	border-radius: 100%;
+	background: #a87fc6;
+}
+/* Header Button Dropdowns */
+.navbar-menus ul.dropdown-menu,
+.navbar-menus div.dropdown-menu {
+	min-width: 316px;
+	padding: 0;
+	right: -5px;
+	left: auto;
+	margin: 6px 0;
+	font-size: 13px;
+	border-color: #CCC;
+}
+/* Header Menu Dropdown - Header */
+.navbar-menus .dropdown-header {
+    padding: 9px 20px;
+	margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #666;
+    background: #f9f9f9;
+    position: relative;
+	border-bottom: 1px solid #DDD;
+    border-radius: 2px 2px 0 0;
+}
+/* Header Bar Dropdowns Arrows */
+.navbar-menus .dropdown-menu:before,
+.navbar-menus .dropdown-menu:after {
+	z-index: 15;
+	content: "";
+	position: absolute;
+	bottom: 100%;
+	right: 23px;
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 12px solid #f2f2f2;
+}
+.navbar-menus .dropdown-menu:after {
+	z-index: 14;
+	border-bottom-color: #999;
+}
+/* Header Menu Dropdown - Sub Header */
+.dropdown-submenu {
+	padding: 11px 0 8px;
+	border-bottom: 1px solid #eee;
+}
+.dropdownSearch { position: relative; top: 1px; left: 12px; border: none;}
+.dropdownSearch:focus { outline: none; }
+.dropdownSearch::-webkit-input-placeholder { font-weight: 600; font-size: 13px; color:#BBB; }
+.dropdownSearch::-moz-placeholder { font-weight: 600; font-size: 13px; color:#BBB; } /* firefox 19+ */
+.dropdownSearch:-ms-input-placeholder { font-weight: 600; font-size: 13px; color:#BBB; } /* ie */
+.dropdownSearch:-moz-placeholder { font-weight: 600; font-size: 13px; color:#BBB; }
+/* Header Menu Dropdown - Footer */
+.navbar-menus .dropdown-footer {
+    padding: 11px 20px;
+    margin: 0;
+    z-index: 999;
+    font-size: 11px;
+    color: #999;
+    background: #FFF;
+    text-align: center;
+    position: relative;
+	border-top: 1px solid #DDD;
+    border-radius: 0 0 3px 3px;
+}
+.navbar-menus .dropdown-footer a { color: #428bca }
+.navbar-menus .dropdown-footer a:hover { background: transparent }
+.navbar-menus .dropdown-footer i.fa { padding-left: 3px }
+
+/* Dropdown Checklist Toggle - The Task menu is a clickable checklist */
+.task-checked > div:not(.item-checkbox) { opacity: 0.4 }
+/* add a text line through effect on any clickable checklist by adding ".text-slash" */
+.task-checked .text-slash { text-decoration: line-through }
+
+/* Removes borders from Nav-Tabs that are placed in header dropdowns */
+.navbar-menus .nav-tabs  {
+	margin-top: -1px;
+	margin-left: -1px;	
+}
+.navbar-menus .nav-tabs > li > a {
+	padding: 10px 27px;
+	border-color: #DDD;
+}
+/* Navbar Tickets Dropdown */
+.ticket-body {width: 87%;}
+.ticket-handle {
+	position: relative;
+	width: 13%;
+	border-right: 1px solid #ffe3e3;
+}
+.ticket-handle:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 2px;
+	height: 100%;
+	border-right: 1px solid #ffe3e3;
+}
+/* Navbar Todo-List Dropdown */
+.todo-body {width: 82%;}
+.todo-handle {
+	position: relative;
+	width: 8%;
+}
+.v-handle {
+	width: 10px;
+	height: 14px;
+	background-image: url(../img/plugins/handle.png);
+}
+
+

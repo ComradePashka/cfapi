@@ -1,0 +1,47 @@
+
+////////////////////////////
+///// Theme Gradients /////
+///////////////////////////
+
+// Standard gradient overlay that is used on most elements
+// with a colored/dark background(primarily buttons)
+
+@mixin gradient($color) {
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.40);
+    border-color: rgba(0, 0, 0, 0.07) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.18);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+	background-color: $color;
+    background-repeat: repeat-x;
+    background-image: -webkit-linear-gradient(top, rgba(255,255,255, 0.30) 1%,rgba(255,255,255,0.15) 100%);
+    background-image: linear-gradient(to bottom, rgba(255,255,255, 0.30) 1%,rgba(255,255,255,0.15) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80ffffff',endColorstr='#00ffffff',GradientType=0);
+}
+
+// This is the light gradient found everywhere. It was designed
+// specifically for use with whites/light grey colors. As such
+// It should always be combined with a light background-color
+
+@mixin light-gradient($color) {
+    text-shadow: 0 1px #ffffff;
+    border-color: rgb(204,204,204) rgba(0, 0, 0, 0.19) rgba(0, 0, 0, 0.18);
+	background-color: $color;
+    background-image: -webkit-linear-gradient(top, rgba(255,255,255, 0.9) 50%,rgba(255,255,255,0.1) 100%);
+    background-image: linear-gradient(to bottom, rgba(255,255,255, 0.9) 10%,rgba(255,255,255,0.1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80ffffff',endColorstr='#00ffffff',GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+////////////////////////////
+///// Gradient-Hovers /////
+///////////////////////////
+
+@mixin gradient-hover {
+    background-image: -webkit-linear-gradient(top, rgba(255,255,255, 0.45) 1%,rgba(255,255,255,0.15) 100%);
+    background-image: linear-gradient(to bottom, rgba(255,255,255, 0.45) 1%,rgba(255,255,255,0.15) 100%);
+}
+@mixin light-gradient-hover {
+    color: #FFF;
+    background-image: -webkit-linear-gradient(top, rgba(255,255,255, 0.13) 1%,rgba(255,255,255,0.13) 100%);
+    background-image: linear-gradient(to bottom, rgba(255,255,255, 0.13) 1%,rgba(255,255,255,0.13) 100%);
+}

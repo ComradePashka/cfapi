@@ -1,0 +1,96 @@
+
+<div id="topbar">
+  <div class="topbar-left">
+    <ol class="breadcrumb">
+      <li class="crumb-active"><a href="charts.html">Charts</a></li>
+      <li class="crumb-icon"><a href="dashboard.html"><span class="glyphicon glyphicon-home"></span></a></li>
+      <li class="crumb-link"><a href="index.html">Home</a></li>
+      <li class="crumb-trail">Charts</li>
+    </ol>
+  </div>
+</div>
+<div id="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-stats"></span> Data Toggle Chart </span> </div>
+        <div class="panel-menu">
+          <div id="choices"></div>
+        </div>
+        <div class="panel-body">
+          <div class="chart-toggle" style="height: 300px; width: 100%;"></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-stats"></span> Donut Chart </span> </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="chart-pie" style="height: 300px; width: 100%;"></div>
+            </div>
+            <div class="col-sm-6">
+              <div class="chart-donut" style="height: 300px; width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-stats"></span> Line Chart </span> </div>
+        <div class="panel-body">
+          <div class="chart-line" style="height: 300px; width: 100%;"></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-stats"></span> Updating Chart </span> </div>
+        <div class="panel-body">
+          <div class="chart-updating" style="height: 300px; width: 100%;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-stats"></span> Bar Chart </span> </div>
+        <div class="panel-body">
+          <div class="chart-bars-ordered" style="height: 300px; width: 100%;"></div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-stats"></span> Horizontal Bar Chart </span> </div>
+        <div class="panel-body">
+          <div class="chart-bars-horizontal" style="height: 300px; width: 100%;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Plugins --> 
+<script type="text/javascript" src="vendor/plugins/jqueryflot/jquery.flot.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/jqueryflot/jquery.flot.resize.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/jqueryflot/jquery.flot.pie.min.js"></script> 
+<script type="text/javascript" src="js/pages/charts.js"></script> 
+
+<!-- For performance the Flot plugins below have been compiled into a single file "charts.js" 
+<script type="text/javascript" src="vendor/plugins/jqueryflot/jquery.flot.time.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/jqueryflot/jquery.flot.canvas.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/jqueryflot/jquery.flot.tooltip.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/jqueryflot/jquery.flot.navigate.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/jqueryflot/jquery.flot.selection.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/jqueryflot/jquery.flot.threshold.min.js"></script> 
+--> 
+
+<script type="text/javascript">
+jQuery(document).ready(function () {
+	  
+	 "use strict";     
+     
+    // This page contains more Initilization Javascript than normal.
+	// As a result it has its own js page. See charts.js for more info
+	Charts.init();
+  
+  });
+</script> 

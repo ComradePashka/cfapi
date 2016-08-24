@@ -1,0 +1,246 @@
+
+<div id="topbar">
+  <div class="topbar-left">
+    <ol class="breadcrumb">
+      <li class="crumb-active"><a href="maps.html">Maps</a></li>
+      <li class="crumb-icon"><a href="dashboard.html"><span class="glyphicon glyphicon-home"></span></a></li>
+      <li class="crumb-link"><a href="index.html">Home</a></li>
+      <li class="crumb-trail">Maps</li>
+    </ol>
+  </div>
+</div>
+<div id="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel">
+        <div class="panel-body">
+          <div id="panorama" class="map"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel">
+            <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-map-marker"></span> Searchable Map </span> </div>
+            <div class="panel-menu">
+              <div class="form-group">
+                <form method="post" id="geocoding_form">
+                  <div class="col-xs-9 prn">
+                    <input type="text" class="form-control" id="address" name="address" placeholder="Enter an Address...">
+                  </div>
+                  <div class="col-xs-3">
+                    <input type="submit" class="btn btn-default btn-gradient btn-block" value="Search">
+                  </div>
+                </form>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="panel-body">
+              <div id="map1" class="map"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="panel">
+            <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-map-marker"></span> Standard Map </span> </div>
+            <div class="panel-body">
+              <div id="map_canvas1" class="map"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="panel">
+            <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-map-marker"></span> Map with List Filter </span> </div>
+            <div class="panel-body">
+              <div id="map_canvas4" class="map"></div>
+              <div id="radio" class="map-gradient map-rounded map-shadow" style="border: 1px solid #AAA; margin:5px;padding:10px 10px 5px 10px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel">
+            <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-map-marker"></span> Map with Clickable Locations </span> </div>
+            <div class="panel-menu">
+              <button type="button" class="btn btn-default btn-gradient" data-gmapping='{"id":"m_1","latlng":{"lat":27.6648274,"lng":-81.51575350000002},"tags":"drupal"}' data-title="Florida DrupalCamp - Feb 11 2012"> <span class="glyphicons glyphicons-google_maps pr5"></span> 1 </button>
+              <button type="button" class="btn btn-default btn-gradient" data-gmapping='{"id":"m_2","latlng":{"lat":1.352083,"lng":103.81983600000001},"tags":"drupal"}' data-title="DrupalCamp Singapore - Mar 03 2012"> <span class="glyphicons glyphicons-google_maps pr5"></span> 2 </button>
+              <button type="button" class="btn btn-default btn-gradient" data-gmapping='{"id":"m_3","latlng":{"lat":39.7391536,"lng":-104.9847034},"tags":"drupal"}' data-title="DrupalCon 2012 Denver - Mar 20 2012"> <span class="glyphicons glyphicons-google_maps pr5"></span> 3 </button>
+              <button type="button" class="btn btn-default btn-gradient" data-gmapping='{"id":"m_4","latlng":{"lat":36.1658899,"lng":-86.7844432},"tags":"drupal"}' data-title="DrupalCamp Nashville - Apr 28 2012"> <span class="glyphicons glyphicons-google_maps pr5"></span> 4 </button>
+              <button type="button" class="btn btn-default btn-gradient" data-gmapping='{"id":"m_5","latlng":{"lat":55.6760968,"lng":12.568337100000008},"tags":"drupal"}' data-title="Camp Copenhagen 5.0 - May 11 2012"> <span class="glyphicons glyphicons-google_maps pr5"></span> 5 </button>
+            </div>
+            <div class="panel-body">
+              <div id="map_canvas2" class="map rounded"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="panel">
+            <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-map-marker"></span> Map with Inner Pagination </span> </div>
+            <div class="panel-body">
+              <div id="map_canvas3" class="map"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Plugins --> 
+<script type="text/javascript" src="vendor/plugins/map/gmaps.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/gmap/jquery.ui.map.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/gmap/ui/jquery.ui.map.services.js"></script> 
+<script type="text/javascript" src="vendor/plugins/gmap/ui/jquery.ui.map.extensions.js"></script> 
+<script type="text/javascript" src="vendor/plugins/gmap/ui/jquery.ui.map.microformat.js"></script> 
+<script type="text/javascript">
+jQuery(document).ready(function () {
+	  
+	 "use strict";     
+      	
+    // Streetview for map 3
+	var panorama = GMaps.createPanorama({
+	  el: '#panorama',
+	  lat : 51.693249,
+	  lng : -0.419630,
+	  pov: {
+      heading: 194,
+      pitch: 8
+    }
+	});  
+	// Initilize Gmap1 - basic
+	if ($('#map_canvas1').length) {
+	  $('#map_canvas1').gmap({'center': '57.7973333,12.0502107', 'zoom': 10, 'disableDefaultUI':true, 'callback': function() {
+		  var self = this;
+		  self.addMarker({'position': this.get('map').getCenter() }).click(function() {
+			  self.openInfoWindow({ 'content': 'Hello World!' }, this);
+		  });	
+	  }});   
+	}
+	
+	// Initilize Gmap2 - clickable movements
+	$(function() { 
+		$('#map_canvas2').gmap({'disableDefaultUI':true, 'callback': function() {
+			var self = this;
+			$("[data-gmapping]").each(function(i,el) {
+				var data = $(el).data('gmapping');
+				var title = $(el).data('title');
+				self.addMarker({'id': data.id, 'tags':data.tags, 'position': new google.maps.LatLng(data.latlng.lat, data.latlng.lng), 'bounds':true }, function(map,marker) {
+					$(el).click(function() {
+						$(marker).triggerEvent('click');
+					});
+				}).click(function() {
+					self.openInfoWindow({ 'content': title}, this);
+				});
+			});						
+		}});
+	});  
+	
+    // Initilize Gmap3 - scrollable toolbar
+	$(function() { 
+		var markers = [
+			{'position': '59.32893000000001,18.064910000000054', 'title': 'Stockholm, Sweden' },
+			{'position': '35.6894875,139.69170639999993', 'title': 'Tokyo, Japan' },
+			{'position': '13.7234186, 100.47623190000002', 'title': 'Bangkok, Thailand' },
+			{'position': '51.508129,-0.12800500000003012', 'title': 'London, Great Britain' },
+			{'position': '40.7143528,-74.0059731', 'title': 'New York, USA' },
+			{'position': '48.856614,2.3522219000000177', 'title': 'Paris, France' },
+			{'position': '34.0522342,-118.2436849', 'title': 'Los Angeles, USA' },
+			{'position': '55.75,37.616666699999996', 'title': 'Moskva, Ryssia' }
+		];
+		$('#map_canvas3').gmap({'zoom': 5, 'disableDefaultUI':true, 'callback': function() {
+			var self = this;
+			$.each(markers, function(i, marker) {
+				self.addMarker(marker).click(function() {
+					self.openInfoWindow({'content': this.title}, this);
+				});
+			});
+		}}).gmap('pagination', 'title');
+	});
+
+	// Initilize Gmap4 - sortable control panel
+	$(function() { 		
+	
+	String.prototype.format = function() { var a = this; for ( var k in arguments ) { a = a.replace("{" + k + "}", arguments[k]); } return a; };
+		$('#map_canvas4').gmap({'disableDefaultUI':true}).bind('init', function(evt, map) { 
+			//$('#map_canvas').gmap('addControl', 'tags-control', google.maps.ControlPosition.TOP_LEFT);
+			$('#map_canvas4').gmap('addControl', 'radio', google.maps.ControlPosition.TOP_LEFT);
+			var southWest = map.getBounds().getSouthWest();
+			var northEast = map.getBounds().getNorthEast();
+			var lngSpan = northEast.lng() - southWest.lng();
+			var latSpan = northEast.lat() - southWest.lat();
+			var images = ['img/map_icons/map-icon-1.png', 'img/map_icons/map-icon-2.png', 'img/map_icons/map-icon-3.png', 'img/map_icons/map-icon-4.png', 'img/map_icons/map-icon-5.png', 'img/map_icons/map-icon-6.png'];
+			var tags = ['jQuery', 'Google maps', 'Plugin', 'SEO', 'Java', 'PHP', 'C#', 'Ruby', 'JavaScript', 'HTML'];
+			//$('#tags').append('<option value="all">All</option>');
+			$.each(tags, function(i, tag) {
+				//$('#tags').append(('<option value="{0}">{1}</option>').format(tag, tag));
+				$('#radio').append(('<div class="cBox mt5 mb5"><input type="checkbox" id="'+tag+'" value="{0}"/><label for="'+tag+'">{1}</label></div>').format(tag, tag));				
+			});
+			for ( var i = 0; i < 100; i++ ) {
+				var temp = [];
+				for (var j = 0; j < Math.random()*5; j++ ) {
+					temp.push(tags[Math.floor(Math.random()*10)]);
+				}
+				$('#map_canvas4').gmap('addMarker', { 'icon': images[(Math.floor(Math.random()*7))], 'tags':temp, 'bound':true, 'position': new google.maps.LatLng(southWest.lat() + latSpan * Math.random(), southWest.lng() + lngSpan * Math.random()) } ).click(function() {
+					var visibleInViewport = ( $('#map_canvas4').gmap('inViewport', $(this)[0]) ) ? 'I\'m visible in the viewport.' : 'I\'m sad and hidden.';
+					$('#map_canvas4').gmap('openInfoWindow', { 'content': $(this)[0].tags + '<br/>' +visibleInViewport }, this);
+				});
+			}
+			$('input:checkbox').click(function() {
+				$('#map_canvas4').gmap('closeInfoWindow');
+				$('#map_canvas4').gmap('set', 'bounds', null);
+				var filters = [];
+				$('input:checkbox:checked').each(function(i, checkbox) {
+					filters.push($(checkbox).val());
+				});
+				if ( filters.length > 0 ) {
+					$('#map_canvas4').gmap('find', 'markers', { 'property': 'tags', 'value': filters, 'operator': 'OR' }, function(marker, found) {
+						if (found) {
+							$('#map_canvas4').gmap('addBounds', marker.position);
+						}
+						marker.setVisible(found); 
+					});
+				} else {
+					$.each($('#map_canvas4').gmap('get', 'markers'), function(i, marker) {
+						$('#map_canvas4').gmap('addBounds', marker.position);
+						marker.setVisible(true); 
+					});
+				}
+			});
+
+		});
+	});
+
+	// Init Searchable map using gmaps plugin
+	var map = new GMaps({
+	  div: '#map1',
+	  lat: -12.043333,
+	  lng: -77.028333,
+	});
+	
+	//add search bar to map
+	$('#geocoding_form').submit(function(e){
+	  e.preventDefault();
+	  GMaps.geocode({
+		address: $('#address').val().trim(),
+		callback: function(results, status){
+		  if(status=='OK'){
+			var latlng = results[0].geometry.location;
+			map.setCenter(latlng.lat(), latlng.lng());
+			map.addMarker({
+			  lat: latlng.lat(),
+			  lng: latlng.lng()
+			});
+		  }
+		}
+	  });
+	});
+
+});
+
+</script> 

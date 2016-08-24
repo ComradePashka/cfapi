@@ -1,0 +1,212 @@
+<!-- Required Plugin CSS
+<link rel="stylesheet" type="text/css" href="vendor/plugins/rangeslider/css/classic-min.css" media="screen">
+-->
+
+<div id="topbar">
+  <div class="topbar-left">
+    <ol class="breadcrumb">
+      <li class="crumb-active"><a href="sliders.html">Sliders</a></li>
+      <li class="crumb-icon"><a href="dashboard.html"><span class="glyphicon glyphicon-home"></span></a></li>
+      <li class="crumb-link"><a href="index.html">Home</a></li>
+      <li class="crumb-trail">Sliders</li>
+    </ol>
+  </div>
+</div>
+<div id="content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel">
+            <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-resize-horizontal"></span> Sliders </span> </div>
+            <div class="panel-body slider-example">
+              <div class="alert alert-info"> Sliders come in tons of colors to make your site really flash! A <b>simple class</b> change is all it takes!</div>
+              <div class="form-horizontal">
+                <div class="form-group first">
+                  <label class="col-md-2 control-label">Default:</label>
+                  <div class="col-md-9">
+                    <div id="slider-basic" class="rangeslider slider-red"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-2 control-label">Editable:</label>
+                  <div class="col-md-9">
+                    <div id="slider-edit" class="rangeslider slider-purple"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-2 control-label">Disabled:</label>
+                  <div class="col-md-9">
+                    <div id="disabledExample" class="rangeslider slider-orange"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-2 control-label">Value Range:</label>
+                  <div class="col-md-9">
+                    <div id="rangeExample" class="rangeslider slider-green"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-2 control-label">Increments:</label>
+                  <div class="col-md-9">
+                    <div id="stepExample" class="rangeslider slider-blue"></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-2 control-label">No Arrows:</label>
+                  <div class="col-md-9">
+                    <div id="arrowsExample" class="rangeslider slider-grey"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="panel">
+            <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-record"></span> Knobs </span> </div>
+            <div class="panel-body">
+              <div class="row text-center">
+                <div class="col-sm-6">
+                  <p><b>&#215; Disable display input</b></p>
+                  <input class="knob" data-width="160" data-fgColor="#ffac9c" data-displayInput=false value="0">
+                </div>
+                <div class="col-sm-6">
+                  <p><b>&#215; 'cursor' mode</b></p>
+                  <input class="knob" data-width="160" data-fgColor="#c7b7e5" data-cursor=true data-thickness="0.35" value="0">
+                </div>
+                <div class="col-sm-6">
+                  <p><b>&#215; Display previous value</b></p>
+                  <input class="knob" data-width="160" data-fgColor="#b0daec" data-min="0" data-displayPrevious=true value="0">
+                </div>
+                <div class="col-sm-6">
+                  <p><b>&#215; Angle offset</b></p>
+                  <input class="knob" data-width="160" data-fgColor="#c6e69c" data-angleOffset=90 data-linecap=round value="0">
+                </div>
+                <div class="col-sm-6">
+                  <p><b>&#215; Angle offset and arc</b></p>
+                  <input class="knob" data-width="160" data-fgColor="#fbb882" data-angleOffset=-125 data-angleArc=250 value="0">
+                </div>
+                <div class="col-sm-6">
+                  <p><b>&#215; 5-digit values, step 1000</b></p>
+                  <input class="knob" data-width="160" data-fgColor="#9de0f5" data-min="0" data-displayPrevious=true data-max="100" data-step="1" value="0">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Plugins --> 
+<script type="text/javascript" src="vendor/plugins/jquerydial/jquery.knob.js"></script> 
+<script type="text/javascript" src="vendor/plugins/rangeslider/jQAllRangeSliders.min.js"></script> 
+<script type="text/javascript">
+jQuery(document).ready(function () {
+	  
+	 "use strict";     
+     
+	
+	// Init Sliders
+	$("#slider-basic").rangeSlider({defaultValues:{min: 20, max: 80}});
+	$("#slider-edit").editRangeSlider({defaultValues:{min: 30, max: 100}});
+	$("#slider-date").dateRangeSlider({defaultValues:{min: 10, max: 90}});
+	$("#arrowsExample").rangeSlider({arrows:false,defaultValues:{min: 10, max: 70}});
+	$("#boundsExample").rangeSlider({bounds:{min: 30, max: 70}})
+
+	$("#delayExample").rangeSlider({
+		valueLabels:"change",
+		delayOut: 4000,
+		defaultValues:{min: 20, max: 60}
+	});
+	
+	$("#durationExample").rangeSlider({
+		valueLabels:"change",
+		durationIn: 1000,
+		durationOut: 1000,
+		defaultValues:{min: 30, max: 100}
+	});
+	
+	$("#disabledExample").rangeSlider({
+		enabled: false
+	});
+	
+	$("#rangeExample").rangeSlider({range: {min: 10, max: 40}});
+	
+	$("#stepExample").rangeSlider({step: 10});
+	
+	// On Load knob animation
+	$({value: 0}).delay(700).animate({value: 75}, {
+		duration: 2000,
+		easing:'swing',
+		step: function() 
+		{
+		   $('.knob').val(Math.ceil(this.value)).trigger('change');
+		}
+	});
+	
+	// Init knobs
+	$(".knob").knob({
+		change : function (value) {
+			//console.log("change : " + value);
+		},
+		release : function (value) {
+			//console.log(this.$.attr('value'));
+			console.log("release : " + value);
+		},
+		cancel : function () {
+			console.log("cancel : ", this);
+		},
+		draw : function () {
+
+			// "tron" case
+			if(this.$.data('skin') == 'tron') {
+
+				var a = this.angle(this.cv)  // Angle
+					, sa = this.startAngle   // Previous start angle
+					, sat = this.startAngle  // Start angle
+					, ea                     // Previous end angle
+					, eat = sat + a          // End angle
+					, r = 1;
+
+				this.g.lineWidth = this.lineWidth;
+
+				this.o.cursor
+					&& (sat = eat - 0.3)
+					&& (eat = eat + 0.3);
+
+				if (this.o.displayPrevious) {
+					ea = this.startAngle + this.angle(this.v);
+					this.o.cursor
+						&& (sa = ea - 0.3)
+						&& (ea = ea + 0.3);
+					this.g.beginPath();
+					this.g.strokeStyle = this.pColor;
+					this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sa, ea, false);
+					this.g.stroke();
+				}
+
+				this.g.beginPath();
+				this.g.strokeStyle = r ? this.o.fgColor : this.fgColor ;
+				this.g.arc(this.xy, this.xy, this.radius - this.lineWidth, sat, eat, false);
+				this.g.stroke();
+
+				this.g.lineWidth = 2;
+				this.g.beginPath();
+				this.g.strokeStyle = this.o.fgColor;
+				this.g.arc( this.xy, this.xy, this.radius - this.lineWidth + 1 + this.lineWidth * 2 / 3, 0, 2 * Math.PI, false);
+				this.g.stroke();
+
+				return false;
+			}
+		}
+	});
+	
+});
+</script> 

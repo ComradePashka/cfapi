@@ -1,0 +1,227 @@
+<!-- Required Plugin CSS
+<link rel="stylesheet" type="text/css" href="vendor/editors/xeditable/css/bootstrap-editable.css">
+<link rel="stylesheet" type="text/css" href="vendor/editors/xeditable/inputs/address/address.css">
+<link rel="stylesheet" type="text/css" href="vendor/editors/xeditable/inputs/typeaheadjs/lib/typeahead.js-bootstrap.css">
+<link rel="stylesheet" type="text/css" href="vendor/plugins/daterange/daterangepicker.css">
+-->
+
+<div id="topbar">
+  <div class="topbar-left">
+    <ol class="breadcrumb">
+      <li class="crumb-active"><a href="xedit.html">Xedit</a></li>
+      <li class="crumb-icon"><a href="dashboard.html"><span class="glyphicon glyphicon-home"></span></a></li>
+      <li class="crumb-link"><a href="index.html">Home</a></li>
+      <li class="crumb-trail">Xedit</li>
+    </ol>
+  </div>
+</div>
+<div id="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-pencil"></span> X-editable Table Demo </span>
+          <div class="panel-header-menu pull-right mr10">
+            <label class="checkbox-inline mr10">
+              <input type="checkbox" id="autoopen" value="option1">
+              auto-open next field </label>
+            <button id="enable" class="btn btn-xs btn-default btn-gradient">enable / disable</button>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="alert alert-success">The X-editable plugin allows you to take virtually any text and convert it to an <b>on-the-fly</b> editable field. And you will love the seemless intergrated popup</div>
+          <table id="user" class="table table-bordered table-striped" style="clear: both">
+            <tbody>
+              <tr>
+                <td style="width: 35%;">Simple text field</td>
+                <td style="width: 65%;"><a href="#" id="username" data-type="text" data-pk="1" data-title="Enter username" class="editable editable-click">superuser</a></td>
+              </tr>
+              <tr>
+                <td>Empty text field, required</td>
+                <td><a href="#" id="firstname" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Enter your firstname" class="editable editable-click editable-empty">Empty</a></td>
+              </tr>
+              <tr>
+                <td>Select, <b>error</b> while loading</td>
+                <td><a href="#" id="status" data-type="select" data-pk="1" data-value="0" data-source="/status" data-title="Select status" class="editable editable-click">Active</a></td>
+              </tr>
+              <tr>
+                <td>Combodate (date)</td>
+                <td><a href="#" id="dob" data-type="combodate" data-value="1984-05-15" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1" data-title="Select Date of birth" class="editable editable-click">15/05/1984</a></td>
+              </tr>
+              <tr>
+                <td>Combodate (datetime)</td>
+                <td><a href="#" id="event" data-type="combodate" data-template="D MMM YYYY  HH:mm" data-format="YYYY-MM-DD HH:mm" data-viewformat="MMM D, YYYY, HH:mm" data-pk="1" data-title="Setup event date and time" class="editable editable-click editable-empty">Empty</a></td>
+              </tr>
+              <tr>
+                <td>Textarea, buttons below. Submit by <i>ctrl+enter</i></td>
+                <td><a href="#" id="comments" data-type="textarea" data-pk="1" data-placeholder="Your comments here..." data-title="Enter comments" class="editable editable-pre-wrapped editable-click">awesome
+                  user!</a></td>
+              </tr>
+              <tr>
+                <td>Checklist</td>
+                <td><a href="#" id="fruits" data-type="checklist" data-value="2,3" data-title="Select fruits" class="editable editable-click">peach<br>
+                  apple</a></td>
+              </tr>
+              <tr>
+                <td>Custom input, several fields</td>
+                <td><a href="#" id="address" data-type="address" data-pk="1" data-title="Please, fill address" class="editable editable-click"><b>Moscow</b>, Lenina st., bld. 12</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Plugins --> 
+<script type="text/javascript" src="vendor/editors/xeditable/js/bootstrap-editable.js"></script> 
+<script type="text/javascript" src="vendor/editors/xeditable/inputs/address/address.js"></script> 
+<script type="text/javascript" src="vendor/editors/xeditable/inputs/typeaheadjs/lib/typeahead.js"></script> 
+<script type="text/javascript" src="vendor/editors/xeditable/inputs/typeaheadjs/typeaheadjs.js"></script> 
+<script type="text/javascript" src="vendor/plugins/daterange/moment.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/daterange/daterangepicker.js"></script> 
+<script type="text/javascript" src="vendor/plugins/datepicker/bootstrap-datepicker.js"></script> 
+<script type="text/javascript">
+jQuery(document).ready(function () {
+	  
+	 "use strict";     
+     
+
+	  //enable / disable xedit
+	  $('#enable').click(function() {
+		 $('#user .editable').editable('toggleDisabled');
+	  });    
+	  
+	  //editables 
+	  $('#username').editable({
+			 type: 'text',
+			 pk: 1,
+			 name: 'username',
+			 title: 'Enter username'
+	  });
+	  
+	  $('#firstname').editable({
+		  validate: function(value) {
+			 if($.trim(value) == '') return 'This field is required';
+		  }
+	  });
+	  
+	  $('#sex').editable({
+		  prepend: "not selected",
+		  source: [
+			  {value: 1, text: 'Male'},
+			  {value: 2, text: 'Female'}
+		  ],
+		  display: function(value, sourceData) {
+			   var colors = {"": "gray", 1: "green", 2: "blue"},
+				   elem = $.grep(sourceData, function(o){return o.value == value;});
+				   
+			   if(elem.length) {    
+				   $(this).text(elem[0].text).css("color", colors[value]); 
+			   } else {
+				   $(this).empty(); 
+			   }
+		  }   
+	  });    
+	  
+	  $('#status').editable();   
+	  
+	  $('#group').editable({
+		 showbuttons: false 
+	  });   
+  
+	  $('#vacation').editable({
+		  datepicker: { todayBtn: 'linked' } 
+	  });  
+		  
+	  $('#dob').editable();
+			
+	  $('#event').editable({
+		  placement: 'right',
+		  combodate: {
+			  firstItem: 'name'
+		  }
+	  });      
+	  
+	  $('#meeting_start').editable({
+		  format: 'yyyy-mm-dd hh:ii',    
+		  viewformat: 'dd/mm/yyyy hh:ii',
+		  validate: function(v) {
+			 if(v && v.getDate() == 10) return 'Day cant be 10!';
+		  },
+		  datetimepicker: {
+			 todayBtn: 'linked',
+			 weekStart: 1
+		  }        
+	  });            
+	  
+	  $('#comments').editable({
+		  showbuttons: 'bottom'
+	  }); 
+	  
+	  $('#note').editable(); 
+	  $('#pencil').click(function(e) {
+		  e.stopPropagation();
+		  e.preventDefault();
+		  $('#note').editable('toggle');
+	 });   
+	 
+	  $('#state').editable({
+		  source: ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]
+	  }); 
+	  
+	  $('#state2').editable({
+		  value: 'California',
+		  typeahead: {
+			  name: 'state',
+			  local: ["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Dakota","North Carolina","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"]
+		  }
+	  });   
+	 
+	 $('#fruits').editable({
+		 pk: 1,
+		 limit: 3,
+		 source: [
+		  {value: 1, text: 'banana'},
+		  {value: 2, text: 'peach'},
+		  {value: 3, text: 'apple'},
+		  {value: 4, text: 'watermelon'},
+		  {value: 5, text: 'orange'}
+		 ]
+	  }); 
+	  
+	  $('#address').editable({
+		  url: '/post',
+		  value: {
+			  city: "Moscow", 
+			  street: "Lenina", 
+			  building: "12"
+		  },
+		  validate: function(value) {
+			  if(value.city == '') return 'city is required!'; 
+		  },
+		  display: function(value) {
+			  if(!value) {
+				  $(this).empty();
+				  return; 
+			  }
+			  var html = '<b>' + $('<div>').text(value.city).html() + '</b>, ' + $('<div>').text(value.street).html() + ' st., bld. ' + $('<div>').text(value.building).html();
+			  $(this).html(html); 
+		  }         
+	  });              
+		   
+	 $('#user .editable').on('hidden', function(e, reason){
+		  if(reason === 'save' || reason === 'nochange') {
+			  var $next = $(this).closest('tr').next().find('.editable');
+			  if($('#autoopen').is(':checked')) {
+				  setTimeout(function() {
+					  $next.editable('show');
+				  }, 300); 
+			  } else {
+				  $next.focus();
+			  } 
+		  }
+	 });
+
+ });
+</script> 

@@ -1,0 +1,94 @@
+<!-- Required Plugin CSS 
+<link rel="stylesheet" type="text/css" href="vendor/editors/summernote/summernote.css">
+<link rel="stylesheet" type="text/css" href="vendor/editors/markitup/skins/simple/style.css">
+<link rel="stylesheet" type="text/css" href="vendor/editors/markitup/sets/default/style.css">
+<link rel="stylesheet" type="text/css" href="vendor/plugins/colorpicker/colorpicker.css">
+-->
+
+<div id="topbar">
+  <div class="topbar-left">
+    <ol class="breadcrumb">
+      <li class="crumb-active"><a href="editors.html">Editors</a></li>
+      <li class="crumb-icon"><a href="dashboard.html"><span class="glyphicon glyphicon-home"></span></a></li>
+      <li class="crumb-link"><a href="index.html">Home</a></li>
+      <li class="crumb-trail">Editors</li>
+    </ol>
+  </div>
+</div>
+<div id="content">
+  <div class="panel overflow-h">
+    <div class="panel-body pn">
+      <form>
+        <textarea id="markitup" name="content" rows="10"> This is the MarkItUp Editor...</textarea>
+      </form>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-body pn">
+      <div class="summernote" style="height: 400px;">This is the <b>Summernote</b> Editor...</div>
+    </div>
+  </div>
+  <div class="panel">
+    <div class="panel-body pn">
+      <textarea name="editor1" id="editor1" name="editor1" rows="14">
+      This is the <b>Ckeditor</b> Plugin...
+      </textarea>
+    </div>
+  </div>
+  <div class="editor-color-swapper hidden-xs"> <span class="text-muted fs12 pr5">Color Options: </span>
+    <div class="btn-group ml5">
+      <button type="button" class="editor-ui-color btn-xs btn bg-green btn-gradient p10" value="bg-green"></button>
+      <button type="button" class="editor-ui-color btn-xs btn bg-teal btn-gradient p10" value="bg-teal"></button>
+      <button type="button" class="editor-ui-color btn-xs btn bg-grey btn-gradient p10" value="bg-grey"></button>
+      <button type="button" class="editor-ui-color btn-xs btn bg-orange btn-gradient p10" value="bg-orange"></button>
+      <button type="button" class="editor-ui-color btn-xs btn bg-purple btn-gradient p10" value="bg-purple"></button>
+      <button type="button" class="editor-ui-color btn-xs btn btn-default btn-gradient p10 active" value=""></button>
+    </div>
+  </div>
+</div>
+
+<!-- Page Plugins --> 
+<script type="text/javascript" src="vendor/editors/ckeditor/ckeditor.js"></script> 
+<script type="text/javascript" src="vendor/editors/summernote/summernote.js"></script> 
+<script type="text/javascript" src="vendor/editors/markitup/jquery.markitup.js"></script> 
+<script type="text/javascript" src="vendor/editors/markitup/sets/default/set.js"></script> 
+<script type="text/javascript">
+jQuery(document).ready(function () {
+	  
+	 "use strict";     
+	 
+	 // Init Markitup Editor
+	 $("#markitup").markItUp(mySettings);
+	 
+	 // Init Summernote
+     $('.summernote').summernote({
+	   height: 255,   //set editable area's height
+	   focus: false  //set focus editable area after Initialize summernote
+	 });
+		  
+	 // Init Ckeditor. Replace Text area with Ckeditor
+	 // and assign it a custom skin class
+     CKEDITOR.replace( 'editor1',
+	 {
+	   on : { instanceReady : function ( evt )  {
+			 $('#cke_editor1').addClass('fusionSkin');
+		    }}
+	 });
+
+     // Turn off automatic editor initilization.
+	 // Used to prevent conflictions with multiple text 
+	 // editors being displayed on the same page.
+     CKEDITOR.disableAutoInline = true; 
+	 
+	 var prevColor = "";
+	 
+	 // Theme Example - Ckeditor Colorpicker
+	 $('.editor-ui-color').click(function () {
+	 	var color = $(this).val();
+		$('.fusionSkin .cke_top, .markItUpHeader, .note-toolbar').addClass(color).removeClass(prevColor);
+		prevColor = color;
+	 });
+
+
+});
+</script> 

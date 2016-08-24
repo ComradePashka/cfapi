@@ -1,0 +1,1 @@
+All of the changes made to the stylesheets in this folder will be merged into _all.scss and the on to theme.scss

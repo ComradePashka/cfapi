@@ -1,0 +1,91 @@
+﻿<!-- Styles required to expand map to 100% container width -->
+<style>
+html, body, #main, #content_wrapper, #content, .map {
+	height: 100%;
+	min-height: 0;
+}
+#content {
+	padding: 1px;
+	max-width: 1920px !important;
+}
+.map {
+	height: 100% !important;
+}
+</style>
+
+<div id="content">
+  <div class="expanding-header overflow-h"> <span class="glyphicons glyphicons-show_lines map-header-icon"></span>
+    <div class="pull-right p6 pr10">
+      <div class="ib va-t mr10"> <span class="flag-sm flag-de mr10" data-loc="germany"></span> <span class="flag-sm flag-tr mr10" data-loc="turkey"></span> <span class="flag-sm flag-us mr10" data-loc="united states"></span> <span class="flag-sm flag-fr mr10" data-loc="france"></span> </div>
+      <div class="ib va-t">
+        <form method="post" id="geocoding_form">
+          <input type="text" class="form-control input-sm" id="address" name="address" placeholder="Enter an Address...">
+          <input type="submit" class="btn btn-default hidden" value="Search">
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="map1" class="map"></div>
+</div>
+
+<!-- Page Plugins --> 
+<script type="text/javascript" src="vendor/plugins/map/gmaps.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/gmap/jquery.ui.map.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/gmap/ui/jquery.ui.map.services.js"></script> 
+<script type="text/javascript" src="vendor/plugins/gmap/ui/jquery.ui.map.extensions.js"></script> 
+<script type="text/javascript" src="vendor/plugins/gmap/ui/jquery.ui.map.microformat.js"></script> 
+<script type="text/javascript">
+jQuery(document).ready(function () {
+	  
+	 "use strict";     
+     
+	 // Init  map using gmaps plugin
+	 var map = new GMaps({
+	   div: '#map1',
+	   lat: -12.043333,
+	   lng: -77.125333,
+	   zoom: 7
+	 });
+	 
+	$('.flag-sm').on('click',function() {
+		var Loc = $(this).data('loc');
+		GMaps.geocode({
+			address: Loc.trim(),
+			callback: function(results, status){
+			  if(status=='OK'){
+				var latlng = results[0].geometry.location;
+				map.setCenter(latlng.lat(), latlng.lng());
+				map.addMarker({
+				  lat: latlng.lat(),
+				  lng: latlng.lng()
+				});						
+			  }
+			}
+		 });
+	});
+	 
+	//add search bar to map
+	$('#geocoding_form').submit(function(e){
+	  e.preventDefault();
+	  GMaps.geocode({
+		address: $('#address').val().trim(),
+		callback: function(results, status){
+		  if(status=='OK'){
+			var latlng = results[0].geometry.location;
+			map.setCenter(latlng.lat(), latlng.lng());
+			map.addMarker({
+			  lat: latlng.lat(),
+			  lng: latlng.lng()
+			});
+		  }
+		}
+	  });
+	});
+	
+	 // Toggle Mini Menu Expansion
+	 $('.expanding-header .map-header-icon').on('click',function() {
+		 $(this).parent('.expanding-header').toggleClass('collapsed');
+	 });
+
+});
+</script> 

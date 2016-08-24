@@ -1,0 +1,512 @@
+
+/* ==============================================
+  * All color variables used in this stylesheet
+  * are stored in modules/_colors.scss	  
+  
+  VII. COLOR SYSTEM
+	  A. Misc Skin/Colors
+	  B. Colors for Custom Elements
+	  C. Tabs
+	  D. Icons
+	  E. Menu and Button Dropdowns
+	  F. Text Input Forms
+	  G. Thumbnails
+	  H. Paginations
+	  I. Checkboxes
+	  J. Switches
+	  K. RangeSlider
+	  L. Progress Bar Colors
+	  M. Text Colors
+	  N. Border Colors
+	  O. Background Colors
+	  P. Background Colors - Advanced Set
+  
+  * The Fusion Color System has two variations
+  * of every color. A Light shade and a dark
+  * shade. To create a gradient we set the 
+  * elements background-color to the dark shade
+  * and then apply a gradient overlay via 
+  * the "gradient" mixin. 
+================================================= 
+  A. Misc Skin/Colors
+================================================= */
+/* Custom Theme(purple) Alert */
+.alert-theme {
+	color: $purple3-color;
+	border-color: rgba($purple-color, 0.4);
+	background-color: rgba($purple-color, 0.4);
+}
+.alert-theme .alert-link {
+	color: $purple3-color;
+}
+
+/*===============================================
+  A. Colors for Custom Elements
+================================================= */
+.facebook-color { background-color: $facebook-color; }
+.twitter-color { background-color: $twitter-color; }
+
+/* custom right side menu button */
+.text-cloud { color: #afb6c6; }
+
+/* User Online Green Border Color */
+.border-onlinegreen {
+	border-color: #94d867;	
+}
+
+/*===============================================
+  A. Tabs
+================================================= */
+.panel-tabs > li.active:after { background: $purple2-color; }
+
+/*===============================================
+  A. Icons
+================================================= */
+/* Panel Header Icon */
+.panel-title > .fa,
+.panel-title > .glyphicon,
+.panel-title > .glyphicons,
+.panel-title > .imoon {
+  color: $purple2-color;
+}
+
+/*===============================================
+  A. Menu and Button Dropdowns
+================================================= */
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+	background-color: $purple2-color;
+}
+
+/*===============================================
+  A. Text Input Forms
+================================================= */
+.has-warning .form-control,
+.has-warning .form-control:focus {
+	border-color: $yellow2-color;
+}
+
+.has-success .form-control,
+.has-success .form-control:focus {
+	border-color: $green2-color;
+}
+.has-error .form-control,
+.has-error .form-control:focus {
+	border-color: $red2-color;
+}
+
+/*===============================================
+  A. Thumbnails
+================================================= */
+a.thumbnail:hover,
+a.thumbnail:focus, 
+a.thumbnail.active { border-color: $purple2-color; }
+.thumbnail-xs { border-color: $purple2-color; }
+.thumbnail-sm { border-color: $purple2-color; }
+
+/*===============================================
+  A. Paginations
+================================================= */
+.pagination>.active>a,
+.pagination>.active>span,
+.pagination>.active>a:hover, 
+.pagination>.active>span:hover, 
+.pagination>.active>a:focus, 
+.pagination>.active>span:focus {
+	background-color: $purple2-color;
+	border-color: $purple2-color;
+}
+.pagination>li>a, 
+.pagination>li>span {
+	color: $purple2-color;
+}
+.pagination-alt > li.active > a {
+    background-color: $purple3-color;
+    border-color: $purple3-color;
+}
+
+/*===============================================
+  A. Checkboxes
+================================================= */
+.cBox.cBox-teal3 label:before { background-color: $teal3-color; }
+.cBox.cBox-teal label:before  { background-color: $teal-color; }
+.cBox.cBox-teal2 label:before { background-color: $teal2-color; }
+.cBox.cBox-teal3 label:before { background-color: $teal3-color; }
+.cBox.cBox-blue label:before { background-color: $blue-color; }
+.cBox.cBox-blue2 label:before { background-color: $blue2-color; }
+.cBox.cBox-blue3 label:before { background-color: $blue3-color; }
+.cBox.cBox-purple label:before { background-color: $purple-color; }
+.cBox.cBox-purple2 label:before { background-color: $purple2-color; }
+.cBox.cBox-purple3 label:before { background-color: $purple3-color; }
+.cBox.cBox-pink label:before { background-color: $pink-color; }
+.cBox.cBox-pink2 label:before { background-color: $pink2-color; }
+.cBox.cBox-pink3 label:before { background-color: $pink3-color; }
+.cBox.cBox-red label:before { background-color: $red-color; }
+.cBox.cBox-red2 label:before { background-color: $red2-color; }
+.cBox.cBox-red3 label:before { background-color: $red3-color; }
+.cBox.cBox-orange label:before { background-color: $orange-color; }
+.cBox.cBox-orange2 label:before { background-color: $orange2-color; }
+.cBox.cBox-orange3 label:before { background-color: $orange3-color; }
+.cBox.cBox-yellow label:before { background-color: $yellow-color; }
+.cBox.cBox-yellow2 label:before { background-color: $yellow2-color; }
+.cBox.cBox-yellow3 label:before { background-color: $yellow3-color; }
+.cBox.cBox-green label:before { background-color: $green-color; }
+.cBox.cBox-green2 label:before { background-color: $green2-color; }
+.cBox.cBox-green3 label:before { background-color: $green3-color; }
+.cBox.cBox-grey label:before { background-color: $grey-color; }
+.cBox.cBox-grey2 label:before { background-color: $grey2-color; }
+.cBox.cBox-grey3 label:before { background-color: $grey2-color; }
+
+/*===============================================
+  A. Switches
+================================================= */
+div.switch.switch-teal input:checked + label { background-color: $teal-color; }
+div.switch.switch-teal2 input:checked + label { background-color: $teal2-color; }
+div.switch.switch-teal3 input:checked + label { background-color: $teal3-color; }
+div.switch.switch-blue input:checked + label { background-color: $blue-color; }
+div.switch.switch-blue2 input:checked + label { background-color: $blue2-color; }
+div.switch.switch-blue3 input:checked + label { background-color: $blue3-color; }
+div.switch.switch-purple input:checked + label { background-color: $purple-color; }
+div.switch.switch-purple2 input:checked + label { background-color: $purple2-color; }
+div.switch.switch-purple3 input:checked + label { background-color: $purple3-color; }
+div.switch.switch-pink input:checked + label { background-color: $pink-color; }
+div.switch.switch-pink2 input:checked + label { background-color: $pink2-color; }
+div.switch.switch-pink3 input:checked + label { background-color: $pink3-color; }
+div.switch.switch-red input:checked + label { background-color: $red-color; }
+div.switch.switch-red2 input:checked + label { background-color: $red2-color; }
+div.switch.switch-red3 input:checked + label { background-color: $red3-color; }
+div.switch.switch-orange input:checked + label { background-color: $orange-color; }
+div.switch.switch-orange2 input:checked + label { background-color: $orange2-color; }
+div.switch.switch-orange3 input:checked + label { background-color: $orange3-color; }
+div.switch.switch-yellow input:checked + label { background-color: $yellow-color; }
+div.switch.switch-yellow2 input:checked + label { background-color: $yellow2-color; }
+div.switch.switch-yellow3 input:checked + label { background-color: $yellow3-color; }
+div.switch.switch-green input:checked + label { background-color: $green-color; }
+div.switch.switch-green2 input:checked + label { background-color: $green2-color; }
+div.switch.switch-green3 input:checked + label { background-color: $green3-color; }
+div.switch.switch-grey input:checked + label { background-color: $grey-color; }
+div.switch.switch-grey2 input:checked + label { background-color: $grey2-color; }
+div.switch.switch-grey3 input:checked + label { background-color: $grey2-color; }
+
+
+/*===============================================
+  A. RangeSlider
+================================================= */
+/* take note of where color class is applied(parent container)
+ * See sliders.html for example */  
+.ui-rangeSlider.slider-teal .ui-rangeSlider-bar { background-color: $teal-color; }
+.ui-rangeSlider.slider-teal2 .ui-rangeSlider-bar { background-color: $teal2-color; }
+.ui-rangeSlider.slider-teal3 .ui-rangeSlider-bar { background-color: $teal3-color; }
+.ui-rangeSlider.slider-blue .ui-rangeSlider-bar { background-color: $blue-color; }
+.ui-rangeSlider.slider-blue2 .ui-rangeSlider-bar { background-color: $blue2-color; }
+.ui-rangeSlider.slider-blue3 .ui-rangeSlider-bar { background-color: $blue3-color; }
+.ui-rangeSlider.slider-purple .ui-rangeSlider-bar { background-color: $purple-color; }
+.ui-rangeSlider.slider-purple2 .ui-rangeSlider-bar { background-color: $purple2-color; }
+.ui-rangeSlider.slider-purple3 .ui-rangeSlider-bar { background-color: $purple3-color; }
+.ui-rangeSlider.slider-pink .ui-rangeSlider-bar { background-color: $pink-color; }
+.ui-rangeSlider.slider-pink2 .ui-rangeSlider-bar { background-color: $pink2-color; }
+.ui-rangeSlider.slider-pink3 .ui-rangeSlider-bar { background-color: $pink3-color; }
+.ui-rangeSlider.slider-red .ui-rangeSlider-bar { background-color: $red-color; }
+.ui-rangeSlider.slider-red2 .ui-rangeSlider-bar { background-color: $red2-color; }
+.ui-rangeSlider.slider-red3 .ui-rangeSlider-bar { background-color: $red3-color; }
+.ui-rangeSlider.slider-orange .ui-rangeSlider-bar { background-color: $orange-color; }
+.ui-rangeSlider.slider-orange2 .ui-rangeSlider-bar { background-color: $orange2-color; }
+.ui-rangeSlider.slider-orange3 .ui-rangeSlider-bar { background-color: $orange3-color; }
+.ui-rangeSlider.slider-yellow .ui-rangeSlider-bar { background-color: $yellow-color; }
+.ui-rangeSlider.slider-yellow2 .ui-rangeSlider-bar { background-color: $yellow2-color; }
+.ui-rangeSlider.slider-yellow3 .ui-rangeSlider-bar { background-color: $yellow3-color; }
+.ui-rangeSlider.slider-green .ui-rangeSlider-bar { background-color: $green-color; }
+.ui-rangeSlider.slider-green2 .ui-rangeSlider-bar { background-color: $green2-color; }
+.ui-rangeSlider.slider-green3 .ui-rangeSlider-bar { background-color: $green3-color; }
+.ui-rangeSlider.slider-grey .ui-rangeSlider-bar { background-color: $grey-color; }
+.ui-rangeSlider.slider-grey2 .ui-rangeSlider-bar { background-color: $grey2-color; }
+.ui-rangeSlider.slider-grey3 .ui-rangeSlider-bar { background-color: $grey2-color; }
+
+/*===============================================
+  B. Progress Bar Colors
+================================================= */
+.progress-bar-teal { background-color: $teal-color !important; }
+.progress-bar-teal2 { background-color: $teal2-color !important; }
+.progress-bar-teal3 { background-color: $teal3-color !important; }
+.progress-bar-blue { background-color: $blue-color !important; }
+.progress-bar-blue2 { background-color: $blue2-color !important; }
+.progress-bar-blue3 { background-color: $blue3-color !important; }
+.progress-bar-purple { background-color: $purple-color !important; }
+.progress-bar-purple2 { background-color: $purple2-color !important; }
+.progress-bar-purple3 { background-color: $purple3-color !important; }
+.progress-bar-pink { background-color: $pink-color !important; }
+.progress-bar-pink2 { background-color: $pink2-color !important; }
+.progress-bar-pink3 { background-color: $pink3-color !important; }
+.progress-bar-red { background-color: $red-color !important; }
+.progress-bar-red2 { background-color: $red2-color !important; }
+.progress-bar-red3 { background-color: $red3-color !important; }
+.progress-bar-orange { background-color: $orange-color !important; }
+.progress-bar-orange2 { background-color: $orange2-color !important; }
+.progress-bar-orange3 { background-color: $orange3-color !important; }
+.progress-bar-yellow { background-color: $yellow-color !important; }
+.progress-bar-yellow2 { background-color: $yellow2-color !important; }
+.progress-bar-yellow3 { background-color: $yellow3-color !important; }
+.progress-bar-green { background-color: $green-color !important; }
+.progress-bar-green2 { background-color: $green2-color !important; }
+.progress-bar-green3 { background-color: $green3-color !important; }
+.progress-bar-grey { background-color: $grey-color !important; }
+.progress-bar-grey2 { background-color: $grey2-color !important; }
+.progress-bar-grey3 { border-color: $grey2-color !important; }
+
+/* Neutral Colors */
+.progress-bar-white { background-color: $white-color !important; }
+.progress-bar-light { background-color: $light-color !important; }
+.progress-bar-light2 { background-color: $light2-color !important; }
+.progress-bar-light3 { background-color: $light3-color !important; }
+.progress-bar-light4 { background-color: $light4-color !important; }
+.progress-bar-light5 { background-color: $light5-color !important; }
+.progress-bar-light6 { background-color: $light6-color !important; }
+.progress-bar-light7 { background-color: $light7-color !important; }
+.progress-bar-dark { background-color: $dark-color !important; }
+.progress-bar-dark2 { background-color: $dark2-color !important; }
+.progress-bar-dark3 { background-color: $dark3-color !important; }
+.progress-bar-dark4 { background-color: $dark4-color !important; }
+.progress-bar-dark5 { background-color: $dark5-color !important; }
+
+/*===============================================
+  A. Text Colors
+================================================= */
+.text-teal { color: $teal-color !important; }
+.text-teal2 { color: $teal2-color !important; }
+.text-teal3 { color: $teal3-color !important; }
+.text-blue { color: $blue-color !important; }
+.text-blue2 { color: $blue2-color !important; }
+.text-blue3 { color: $blue3-color !important; }
+.text-purple { color: $purple-color !important; }
+.text-purple2 { color: $purple2-color !important; }
+.text-purple3 { color: $purple3-color !important; }
+.text-pink { color: $pink-color !important; }
+.text-pink2 { color: $pink2-color !important; }
+.text-pink3 { color: $pink3-color !important; }
+.text-red { color: $red-color !important; }
+.text-red2 { color: $red2-color !important; }
+.text-red3 { color: $red3-color !important; }
+.text-orange { color: $orange-color !important; }
+.text-orange2 { color: $orange2-color !important; }
+.text-orange3 { color: $orange3-color !important; }
+.text-yellow { color: $yellow-color !important; }
+.text-yellow2 { color: $yellow2-color !important; }
+.text-yellow3 { color: $yellow3-color !important; }
+.text-green { color: $green-color !important; }
+.text-green2 { color: $green2-color !important; }
+.text-green3 { color: $green3-color !important; }
+.text-grey { color: $grey-color !important; }
+.text-grey2 { color: $grey2-color !important; }
+.text-grey3 { color: $grey3-color !important; }
+
+/* Neutral Colors */
+.text-white { color: $white-color !important; }
+.text-light { color: $light-color !important; }
+.text-light2 { color: $light2-color !important; }
+.text-light3 { color: $light3-color !important; }
+.text-light4 { color: $light4-color !important; }
+.text-light5 { color: $light5-color !important; }
+.text-light6 { color: $light6-color !important; }
+.text-light7 { color: $light7-color !important; }
+.text-dark { color: $dark-color !important; }
+.text-dark2 { color: $dark2-color !important; }
+.text-dark3 { color: $dark3-color !important; }
+.text-dark4 { color: $dark4-color !important; }
+.text-dark5 { color: $dark5-color !important; }
+
+/*===============================================
+  B. Border Colors
+================================================= */
+.border-teal { border-color: $teal-color !important; }
+.border-teal2 { border-color: $teal2-color !important; }
+.border-teal3 { border-color: $teal3-color !important; }
+.border-blue { border-color: $blue-color !important; }
+.border-blue2 { border-color: $blue2-color !important; }
+.border-blue3 { border-color: $blue3-color !important; }
+.border-purple { border-color: $purple-color !important; }
+.border-purple2 { border-color: $purple2-color !important; }
+.border-purple3 { border-color: $purple3-color !important; }
+.border-pink { border-color: $pink-color !important; }
+.border-pink2 { border-color: $pink2-color !important; }
+.border-pink3 { border-color: $pink3-color !important; }
+.border-red { border-color: $red-color !important; }
+.border-red2 { border-color: $red2-color !important; }
+.border-red3 { border-color: $red3-color !important; }
+.border-orange { border-color: $orange-color !important; }
+.border-orange2 { border-color: $orange2-color !important; }
+.border-orange3 { border-color: $orange3-color !important; }
+.border-yellow { border-color: $yellow-color !important; }
+.border-yellow2 { border-color: $yellow2-color !important; }
+.border-yellow3 { border-color: $yellow3-color !important; }
+.border-green { border-color: $green-color !important; }
+.border-green2 { border-color: $green2-color !important; }
+.border-green3 { border-color: $green3-color !important; }
+.border-grey { border-color: $grey-color !important; }
+.border-grey2 { border-color: $grey2-color !important; }
+.border-grey3 { border-color: $grey3-color !important; }
+
+/* Neutral Colors */
+.border-white { border-color: $white-color !important; }
+.border-light { border-color: $light-color !important; }
+.border-light2 { border-color: $light2-color !important; }
+.border-light3 { border-color: $light3-color !important; }
+.border-light4 { border-color: $light4-color !important; }
+.border-light5 { border-color: $light5-color !important; }
+.border-light6 { border-color: $light6-color !important; }
+.border-light7 { border-color: $light7-color !important; }
+.border-dark { border-color: $dark-color !important; }
+.border-dark2 { border-color: $dark2-color !important; }
+.border-dark3 { border-color: $dark3-color !important; }
+.border-dark4 { border-color: $dark4-color !important; }
+.border-dark5 { border-color: $dark5-color !important; }
+
+/*===============================================
+  B. Background Colors
+================================================= */
+.bg-teal { background-color: $teal-color !important; }
+.bg-teal2 { background-color: $teal2-color !important; }
+.bg-teal3 { background-color: $teal3-color !important; }
+.bg-blue { background-color: $blue-color !important; }
+.bg-blue2 { background-color: $blue2-color !important; }
+.bg-blue3 { background-color: $blue3-color !important; }
+.bg-purple { background-color: $purple-color !important; }
+.bg-purple2 { background-color: $purple2-color !important; }
+.bg-purple3 { background-color: $purple3-color !important; }
+.bg-pink { background-color: $pink-color !important; }
+.bg-pink2 { background-color: $pink2-color !important; }
+.bg-pink3 { background-color: $pink3-color !important; }
+.bg-red { background-color: $red-color !important; }
+.bg-red2 { background-color: $red2-color !important; }
+.bg-red3 { background-color: $red3-color !important; }
+.bg-orange { background-color: $orange-color !important; }
+.bg-orange2 { background-color: $orange2-color !important; }
+.bg-orange3 { background-color: $orange3-color !important; }
+.bg-yellow { background-color: $yellow-color !important; }
+.bg-yellow2 { background-color: $yellow2-color !important; }
+.bg-yellow3 { background-color: $yellow3-color !important; }
+.bg-green { background-color: $green-color !important; }
+.bg-green2 { background-color: $green2-color !important; }
+.bg-green3 { background-color: $green3-color !important; }
+.bg-grey { background-color: $grey-color !important; }
+.bg-grey2 { background-color: $grey2-color !important; }
+.bg-grey3 { background-color: $grey3-color !important; }
+
+/* Neutral Colors */
+.bg-white { background-color: $transparent-color !important; }
+.bg-white { background-color: $white-color !important; }
+.bg-light { background-color: $light-color !important; }
+.bg-light2 { background-color: $light2-color !important; }
+.bg-light3 { background-color: $light3-color !important; }
+.bg-light4 { background-color: $light4-color !important; }
+.bg-light5 { background-color: $light5-color !important; }
+.bg-light6 { background-color: $light6-color !important; }
+.bg-light7 { background-color: $light7-color !important; }
+.bg-dark { background-color: $dark-color !important; }
+.bg-dark2 { background-color: $dark2-color !important; }
+.bg-dark3 { background-color: $dark3-color !important; }
+.bg-dark4 { background-color: $dark4-color !important; }
+.bg-dark5 { background-color: $dark5-color !important; }
+
+/* Used for gradient creation of Neutral Colors */
+.bg-dark.bg-gradient { background-color: $dark-color !important; }
+.bg-dark2.bg-gradient { background-color: $dark2-color !important; }
+.bg-dark3.bg-gradient { background-color: $dark3-color !important; }
+.bg-dark4.bg-gradient { background-color: $dark4-color !important; }
+.bg-dark5.bg-gradient { background-color: $dark5-color !important; }
+
+/*===============================================
+  B. Background Colors - Advanced Set
+================================================= */
+.bg-blue-alt { background-color: $blue-a; }
+.bg-blue2-alt { background-color: $blue2-a; }
+.bg-blue3-alt { background-color: $blue3-a; }
+.bg-blue4-alt { background-color: $blue4-a; }
+.bg-blue5-alt { background-color: $blue5-a; }
+.bg-blue6-alt { background-color: $blue6-a; }
+.bg-blue7-alt { background-color: $blue7-a; }
+.bg-green-alt { background-color: $green-a; }
+.bg-green2-alt { background-color: $green2-a; }
+.bg-green3-alt { background-color: $green3-a; }
+.bg-green4-alt { background-color: $green4-a; }
+.bg-green5-alt { background-color: $green5-a; }
+.bg-red-alt { background-color: $red-a; }
+.bg-red2-alt { background-color: $red2-a; }
+.bg-red3-alt { background-color: $red3-a; }
+.bg-red4-alt { background-color: $red4-a; }
+.bg-purple-alt { background-color: $purple-a; }
+.bg-purple2-alt { background-color: $purple2-a; }
+.bg-purple3-alt { background-color: $purple3-a; }
+.bg-purple4-alt { background-color: $purple4-a; }
+.bg-orange-alt { background-color: $orange-a; }
+.bg-orange2-alt { background-color: $orange2-a; }
+.bg-orange3-alt { background-color: $orange3-a; }
+.bg-yellow-alt { background-color: $yellow-a; }
+.bg-yellow2-alt { background-color: $yellow2-a; }
+.bg-creme-alt { background-color: $creme-a; }
+.bg-creme2-alt { background-color: $creme2-a; }
+.bg-creme3-alt { background-color: $creme3-a; }
+.bg-brown-alt { background-color: $brown-a; }
+.bg-brown2-alt { background-color: $brown2-a; }
+.bg-brown3-alt { background-color: $brown3-a; }
+
+/* Secondary color useful for making darker toned gradients */
+.bg-blue-alt.bg-gradient { background-color: $blue-b }
+.bg-blue2-alt.bg-gradient { background-color: $blue2-b }
+.bg-blue3-alt.bg-gradient { background-color: $blue3-b }
+.bg-blue4-alt.bg-gradient { background-color: $blue4-b }
+.bg-blue5-alt.bg-gradient { background-color: $blue5-b }
+.bg-blue6-alt.bg-gradient { background-color: $blue6-b }
+.bg-blue7-alt.bg-gradient { background-color: $blue7-b }
+.bg-green-alt.bg-gradient { background-color: $green-b }
+.bg-green2-alt.bg-gradient { background-color: $green2-b }
+.bg-green3-alt.bg-gradient { background-color: $green3-b }
+.bg-green4-alt.bg-gradient { background-color: $green4-b }
+.bg-green5-alt.bg-gradient { background-color: $green5-b }
+.bg-red-alt.bg-gradient { background-color: $red-b }
+.bg-red2-alt.bg-gradient { background-color: $red2-b }
+.bg-red3-alt.bg-gradient { background-color: $red3-b }
+.bg-red4-alt.bg-gradient { background-color: $red4-b }
+.bg-purple-alt.bg-gradient { background-color: $purple-b }
+.bg-purple2-alt.bg-gradient { background-color: $purple2-b }
+.bg-purple3-alt.bg-gradient { background-color: $purple3-b }
+.bg-purple4-alt.bg-gradient { background-color: $purple4-b }
+.bg-orange-alt.bg-gradient { background-color: $orange-b }
+.bg-orange2-alt.bg-gradient { background-color: $orange2-b }
+.bg-orange3-alt.bg-gradient { background-color: $orange3-b }
+.bg-yellow-alt.bg-gradient { background-color: $yellow-b }
+.bg-yellow2-alt.bg-gradient { background-color: $yellow2-b }
+.bg-creme-alt.bg-gradient { background-color: $creme-b }
+.bg-creme2-alt.bg-gradient { background-color: $creme2-b }
+.bg-creme3-alt.bg-gradient { background-color: $creme3-b }
+.bg-brown-alt.bg-gradient { background-color: $brown-b }
+.bg-brown2-alt.bg-gradient { background-color: $brown2-b }
+.bg-brown3-alt.bg-gradient { background-color: $brown3-b }
+
+/* COLOR MODIFICATIONS SPECIFICALLY FOR BUTTONS
+* Any variations to buttons were placed below so that
+* the above classes contain only color styles. This
+* allows the styles to be used on any element rather 
+* than just "Text" or "Buttons" as their name suggest
+----------------------------------------------------------*/
+.bg-creme-alt { border-color: #f5c348 }
+.bg-creme2-alt { border-color: #f7ca5c }
+
+.bg-light6 { border-color: #e5e5e5 }
+.bg-light7 { border-color: #eee }
+
+.bg-light, .bg-light2, .bg-light3, .bg-light4, .bg-light5, .bg-light6, .bg-light7, .btn-default { color: #555 }
+.bg-light:focus, .bg-light2:focus, .bg-light3:focus, .bg-light4:focus, .bg-light5:focus, .bg-light6:focus, .bg-light7:focus, .bg-default:focus, .btn-default:focus { color: #555 }
+.bg-light:active:focus, .bg-light2:active:focus, .bg-light3:active:focus, .bg-light4:active:focus, .bg-light5:active:focus, .bg-light6:active:focus, .bg-light7:active:focus, .bg-default:active:focus, .btn-default:active:focus { color: #555 }
+
+.bg-light.bg-gradient, .bg-light2.bg-gradient, .bg-light3.bg-gradient, .bg-light4.bg-gradient, .bg-light5.bg-gradient, .bg-light6.bg-gradient, .bg-light7.bg-gradient, .btn-default.btn-gradient, .bg-default.bg-gradient {
+   @include light-gradient("");
+}
+
+.bg-creme-alt:focus, .bg-creme2-alt:focus, .bg-yellow-alt:focus, .bg-yellow2-alt:focus { color: #ca8f00 }
+.bg-creme-alt, .bg-creme2-alt, .bg-yellow-alt, .bg-yellow2-alt {
+    color: #ca8f00;
+    font-weight: 600;
+    text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.55);
+}
+.bg-yellow-alt:hover, .bg-yellow2-alt:hover, .bg-creme-alt:hover, .bg-creme2-alt:hover, .bg-creme3-alt:hover, .bg-light:hover, .bg-light2:hover, .bg-light3:hover, .bg-light4:hover, .bg-light5:hover, .bg-light6:hover, .bg-light7:hover, .bg-default:hover, .btn-default:hover { color: #555 }

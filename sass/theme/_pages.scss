@@ -1,0 +1,713 @@
+
+/* ================================================
+   X. PAGES - In Order
+      A. Dashboard.html
+	  B. 404/500.html
+	  C. Coming-soon.html
+	  D. Screenlock.html
+	  E. Login.html
+	  F. Invoice-page.html
+	  G. Gallery.html
+	  H. Validation.html
+	  I. Sketchpad.html
+	  J. Timeline.html
+	  K. Profile.html
+
+ * This file is reserved for changes done on
+ * a per-page basis. To create independent
+ * page layouts an additional class was added 
+ * to the pages body. For example login.html
+ * has an extra body class of ".login-page"
+ 
+ * Note: Pages not listed here were made using
+ * 100% reusable styles placed in theme.css
+================================================= 
+ A. Dashboard.html - Default
+================================================= */
+body.dashboard-page .jvectormap-zoomin, 
+body.dashboard-page .jvectormap-zoomout {
+	display: none;	
+}
+
+body.dashboard-page .chat-panel .panel-body {
+	max-height: 288px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+/* A slidedown menu used to store
+ * multiple Tile widgets  */
+#widget-dropdown {
+	margin-bottom: 10px;
+	display: block;
+}
+#widget-dropdown .panel {
+	background: #f8f8f8;	
+}
+.widget-fullscreen {
+	position: fixed;
+	width: 90%;
+	height: 90%;
+	top: 5%;
+	left: 5%;
+	z-index: 9999;
+}
+.widget-backdrop {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 9998;
+	background: #000;
+	opacity: 0.65;	
+}
+.dashboard-widget-tray {
+	padding-top: 37px;
+}
+
+/*===============================================
+  B. Messages Page
+================================================= */ 
+/* Email Listings */
+.email-table {}
+.email-table.table-striped > tbody > tr > td {
+	border: none;
+}
+.email-table.table-striped > tbody > tr > td {
+	vertical-align: middle;
+}
+.email-table.table-striped > tbody > tr > td:first-child {
+	padding-left: 20px;
+}
+.email-table.table-hover > tbody > tr:hover > td {
+	cursor: pointer;
+	background-color: #ecf3f8 !important;
+}
+.email-table .table-icon {
+	width: 55px;
+}
+.email-search,
+.email-count {
+	color: #999;
+	font-size: 14px;
+	top: 2px;
+	position: relative;
+}
+/* Email Compose */
+.messages-page .note-editor .note-toolbar {
+	background: #fafafa;
+	border: 1px solid #DDD;
+}
+.messages-page .note-editor .note-editable {
+	border: 1px solid #DDD;
+	border-top: none;
+}
+
+/*===============================================
+  B. Editors Page
+================================================= */ 
+body.editors-page .panel .panel-heading {
+	border-bottom-color: #CCC;
+}
+
+/*===============================================
+  C. 404/500.html
+================================================= */ 
+/* Error search bar */
+body.error-page #search-widget {
+	background: #f1f1f1;
+}
+/* Error text */
+body.error-page .error-icon {
+	font-size: 80px;
+	position: relative;
+	top: -10px;
+}
+body.error-page .error-text {
+	font-size: 120px;
+	text-align: center;
+	text-shadow: 0 2px #FFF;
+	color: #888;
+	width: 100%;
+}
+
+/*===============================================
+  D. Coming-soon.html
+================================================= */ 
+body.coming-soon-page #main {
+	background: none;
+}
+body.coming-soon-page #page-logo {
+    width: 291px;
+    margin: 50px auto 50px
+}
+body.coming-soon-page .cntSeparator {
+	margin: 27px 18px;
+}
+body.coming-soon-page .panel {
+	width: 600px;
+	margin: 0 auto;
+	position: relative;
+}
+body.coming-soon-page .panel-title {
+	font-size: 17px;
+	float: none;
+}
+body.coming-soon-page .panel-body {
+	padding: 40px 26px;
+}
+
+/*===============================================
+  E. Screenlock.html
+================================================= */ 
+body.screenlock-page #main {
+	background: none;
+}
+body.screenlock-page #page-logo {
+    width: 285px;
+    margin: 50px auto 80px
+}
+body.screenlock-page .panel {
+	width: 500px;
+	margin: 0 auto;
+	position: relative;
+}
+body.screenlock-page .login-info {
+	margin: 20px 0;
+	font-size: 13px;
+}
+body.screenlock-page .login-info .login-name b {
+	font-size: 14px;
+}
+body.screenlock-page .login-info .login-email {
+	padding-top: 8px;
+	font-size: 12px;
+	color: #AAA;
+}
+body.screenlock-page .login-avatar {
+	padding: 12px 15px 13px 10px;
+	margin-right: 20px;
+	border-right: 1px dashed #DDD;
+	float: left;
+}
+body.screenlock-page .login-avatar img {
+	display: block;
+	margin: 0 auto;
+	padding: 5px;
+	border: 2px solid #DDD;
+}
+body.screenlock-page .login-alert {
+	padding-top: 15px;
+	margin: 5px 0;
+	border-top: 1px dashed #DDD;
+	clear: both;
+}
+body.screenlock-page .login-alert .alert{
+	font-size: 13px;
+	padding: 7px 13px;
+	margin-bottom: 0;
+}
+
+/*===============================================
+  F. Login.html
+================================================= */ 
+body.login-page #main {
+	background: none;
+}
+body.login-page #page-logo {
+    width: 285px;
+    margin: 50px auto 80px
+}
+body.login-page .panel {
+	width: 400px;
+	margin: 0 auto;
+	position: relative;
+}
+body.login-page .login-avatar {
+	margin: 15px 20px 25px;
+	padding-bottom: 25px;
+	border-bottom: 1px dashed #DDD;
+}
+body.login-page .login-avatar img {
+	display: block;
+	margin: 0 auto;
+	padding: 5px;
+	border: 2px solid #DDD;
+}
+body.login-page .login-alert {
+	font-size: 13px;
+	padding: 9px 13px;
+}
+
+/*===============================================
+  G. Invoice.html
+================================================= */ 
+body.invoice-page #invoice-info {
+	margin-bottom: 15px;
+}
+/* Invoice table */
+body.invoice-page .table-condensed tbody tr td:last-child {
+	text-align: right;
+	padding-right: 15px;
+}
+/* Summary table */
+body.invoice-page #invoice-summary {
+	margin: 0;	
+}
+/* Summary table header */
+body.invoice-page #invoice-summary thead th:first-child {
+	text-align: right;
+	width: 200px;
+	padding-right: 55px;	
+}
+body.invoice-page #invoice-summary thead th:last-child {
+	width: 50px;	
+	font-weight: 400;
+}
+/* Summary table rows */
+body.invoice-page #invoice-summary tbody tr td {
+	border-top: 0;
+}
+body.invoice-page #invoice-summary tbody tr td:first-child {
+	text-align: right;
+	width: 200px;
+	padding-right: 55px;	
+}
+/* Summary table last row */
+body.invoice-page #invoice-summary tbody tr:last-child td {
+	background: #f8f8f8;
+	border-top: 1px solid #DDD;
+	border-bottom: 1px solid #DDD;
+	height: 35px;
+	line-height: 35px;
+}
+/* Bottom of page invoice buttons */
+body.invoice-page .invoice-buttons {
+	position: absolute;
+	left: 15px;
+	bottom: 10px;
+}
+
+/*===============================================
+  H. Gallery.html
+================================================= */ 
+/* GALLERY.HTML */
+body.gallery-page .panel-menu .tab-content {
+	padding: 0;
+	border: 0;
+	min-height: 0;
+	background: transparent;
+}
+
+/*===============================================
+  I. Validation.html
+================================================= */ 
+body.validation-page label.error {
+	font-weight: 600;
+	color: #d9534f;
+	font-size: 12px;
+    margin: 6px 0 0 2px;  
+}
+
+/*===============================================
+  J. Sketchpad.html
+================================================= */ 
+body.sketchpad-page .wPaint-menu-holder {
+	box-shadow: 1px 1px 2px rgba(0,0,0, 0.45);
+}
+body.sketchpad-page .chat-panel .media-img img {
+	max-width: 50px;
+	margin-right: 6px;
+}
+body.sketchpad-page .chat-panel .media-content {
+	padding: 6px 12px;
+}
+body.sketchpad-page .chat-panel .media-timestamp {
+	margin-bottom: 5px;
+}
+
+/*===============================================
+  K. Timeline.html
+================================================= */ 
+body.timeline-page #main {
+	min-height: 1400px;
+}
+body.timeline-page #content {
+	padding: 8px 35px 50px 35px;
+}
+#timeline { position: relative }
+/* Timeline Spine */
+#timeline:after {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+	margin-left: -2px;
+    height: 100%;
+    content: "";
+    background: #ddd;
+}
+/* Timeline Date Button/Label */
+.timeline-divider {
+    position: relative;
+    margin: 10px 0 45px;
+    z-index: 3;
+}
+.timeline-divider .divider-label {
+    width: 110px;
+    margin: 0 auto;
+    padding: 7px;
+    text-align: center;
+    border: 1px solid #CCC;
+	background: #FFF;
+}
+/* Timeline Content Panels */
+#timeline .panel {
+    position: relative;
+    z-index: 11;
+    overflow: visible;
+	margin-bottom: 30px;
+}
+
+/* Timeline Panel Arrows */
+#timeline .panel:before,
+#timeline .panel:after {
+  content: "";
+  z-index: 2;
+  position: absolute;
+  top: 10px;
+  left: 100%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 0 8px 12px;
+  border-color: transparent transparent transparent #fafafa;
+}
+#timeline .panel:after {
+  z-index: 1;
+  border-left-color: #666;
+}
+#timeline .right-column .panel:before,
+#timeline .right-column .panel:after {
+  top: 10px;
+  right: 100%;
+  left: auto;
+  border-width: 8px 12px 8px 0;
+  border-color: transparent #fafafa transparent transparent;
+}
+#timeline .right-column .panel:after {
+  border-right-color: #666;
+}
+
+/* Timeline Panel Positioning */
+#timeline > .row > .left-column .timeline-item { padding-right: 30px; }
+#timeline > .row > .right-column .timeline-item { padding-left: 30px; }
+#timeline > .row > .right-column { margin-top: 80px }
+#timeline .ui-sortable-disabled .panel { cursor: auto }
+/* Timeline Responsive Styles */
+@media (max-width: 770px) { 
+    #timeline > .row > .left-column .panel { margin-right: 0 }
+    #timeline > .row > .right-column .panel { margin-left: 0 }
+    #timeline > .row .panel:before { display: none }
+    #timeline > .row .panel:after { display: none }
+}
+#timeline .tab-content {
+	min-height: 0;	
+}
+/* form creation styles */
+#timeline .map {
+	width: 100%;
+	height: 275px;	
+}
+#timeline-image-form .fileupload-preview { text-align: center }
+#timeline-image-form .fileupload-preview img { max-height: 200px }
+/* JQuery sortable placeholder */
+#timeline .ui-sortable {
+	min-height: 150px;
+	min-width: 300px;
+}
+
+.timeline-icon {
+	z-index: 1;
+	position: absolute;
+	right: -18px;
+	width: 38px;
+	height: 38px;
+	line-height: 38px;
+	font-size: 20px;
+	color: #FFF;
+	text-align: center;
+	border-radius: 50%;
+	background: #e8e8e8;
+	box-shadow: 0 0 0 5px #e8e8e8;
+}
+.right-column .timeline-icon {
+	right: auto;
+	left: -18px;
+}
+/* SINGLE TIMELINE */
+#timeline.timeline-single {
+	margin-left: 50px;
+}
+#timeline.timeline-single:after {
+	left: 0;
+}
+#timeline.timeline-single > .row > .col-sm-6 {
+	width: 100%;
+	padding-left: 65px;
+}
+#timeline.timeline-single > .row > .right-column {
+	margin-top: 0;
+}
+#timeline.timeline-single > .row > .right-column .timeline-item,
+#timeline.timeline-single > .row > .left-column .timeline-item {
+	padding-left: 0;
+	padding-right: 0;	
+}
+
+#timeline.timeline-single .timeline-divider .divider-label {
+    margin-left: -55px;
+}
+#timeline.timeline-single .timeline-icon {
+	left: -8px;
+	right: auto;
+}
+
+/* Timeline Panel Arrows */
+#timeline.timeline-single .panel:before,
+#timeline.timeline-single .panel:after {
+  right: 100%;
+  left: auto;
+  border-width: 8px 12px 8px 0;
+  border-color: transparent #fafafa transparent transparent;
+}
+#timeline.timeline-single .panel:after {
+  border-right-color: #666;
+}
+
+
+/*===============================================
+  M. Map Pages - Full, Vector
+================================================= */ 
+.maps-vector-page #content_wrapper {
+	min-height: 0;
+}
+
+.expanding-header {
+	z-index: 999;
+	position: absolute;
+	top: 20px;
+	left: 30px;
+	width: 550px;
+	height: 43px;
+	background: rgba(0,0,0, 0.5);
+	border-radius: 2px;
+	
+	transition: all 0.2s ease-in-out;
+}
+.expanding-header.collapsed {
+	width: 48px
+}
+.expanding-header .map-header-icon {
+	cursor: pointer;
+	width: 47px;
+	padding: 10px 13px;
+	color: #FFF;
+	font-size: 22px;
+	float: left;
+	margin-right: 10px;
+}
+.expanding-header .flag-sm {
+	cursor: pointer;
+}
+
+.maps-page .expanding-header,
+.map-full-page .expanding-header {
+	top: 24px;
+	left: 90px;
+}
+.maps-page .expanding-header input.form-control {
+	min-width: 250px;
+}
+/*===============================================
+  L. Profile.html
+================================================= */ 
+
+.profile-page #topbar.profile-topbar {
+	padding-left: 0;
+	height: 220px;
+	max-height: 220px;
+	background:url(../img/profile_topbar_bg.jpg) no-repeat center left;
+	overflow: hidden;
+}
+.profile-page .topbar-avatar {
+	float: left;
+	width: 165px;
+	height: 165px;
+	margin-left: 65px;
+	margin-top: 25px;	
+}
+.profile-page .topbar-text {
+	float: left;	
+	margin-left: 65px;
+	margin-top: 50px;
+}
+.profile-page .topbar-text h2 {
+	color: #FFF;
+	margin-top: 0;
+}
+.profile-page .topbar-text p {
+	color: #ddd;
+	margin-top: 15px;
+	margin-left: 5px;
+}
+.profile-page .topbar-menu {
+	position: absolute;
+	top: 50px;
+	right: 20px;
+	width: 180px;
+	max-width: 190px;
+	background: #ebebeb;
+	padding: 8px 10px;
+}
+.profile-page .topbar-menu .col-xs-8 .btn {
+	background-color: #a4705c;
+}
+.profile-page #Grid {
+	min-height: 490px;
+}
+.profile-page .profile-tabs {
+	margin-top: -63px;
+	z-index: 1024;
+}
+.profile-page .profile-tabs .nav-tabs > li > a {
+	background: none;
+	border-color: transparent;	
+	color: #CCC;
+	padding: 11px 20px;
+	border-top: 3px solid transparent;
+	
+}
+.profile-tabs .nav-tabs > li.active > a,
+.profile-tabs .nav-tabs > li.active > a:hover,
+.profile-tabs .nav-tabs > li.active > a:focus {
+	color: #917050;
+	background: #FFF;
+	border-color: #CFCFCF;
+	border-bottom: 1px solid #FFF;
+	border-top: 3px solid #917050;
+}
+
+/*===============================================
+  M. Error Pages - 404, 500
+================================================= */ 
+.minimal {
+	background: #f9f9f9;
+}
+.error-page #return-arrow {
+	top: 75px;
+	padding-top: 0;
+}
+#error-container img {
+	width: 280px;
+	margin: 30px auto 5px;
+}
+.error-title {
+	font-size: 120px;
+	font-weight: 800;
+	color: #a87fc6;	
+	text-align: center;
+	padding-top: 110px;
+	margin-bottom: 20px;
+	line-height: 120px;
+}
+.error-subtitle {
+	font-weight: 400;
+	text-align: center;
+	font-size: 40px;
+	color: #b0b0b0;
+	margin-bottom: 80px;
+}
+.mid-section {
+	width: 100%;
+	height: 200px;	
+	background: url('../img/patterns/error-bg.jpg') repeat left top #a87fc6;
+}
+.mid-content {
+	width: 620px;
+	margin: 0 auto;
+	padding: 50px 20px 35px;
+}
+@media (max-width: 765px) {
+	.mid-content {
+		width: 100%;
+	}
+}
+.mid-content input {
+	color: #AAA;
+	height: 45px;
+	border-radius: 1px;
+	padding: 10px 20px;
+	border: 0;
+}
+
+/*====================================================
+  N. External Pages - Login, Screen-Lock, Comingsoon
+====================================================== */ 
+.minimal .panel {
+	background: #f8f8f8;
+	border: 10px solid #9C9C9C;
+	border: none;
+	border-radius: 0;
+	box-shadow: 1px 2px 1px rgba(0,0,0,0.10), -1px -2px 1px rgba(0,0,0,0.10);
+}
+.minimal .panel-heading,
+.minimal .panel-footer {
+	background: #FFF;
+	border-color: #eee;
+}
+.minimal .overlay-black {
+	position: fixed;
+	z-index: -1;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+}
+.minimal .overlay-black {
+	background: rgba(0,0,0, 0.5);
+}
+.login-page .panel-bg {
+	padding: 12px;
+	width: 430px;
+	margin: 0 auto;
+	background: rgba(255,255,255, 0.4);
+	box-shadow: 0px 0 1px rgba(255,255,255, 0.8) inset;
+}
+.screenlock-page .panel-bg {
+	padding: 12px;
+	width: 530px;
+	margin: 0 auto;
+	background: rgba(255,255,255, 0.4);
+	box-shadow: 0px 0 1px rgba(255,255,255, 0.8) inset;
+}
+.coming-soon-page .panel-bg {
+	padding: 12px;
+	width: 630px;
+	margin: 0 auto;
+
+	box-shadow: 0px 0 1px rgba(255,255,255, 0.75) inset;
+	
+	background: rgba(255,255,255,0.3);
+	background: -moz-linear-gradient(45deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.3) 54%, rgba(255,255,255,0.3) 55%, rgba(255,255,255,0.72) 55%, rgba(255,255,255,0.33) 100%);
+	background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(255,255,255,0.3)), color-stop(54%, rgba(255,255,255,0.3)), color-stop(55%, rgba(255,255,255,0.3)), color-stop(55%, rgba(255,255,255,0.72)), color-stop(100%, rgba(255,255,255,0.33)));
+	background: -webkit-linear-gradient(45deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.3) 54%, rgba(255,255,255,0.3) 55%, rgba(255,255,255,0.72) 55%, rgba(255,255,255,0.33) 100%);
+	background: -o-linear-gradient(45deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.3) 54%, rgba(255,255,255,0.3) 55%, rgba(255,255,255,0.72) 55%, rgba(255,255,255,0.33) 100%);
+	background: -ms-linear-gradient(45deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.3) 54%, rgba(255,255,255,0.3) 55%, rgba(255,255,255,0.72) 55%, rgba(255,255,255,0.33) 100%);
+	background: linear-gradient(45deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.3) 54%, rgba(255,255,255,0.3) 55%, rgba(255,255,255,0.72) 55%, rgba(255,255,255,0.33) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff', GradientType=1 );
+}
+

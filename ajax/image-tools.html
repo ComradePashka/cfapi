@@ -1,0 +1,85 @@
+<!-- Required Plugin CSS
+<link rel="stylesheet" type="text/css" href="vendor/plugins/mfpopup/dist/magnific-popup.css">
+<link rel="stylesheet" type="text/css" href="vendor/plugins/imagecrop/css/jquery.Jcrop.min.css">
+-->
+
+<div id="topbar">
+  <div class="topbar-left">
+    <ol class="breadcrumb">
+      <li class="crumb-active"><a href="image-tools.html">Image Tools</a></li>
+      <li class="crumb-icon"><a href="dashboard.html"><span class="glyphicon glyphicon-home"></span></a></li>
+      <li class="crumb-link"><a href="index.html">Home</a></li>
+      <li class="crumb-trail">Image Tools</li>
+    </ol>
+  </div>
+</div>
+<div id="content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-picture"></span> Image Crop </span> </div>
+        <div class="panel-body pn">
+          <div class="alert alert-info mn br0">With the help of the JQuery Jcrop Plugin and just a little bit of code you can easily create a great, and very useful image cropping feature!</div>
+          <img id="Jcrop" class="img-responsive" src="img/stock/10.jpg"> </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel">
+        <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-search"></span> Image Zooms </span>
+          <div class="panel-btns pull-right pr10"> <span class="pr10">Zoom Style:</span>
+            <div class="btn-group toggle-pager-style">
+              <button type="button" class="btn btn-xs btn-default zoom-style-option active" opt="1" opt-name="Zoom">1</button>
+              <button type="button" class="btn btn-xs btn-default zoom-style-option" opt="2" opt-name="Tint">2</button>
+              <button type="button" class="btn btn-xs btn-default zoom-style-option" opt="3" opt-size="Inner">3</button>
+            </div>
+          </div>
+        </div>
+        <div class="panel-body pn">
+          <div class="alert alert-success mn br0">This is a great way to add a useful improvement to your images. Allowing your users to carefully zoom in and further inspect</div>
+          <img id="zoom_01" class="img-responsive" src="img/stock/1.jpg" data-zoom-image="img/stock/1.jpg"/> </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Plugins --> 
+<script type="text/javascript" src="vendor/plugins/imagecrop/jquery.Jcrop.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/imagezoom/jquery.elevatezoom.min.js"></script> 
+<script type="text/javascript">
+jQuery(document).ready(function () {
+	  
+   "use strict";     
+
+   // Init Zoom Plugin
+   $('#zoom_01').elevateZoom({borderColour: greenColor, constrainType:"height", constrainSize:274, zoomType: "lens", lensSize : 170, containLensZoom: true});
+   
+   // Init JCrop plugin
+   var jcrop_api;
+   $('#Jcrop').Jcrop({bgColor: grey2Color},function(){jcrop_api = this;});
+   
+   // Zoom styles changer
+   $('button.zoom-style-option').click(function () {
+		var zoomStyle = $(this).attr('opt'); 
+		var zoomName = $(this).attr('opt-name');
+		
+		// unfocus jcrop so overlays don't interfere with each other
+		jcrop_api.release();
+	   
+		switch (zoomStyle) {
+			case '1':
+				$('#zoom_01').elevateZoom({constrainType:"height", constrainSize:274, zoomType: "lens", lensSize : 150, containLensZoom: true});
+				break;
+			case '2':
+				$('#zoom_01').elevateZoom({zoomType: "inner", cursor: "crosshair"});
+				break;
+			case '3':
+				$('#zoom_01').elevateZoom({tint:true, tintColour:'#000', tintOpacity:0.65, zoomWindowPosition: 9});
+				break;
+		}
+
+		$(this).siblings().removeClass("active");
+		$(this).addClass("active");
+   });
+  
+});
+</script> 

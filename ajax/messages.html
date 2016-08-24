@@ -1,0 +1,394 @@
+
+<div id="content"> 
+  <!-- EMAIL HEADER -->
+  <div class="content-header">
+    <div class="pull-left">
+      <div class="tab-btns ib"> <a href="#email-view" role="tab" data-toggle="tab" class="view-toggle hidden"></a> <a href="#email-compose" role="tab" data-toggle="tab" class="btn bg-purple2 btn-sm mr10 compose-toggle"><span class="glyphicons glyphicons-share mr5"></span> Compose Mail </a> <a href="#email-list" role="tab" data-toggle="tab" class="btn bg-purple2 btn-sm mr10 mail-toggle hidden"><span class="glyphicons glyphicons-unshare mr5"></span> Return to Inbox </a> </div>
+      <div class="btn-group mr15">
+        <button type="button" class="btn btn-default btn-gradient btn-sm pr20 pl20"><i class="fa fa-trash-o"></i> </button>
+        <button type="button" class="btn btn-default btn-gradient btn-sm pr20 pl20"><i class="fa fa-envelope-o"></i> </button>
+        <button type="button" class="btn btn-default btn-gradient btn-sm pr20 pl20"><i class="fa fa-pencil-square-o"></i> </button>
+      </div>
+      <input type="text" class="email-search input-unstyled" placeholder="Search..." value="Search...">
+    </div>
+    <div class="pull-right"> <span class="email-count text-muted mr10"> 1-50 of 136 </span>
+      <div class="btn-group mr10">
+        <button type="button" class="btn btn-default btn-gradient btn-sm pr10 pl10"><span class="glyphicons glyphicons-chevron-left"></span> </button>
+        <button type="button" class="btn btn-default btn-gradient btn-sm pr10 pl10"><span class="glyphicons glyphicons-chevron-right"></span> </button>
+      </div>
+      <div class="btn-group">
+        <button type="button" class="btn btn-default btn-gradient btn-sm"><i class="fa fa-user"></i></button>
+        <button type="button" class="btn btn-default btn-gradient btn-sm dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+        <ul class="dropdown-menu pull-right" role="menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="tab-content bg-light pn mt20">
+    <div class="tab-pane fade p15" id="email-compose"> 
+      <!-- EMAIL COMPOSE -->
+      <div class="email-compose">
+        <div class="row mb5 mt10">
+          <div class="col-xs-5">
+            <div class="input-group"> <span class="input-group-addon"><span class="glyphicons glyphicons-old_man"></span> </span>
+              <input type="text" class="form-control">
+              <div class="input-group-btn">
+                <button type="button" id="token-toggle" class="btn btn-default btn-gradient p6" tabindex="-1"> <span class="caret"></span> <span class="sr-only">Toggle Dropdown</span> </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-5">
+            <div class="form-group">
+              <div class="input-group"> <span class="input-group-addon"><span class="glyphicons glyphicons-keys"></span> </span>
+                <input class="form-control" type="text" placeholder="Subject">
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-2">
+            <button class="btn bg-info pull-right btn-block" type="button"><span class="glyphicons glyphicons-share mr10"></span>Send</button>
+          </div>
+        </div>
+        <div class="row mb5 mt10 hidden token-fields">
+          <div class="col-xs-5">
+            <div class="form-group">
+              <div class="input-group"> <span class="input-group-addon"><span class="glyphicons glyphicons-keys"></span> </span>
+                <input class="form-control" type="text" placeholder="CC">
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-5">
+            <div class="form-group">
+              <div class="input-group"> <span class="input-group-addon"><span class="glyphicons glyphicons-keys"></span> </span>
+                <input class="form-control" type="text" placeholder="BCC">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="summernote mt15">Write your message here...</div>
+      </div>
+    </div>
+    <div class="tab-pane fade p20 pt15" id="email-view"> 
+      <!-- EMAIL VIEW -->
+      <div class="email-view"> <span class="pull-right text-muted m5">05/17/13 17:00</span>
+        <h3><span class="text-orange2">Subject - </span>You have a new message at Themeforest.net</h3>
+        <hr class="mt10 mb10"/>
+        <img src="img/avatars/1.jpg" class="img-responsive mw50 pull-left mr20">
+        <div class="pull-right mt5"> <span class="label bg-blue2 mr10">New</span> <span class="label bg-green2">Co-Worker</span> </div>
+        <h4 class="mt15 mb5">From: Cynthia Roche</h4>
+        <small class="text-muted">From: hisemail@hisemail.com</small>
+        <div class="clearfix"></div>
+        <hr class="mb15 mt10"/>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, ipsam, in, consectetur, <b>ecusandae qui</b> ducimus fugit nam sint officia expedita illo voluptatem consequuntur Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugit, laboriosam, ipsam, doloribus iste officiiseveniet nisi maxime minima deserunt <b>cumque amet eos quos! Provident, natus, officia, </b> fuga eum harum ut quisquam in consequatur tempore tempora unde a consequuntur nisi sequi enim repellat delectus obcaecati laborum dignissimos quam quibusdam perferendis? distinctio tempora officiis adipisci impedit similique. Obcaecati.</p>
+        <p>Lboriosam, <b>ipsam, doloribus iste</b> officiis eveniet nisi maxime minima deserunt cumque amet eos quos! Provident, natus, officia, fuga eum harum ut quisquam in consequatur tempore tempora unde a consequuntur nisi sequi enim repellat delectus obcaecati laborum dignissimos quam quibusdam perferendis? adipisicing elit. Laudantium, fugit, laboriosam, ipsam, doloribus iste officiis eveniet nisi maxime minima deserunt cumque amet eos quos! Provident, natus, officia, fuga eum harum ut quisquam in consequatur tempore tempora unde a consequuntur nisi sequi enim repellat delectus obcaecati laborum dignissimos quam quibusdam.</p>
+        <p>Lorem ipsum dolor sit amet, <b>consectetur</b> adipisicing elit.  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, fugit, laboriosam, ipsam, doloribus iste officiis eveniet nisi maxime minima deser Laudantium, fugit, laboriosam, ipsam, doloribus iste officiis eveniet nisi maxime minima deserunt cumque amet eos quos! Provident, natus, officia, fuga eum harum ut quisquam in consequatur tempore tempora unde a consequuntur nisi sequi enim repellat delectus obcaecati laborum dignissimos quam quibusdam perferendis?</p>
+        <hr class="mb15 mt15"/>
+        <h4 class="mb25"><span class="glyphicons glyphicons-paperclip mr10"></span> 3 Attachments - <small> View Images | Download All</small> </h4>
+        <div class="attachments mb30"> <img src="img/stock/12.jpg" class="mw140 mr15"> <img src="img/stock/7.jpg" class="responsive mw140 mr15"> <img src="img/stock/4.jpg" class="responsive mw140"> </div>
+        <div class="summernote2">Write your response here...</div>
+        <div class="row mb5 mt10 hidden">
+          <div class="col-xs-5">
+            <div class="input-group"> <span class="input-group-addon"><span class="glyphicons glyphicons-old_man"></span> </span>
+              <input type="text" class="form-control">
+              <div class="input-group-btn">
+                <button type="button" id="token-toggle" class="btn btn-default btn-gradient p6" tabindex="-1"> <span class="caret"></span> <span class="sr-only">Toggle Dropdown</span> </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-5">
+            <div class="form-group">
+              <div class="input-group"> <span class="input-group-addon"><span class="glyphicons glyphicons-keys"></span> </span>
+                <input class="form-control" type="text" placeholder="Subject">
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-2">
+            <button class="btn bg-info pull-right btn-block" type="button"><span class="glyphicons glyphicons-share mr10"></span>Send</button>
+          </div>
+        </div>
+        <div class="row mb5 mt10 hidden token-fields">
+          <div class="col-xs-5">
+            <div class="form-group">
+              <div class="input-group"> <span class="input-group-addon"><span class="glyphicons glyphicons-keys"></span> </span>
+                <input class="form-control" type="text" placeholder="CC">
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-5">
+            <div class="form-group">
+              <div class="input-group"> <span class="input-group-addon"><span class="glyphicons glyphicons-keys"></span> </span>
+                <input class="form-control" type="text" placeholder="BCC">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane active fade in" id="email-list"> 
+      <!-- EMAIL LISTINGS -->
+      <div class="email-list">
+        <table class="table table-striped table-hover table-curved email-table">
+          <tbody>
+            <tr class="fw700">
+              <td class="table-icon"><div class="cBox cBox-inline">
+                  <input type="checkbox" id="tableBox2" name="check" value="None"/>
+                  <label for="tableBox2"></label>
+                </div></td>
+              <td class="table-icon"><span class="glyphicons glyphicons-star"></span></td>
+              <td>Alex Jones</td>
+              <td><span><span class="label bg-purple label-sm mr10">Friend</span>New Data Center needed for the development of python hacks and stuff</span></td>
+              <td class="text-right"><span class="glyphicons glyphicons-paperclip mr10"></span>10:23am</td>
+            </tr>
+            <tr class="fw700">
+              <td class="table-icon"><div class="cBox cBox-inline">
+                  <input type="checkbox" id="tableBox2" name="check" value="None"/>
+                  <label for="tableBox2"></label>
+                </div></td>
+              <td class="table-icon"><span class="glyphicons glyphicons-star"></span></td>
+              <td>Roger Skee</td>
+              <td><span>Maecenas id vulputate erat. Etiam id viverra sapien. Phasellus sollicitudin.</span></td>
+              <td class="text-right"><span class="glyphicons glyphicons-paperclip mr10"></span>10:23am</td>
+            </tr>
+            <tr>
+              <td class="table-icon"><div class="cBox cBox-inline">
+                  <input type="checkbox" id="tableBox2" name="check" value="None"/>
+                  <label for="tableBox2"></label>
+                </div></td>
+              <td class="table-icon"><span class="glyphicons glyphicons-star text-orange"></span></td>
+              <td>Sandy Blue</td>
+              <td><span>Sed consectetur quam id ultrices tristique. Ut pellentesque scelerisque lectus. Proin.</span></td>
+              <td class="text-right">10:23am</td>
+            </tr>
+            <tr>
+              <td class="table-icon"><div class="cBox cBox-inline">
+                  <input type="checkbox" id="tableBox2" name="check" value="None"/>
+                  <label for="tableBox2"></label>
+                </div></td>
+              <td class="table-icon"><span class="glyphicons glyphicons-star"></span></td>
+              <td>Roger Doom</td>
+              <td><span>Quisque consequat semper elit et vestibulum. Praesent nec.</span></td>
+              <td class="text-right">10:23am</td>
+            </tr>
+            <tr class="fw700">
+              <td class="table-icon"><div class="cBox cBox-inline">
+                  <input type="checkbox" id="tableBox2" name="check" value="None"/>
+                  <label for="tableBox2"></label>
+                </div></td>
+              <td class="table-icon"><span class="glyphicons glyphicons-star"></span></td>
+              <td>Frank Castle</td>
+              <td><span>Aliquam ac metus ornare, rutrum ipsum id, auctor quam. Cras.</span></td>
+              <td class="text-right">8:17am</td>
+            </tr>
+            <tr>
+              <td class="table-icon"><div class="cBox cBox-inline">
+                  <input type="checkbox" id="tableBox2" name="check" value="None"/>
+                  <label for="tableBox2"></label>
+                </div></td>
+              <td class="table-icon"><span class="glyphicons glyphicons-star text-orange"></span></td>
+              <td>Devon Loom</td>
+              <td><span>Pellentesque mattis, erat et suscipit vehicula, metus enim vehicula risus.</span></td>
+              <td class="text-right">7:42am</td>
+            </tr>
+            <tr>
+              <td class="table-icon"><div class="cBox cBox-inline">
+                  <input type="checkbox" id="tableBox2" name="check" value="None"/>
+                  <label for="tableBox2"></label>
+                </div></td>
+              <td class="table-icon"><span class="glyphicons glyphicons-star text-orange"></span></td>
+              <td>Apple Jones</td>
+              <td><span>New Data Center needed for the development of python hacks and stuff</span></td>
+              <td class="text-right"><span class="glyphicons glyphicons-paperclip mr10"></span>6:42am</td>
+            </tr>
+            <tr>
+              <td class="table-icon"><div class="cBox cBox-inline">
+                  <input type="checkbox" id="tableBox2" name="check" value="None"/>
+                  <label for="tableBox2"></label>
+                </div></td>
+              <td class="table-icon"><span class="glyphicons glyphicons-star"></span></td>
+              <td>Kate Perky</td>
+              <td><span><span class="label bg-orange label-sm mr10">Spam</span>Donec quis nisl massa. Cum sociis natoque penatibus.</span></td>
+              <td class="text-right">4:13am</td>
+            </tr>
+            <tr>
+              <td class="table-icon"><div class="cBox cBox-inline">
+                  <input type="checkbox" id="tableBox2" name="check" value="None"/>
+                  <label for="tableBox2"></label>
+                </div></td>
+              <td class="table-icon"><span class="glyphicons glyphicons-star text-orange"></span></td>
+              <td>Mike Slips</td>
+              <td><span>Sed consectetur quam id ultrices tristique. Ut pellentesque scelerisque lectus. Proin.</span></td>
+              <td class="text-right">3:51am</td>
+            </tr>
+            <tr>
+              <td class="table-icon"><div class="cBox cBox-inline">
+                  <input type="checkbox" id="tableBox2" name="check" value="None"/>
+                  <label for="tableBox2"></label>
+                </div></td>
+              <td class="table-icon"><span class="glyphicons glyphicons-star"></span></td>
+              <td>Sarah Roars</td>
+              <td><span>New Data Center needed for the development of python hacks and stuff</span></td>
+              <td class="text-right">2:46am</td>
+            </tr>
+            <tr class="fw700">
+              <td class="table-icon"><div class="cBox cBox-inline">
+                  <input type="checkbox" id="tableBox2" name="check" value="None"/>
+                  <label for="tableBox2"></label>
+                </div></td>
+              <td class="table-icon"><span class="glyphicons glyphicons-star"></span></td>
+              <td>Tommy Red</td>
+              <td><span>Etiam pretium libero rutrum erat facilisis, eget euismod est aliquet. Integer.</span></td>
+              <td class="text-right">1:18am</td>
+            </tr>
+            <tr>
+              <td class="table-icon"><div class="cBox cBox-inline">
+                  <input type="checkbox" id="tableBox2" name="check" value="None"/>
+                  <label for="tableBox2"></label>
+                </div></td>
+              <td class="table-icon"><span class="glyphicons glyphicons-star text-orange"></span></td>
+              <td>Melon Turn</td>
+              <td><span>Donec quis nisl massa. Cum sociis natoque penatibus.</span></td>
+              <td class="text-right">12:57pm</td>
+            </tr>
+            <tr>
+              <td class="table-icon"><div class="cBox cBox-inline">
+                  <input type="checkbox" id="tableBox2" name="check" value="None"/>
+                  <label for="tableBox2"></label>
+                </div></td>
+              <td class="table-icon"><span class="glyphicons glyphicons-star text-orange"></span></td>
+              <td>Alex Jones</td>
+              <td><span>New Data Center needed for the development of python hacks and stuff</span></td>
+              <td class="text-right"><span class="glyphicons glyphicons-paperclip mr10"></span>11:42pm</td>
+            </tr>
+            <tr>
+              <td class="table-icon"><div class="cBox cBox-inline">
+                  <input type="checkbox" id="tableBox2" name="check" value="None"/>
+                  <label for="tableBox2"></label>
+                </div></td>
+              <td class="table-icon"><span class="glyphicons glyphicons-star"></span></td>
+              <td>Roman Piles</td>
+              <td><span><span class="label bg-blue label-sm mr10">Co-worker</span>Cras tellus nulla, mattis sed congue cursus, hendrerit at.</span></td>
+              <td class="text-right">10:23pm</td>
+            </tr>
+            <tr>
+              <td class="table-icon"><div class="cBox cBox-inline">
+                  <input type="checkbox" id="tableBox2" name="check" value="None"/>
+                  <label for="tableBox2"></label>
+                </div></td>
+              <td class="table-icon"><span class="glyphicons glyphicons-star text-orange"></span></td>
+              <td>Chris Runs</td>
+              <td><span>Etiam pretium libero rutrum erat facilisis, eget euismod est aliquet. Integer.</span></td>
+              <td class="text-right">8:44pm</td>
+            </tr>
+            <tr>
+              <td class="table-icon"><div class="cBox cBox-inline">
+                  <input type="checkbox" id="tableBox2" name="check" value="None"/>
+                  <label for="tableBox2"></label>
+                </div></td>
+              <td class="table-icon"><span class="glyphicons glyphicons-star"></span></td>
+              <td>Ally Sumo</td>
+              <td><span>New Data Center needed for the development of python hacks and stuff</span></td>
+              <td class="text-right">6:19pm</td>
+            </tr>
+            <tr class="fw700">
+              <td class="table-icon"><div class="cBox cBox-inline">
+                  <input type="checkbox" id="tableBox2" name="check" value="None"/>
+                  <label for="tableBox2"></label>
+                </div></td>
+              <td class="table-icon"><span class="glyphicons glyphicons-star"></span></td>
+              <td>Tom Sully</td>
+              <td><span>Cras tellus nulla, mattis sed congue cursus, hendrerit at.</span></td>
+              <td class="text-right">5:03pm</td>
+            </tr>
+            <tr>
+              <td class="table-icon"><div class="cBox cBox-inline">
+                  <input type="checkbox" id="tableBox2" name="check" value="None"/>
+                  <label for="tableBox2"></label>
+                </div></td>
+              <td class="table-icon"><span class="glyphicons glyphicons-star text-orange"></span></td>
+              <td>Eric Frost</td>
+              <td><span>Nulla sit amet ultricies metus. Aenean malesuada non nunc quis consectetur. Vestibulum.</span></td>
+              <td class="text-right">4:16am</td>
+            </tr>
+            <tr>
+              <td class="table-icon"><div class="cBox cBox-inline">
+                  <input type="checkbox" id="tableBox2" name="check" value="None"/>
+                  <label for="tableBox2"></label>
+                </div></td>
+              <td class="table-icon"><span class="glyphicons glyphicons-star text-orange"></span></td>
+              <td>Alex Jones</td>
+              <td><span>Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos.</span></td>
+              <td class="text-right"><span class="glyphicons glyphicons-paperclip mr10"></span>4:35am</td>
+            </tr>
+            <tr>
+              <td class="table-icon"><div class="cBox cBox-inline">
+                  <input type="checkbox" id="tableBox2" name="check" value="None"/>
+                  <label for="tableBox2"></label>
+                </div></td>
+              <td class="table-icon"><span class="glyphicons glyphicons-star"></span></td>
+              <td>Louis Phil</td>
+              <td><span><span class="label bg-purple label-sm mr10">Friend</span>Morbi fermentum, purus ut rutrum blandit, ligula eros tempor leo, eu aliquet.</span></td>
+              <td class="text-right">3:35am</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- end listings (maybe) --> 
+      
+    </div>
+    <!-- End tab --> 
+  </div>
+  <!-- End tab-content --> 
+  
+</div>
+
+<!-- Page Plugins --> 
+<script type="text/javascript" src="vendor/editors/summernote/summernote.js"></script> 
+<script type="text/javascript">
+jQuery(document).ready(function () {
+	  
+	 "use strict";
+
+   
+	 
+	 // Init Summernote Instances
+     $('.summernote').summernote({
+	   height: 315,   //set editable area's height
+	   focus: false  //set focus editable area after Initialize summernote
+	 });
+     $('.summernote2').summernote({
+	   height: 200,   //set editable area's height
+	   focus: false  //set focus editable area after Initialize summernote
+	 });
+	 
+	 // Toggle Sidebar Menu
+	 $('#mail-sidebar').on('click', function() {
+		 $('.email-menu').slideToggle();
+		 $('.sidebar-menu').toggleClass('animated fadeIn hidden');
+	 });
+	 
+	 // Toggle Content Buttons
+	 $('.compose-toggle, .mail-toggle').on('click', function() {
+		 $('.compose-toggle, .mail-toggle').toggleClass('hidden');
+	 });
+	 $('.email-table tr').on('click', function() {
+		 $('a[href="#email-view"]').tab('show') // Select tab by name
+	 });
+	 
+	 // Toggle Active list menu item
+	 $('.email-menu ul li').on('click',function() {
+		 $('a[href="#email-list"]').tab('show') // Select tab by name
+		$(this).siblings('li').removeClass('active').end().addClass('active'); 
+	 });
+	 
+	 // Toggle Extra Fields
+	 $('#token-toggle').on('click', function() {
+		 $('.token-fields').toggleClass('animated fadeIn hidden');
+	 });
+
+});
+</script> 

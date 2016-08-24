@@ -1,0 +1,71 @@
+<!-- Required Plugin CSS
+<link rel="Stylesheet" type="text/css" href="vendor/plugins/notepad/wPaint.min.css" />
+<link rel="Stylesheet" type="text/css" href="vendor/plugins/notepad/lib/wColorPicker.min.css" />
+-->
+
+<div id="topbar">
+  <div class="topbar-left">
+    <ol class="breadcrumb">
+      <li class="crumb-active"><a href="sketchpad.html">Sketchpad</a></li>
+      <li class="crumb-icon"><a href="dashboard.html"><span class="glyphicon glyphicon-home"></span></a></li>
+      <li class="crumb-link"><a href="index.html">Home</a></li>
+      <li class="crumb-trail">Sketchpad</li>
+    </ol>
+  </div>
+</div>
+<div id="content">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-visible border-none" id="notepad">
+        <div class="panel-body pn">
+          <div class="alert alert-theme br0 text-center mn"> Try <b>drawing</b> something below! More tools are avaliable to the left</div>
+          <div id="wPaint" style="position:relative; width:100%; height:560px; background-color:#ffffff; margin:0px auto;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Page Plugins --> 
+<script type="text/javascript" src="vendor/plugins/notepad/lib/wColorPicker.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/notepad/wPaint.min.js"></script> 
+
+<!-- Sketchpad Addons --> 
+<script type="text/javascript" src="vendor/plugins/notepad/plugins/main/wPaint.menu.main.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/notepad/plugins/text/wPaint.menu.text.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/notepad/plugins/shapes/wPaint.menu.main.shapes.min.js"></script> 
+<script type="text/javascript" src="vendor/plugins/notepad/plugins/file/wPaint.menu.main.file.min.js"></script> 
+<script type="text/javascript">
+jQuery(document).ready(function () {
+	  
+	 "use strict";     
+     
+
+	// extend wPaint
+	$.extend($.fn.wPaint.defaults, {
+	  mode:        'pencil',  // set mode
+	  lineWidth:   '5',       // starting line width
+	  fillStyle:   '#d4d4d4', // starting fill style
+	  strokeStyle: '#777777'  // start stroke style
+	});
+
+	 // Init wPaint
+	$('#wPaint').wPaint({
+	  menuOrientation: 'vertical', 
+	  menuOffsetLeft: 5,
+	  menuOffsetTop: 5,
+	  menuHandle: false,
+	  path: 'vendor/plugins/notepad/',
+	  image: 'img/plugins/canvas.jpg'
+	});
+	
+	// on-resize wPaint
+	$( window ).resize(function () {
+	  var panel = $('#notepad .panel-body').width();
+	  var canvasWidth = (panel + 'px');
+	  $('.wPaint-canvas').width(canvasWidth);	
+	  $('.wPaint-canvas-bg').width(canvasWidth);	
+	});
+	
+});
+</script> 
