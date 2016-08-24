@@ -1,8 +1,8 @@
 <?php
 /*
  Descr: Script gets data from cf and merge with db data. 
- Author: dimitry.lukin@gmail.com
- Revision: 201608241722
+ @author dimitry.lukin@gmail.com
+ @version 0.201608241722
 */
 
 $cfname = "dimitry.lukin@gmail.com";
@@ -26,9 +26,11 @@ $key = $rows[0]['cfkey'];
 $id = $rows[0]['id'];
 
 
-// Get all zone records from cf
+// Get all zone records from cf to array
 $zones = getAllZones($cfname, $key);
+// Write info from array to db
+$res = array2db($id, $zones, $db, $log);
 
-print_r($zones);
+//print_r($zones);
 
 ?>

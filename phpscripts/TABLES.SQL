@@ -8,17 +8,16 @@ create table if not exists users (
 create table if not exists zones (
 	id varchar(253) primary key,
 	userid int not null,
-	zonename varchar(64),
-	data varchar(253),
+	zonename varchar(253)not null,
+	ns varchar(253),
+	status varchar(253) not null,
 	foreign key (userid)
 		references users(id)
 );
 create table if not exists records (
-	id int primary key,
 	zoneid varchar(253),
-	name varchar(253),
-	type varchar(4),
-	data varchar(253),
+	type varchar(5),
+	content varchar(253),
 	foreign key (zoneid)
 		references zones(id)
 );

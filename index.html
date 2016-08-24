@@ -144,17 +144,25 @@
 	$rows = $db->select("select cfkey, id from users where cfname = ".$quotedCfname) or die($db->error()."\n");
 	$key = $rows[0]['cfkey'];
 	$id = $rows[0]['id'];
-	$rows = $db->select("select zonename from zones where userid = ".$id) or die($db->error()."\n");
+	$rows = $db->select("select id, zonename, ns, status from zones where userid = ".$id) or die($db->error()."\n");
 	foreach($rows as $i => $r) {
 
 		echo "<tr>";
 		echo "<td>".$r['zonename']."</td>";
-		echo "<td>NONE</td>";
-		echo "<td>NONE</td>";
-		echo "<td>NONE</td>";
-		echo "<td>NONE</td>";
-		echo "<td>NONE</td>";
-		echo "<td><span class='label bg-green'>Active</span></td>";
+		echo "<td>".$r['ns']."</td>";
+		$q = "select content from records where type = 'a' and zoneid = '".$r['id']."'";
+		$a = $db->select($q);
+		echo "<td>".(isset($a[0]['content']) ? $a[0]['content'] : "NONE" )."</td>";
+		$q = "select content from records where type = 'www' and zoneid = '".$r['id']."'";
+		$a = $db->select($q);
+		echo "<td>".(isset($a[0]['content']) ? $a[0]['content'] : "NONE" )."</td>";
+		$q = "select content from records where type = 'wcard' and zoneid = '".$r['id']."'";
+		$a = $db->select($q);
+		echo "<td>".(isset($a[0]['content']) ? $a[0]['content'] : "NONE" )."</td>";
+		$q = "select content from records where type = 'cname' and zoneid = '".$r['id']."'";
+		$a = $db->select($q);
+		echo "<td>".(isset($a[0]['content']) ? $a[0]['content'] : "NONE" )."</td>";
+		echo "<td><span class='label bg-green'>".$r['status']."</span></td>";
 		echo "</tr>";
 	}
 	
