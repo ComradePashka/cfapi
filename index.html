@@ -1,3 +1,13 @@
+
+<?php
+	$cfname = "dimitry.lukin@gmail.com";
+	$quotedCfname = "'".$cfname."'";
+	include dirname(__FILE__)."/phpscripts/Db.php";	
+	$db = new Db() or die($db->error()."\n");
+	$rows = $db->select("select cfkey, id from users where cfname = ".$quotedCfname) or die($db->error()."\n");
+	$key = $rows[0]['cfkey'];
+	$id = $rows[0]['id'];
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,7 +79,15 @@
           <div class="panel panel-overflow mb10">
             <div class="panel-body pn pl20">
               <div class="icon-bg"><i class="fa fa-bar-chart-o text-blue"></i></div>
-              <h2 class="mt15 lh15 text-grey2"><b>60</b></h2>
+              <h2 class="mt15 lh15 text-grey2"><b>
+<?php 
+	$q = "SELECT COUNT(*) AS cn FROM `zones` WHERE `userid` = ".$id; 
+	$r = $db->select($q)  or die($db->error()."\n");
+//	$c = $r->fetch_assoc();
+//	print_r($r)
+	print($r[0]['cn']);
+?> 
+						</b></h2>
               <h5 class="text-muted">Domains</h5>
             </div>
           </div>
@@ -137,13 +155,14 @@
 </thead
 <tbody>
 <?php
-	$cfname = "dimitry.lukin@gmail.com";
+/*	$cfname = "dimitry.lukin@gmail.com";
 	$quotedCfname = "'".$cfname."'";
 	include dirname(__FILE__)."/phpscripts/Db.php";	
 	$db = new Db() or die($db->error()."\n");
 	$rows = $db->select("select cfkey, id from users where cfname = ".$quotedCfname) or die($db->error()."\n");
 	$key = $rows[0]['cfkey'];
 	$id = $rows[0]['id'];
+*/
 	$rows = $db->select("select id, zonename, ns, status from zones where userid = ".$id) or die($db->error()."\n");
 	foreach($rows as $i => $r) {
 
