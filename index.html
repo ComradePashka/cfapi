@@ -2,11 +2,23 @@
 <?php
 	$cfname = "dimitry.lukin@gmail.com";
 	$quotedCfname = "'".$cfname."'";
-	include dirname(__FILE__)."/phpscripts/Db.php";	
+	include dirname(__FILE__)."/phpscripts/cflib.php";	
+	$log = new FileLogger("/var/log/cfapi.log");
 	$db = new Db() or die($db->error()."\n");
 	$rows = $db->select("select cfkey, id from users where cfname = ".$quotedCfname) or die($db->error()."\n");
 	$key = $rows[0]['cfkey'];
 	$id = $rows[0]['id'];
+	if(isset($_POST['csvupload']) and $_POST['csvupload'] == 'file') {
+		$uploaddir = '/var/www/uploads/';
+		$uploadfile = $uploaddir . basename($_FILES['username']['name']);
+		move_uploaded_file($_FILES['username']['tmp_name'], $uploadfile);
+		exec("php ".dirname(__FILE__)."/phpscripts/csv2db.php ".$uploadfile);
+	}
+
+        if($_POST['formtype'] == 'deldomain') {
+		
+		deleteZoneFromDB($db, $_POST['DEL_DomainNames'], $log);
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -262,7 +274,7 @@ jQuery(document).ready(function () {
 <div class="modal fade" id="adddomains" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form class="cmxform" method="post" action="/dashboard">
+      <form class="cmxform" method="post" action="/index.html">
         <div class="modal-header">
           <div class="modal-title"><i class="fa fa-lock pr5"></i>Add Domain Names</div>
         </div>
@@ -287,7 +299,7 @@ jQuery(document).ready(function () {
 <div class="modal fade" id="editdomains" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form class="cmxform" method="post" action="/dashboard">
+      <form class="cmxform" method="post" action="/index.html">
         <div class="modal-header">
           <div class="modal-title"><i class="fa fa-lock pr5"></i>Edit Domain Names</div>
         </div>
@@ -336,14 +348,15 @@ jQuery(document).ready(function () {
 <div class="modal fade" id="deletedomains" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form class="cmxform" method="post" action="/dashboard">
+      <form class="cmxform" method="post" action="/index.html">
         <div class="modal-header">
           <div class="modal-title"><i class="fa fa-lock pr5"></i>Delete Domain Names</div>
         </div>
         <div class="modal-body">
           <div class="form-group">
             <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user"></i> </span>
-              <textarea class="form-control" rows="8" name="ADD_DomainNames" placeholder="Enter 1 domain per line"></textarea>
+              <textarea class="form-control" rows="8" name="DEL_DomainNames" placeholder="Enter 1 domain per line"></textarea>
+	      <input type="hidden" name="formtype" value="deldomain" />
             </div>
           </div>
         </div>
@@ -361,15 +374,16 @@ jQuery(document).ready(function () {
 <div class="modal fade" id="csvupload" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form class="cmxform" method="post" action="/dashboard">
+      <form class="cmxform" method="post" action="/index.html" enctype="multipart/form-data">
         <div class="modal-header">
           <div class="modal-title"><i class="fa fa-lock pr5"></i>Upload CSV File</div>
         </div>
         <div class="modal-body">
           <div class="form-group">
             <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user"></i> </span>
+		<input type="hidden" name="csvupload" value="file" />
 		<label class="control-label">Select File</label>
-		<input id="input-1" type="file" class="file">
+		<input id="input-1" type="file" name="username" class="file">
             </div>
           </div>
         </div>

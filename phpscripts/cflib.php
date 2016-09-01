@@ -191,4 +191,15 @@ function delAllZonesFromCF($client_id, $client_key) {
 	
 }
 
+function deleteZoneFromDB($db, $zonename, $log){
+	
+	$q = "DELETE  FROM `records` where `zoneid` = (SELECT id from `zones` where `zonename` = '".$zonename."' LIMIT 1)";
+	$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
+	$q = "DELETE  FROM `zones` where `zonename` = '".$zonename."'";
+	$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
+error_log("RESULT of removing:  ".$dbres['result']);
+	return true;
+}
+
+
 ?>
