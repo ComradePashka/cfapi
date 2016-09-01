@@ -57,8 +57,8 @@ foreach($data as $i => $record){
 	        if (isset($record[5]) and $record[5] != "" ) { $CNAME = $record[5]; } else { $CNAME = $defaultCNAME; };
 
 		$md5zone = md5($record[0]);
-		$q = "INSERT INTO `zones` (`id`, `userid`, `zonename`, `ns`) 
-			VALUES ('".$md5zone."', ".$id.", '".$record[0]."', '".$NS."')";
+		$q = "INSERT INTO `zones` (`id`, `userid`, `zonename`, `ns`, `sync`) 
+			VALUES ('".$md5zone."', ".$id.", '".$record[0]."', '".$NS."', false )";
 			$res = $db->query($q); if (!$res) {  printf("Errormessage: %s\n", $db->error()); }
 			$q = "INSERT INTO `records` (`zoneid`,`type`,`content`)
 			VALUES ('".$md5zone."', 'a', '".$A."') ";

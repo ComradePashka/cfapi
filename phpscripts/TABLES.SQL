@@ -3,7 +3,12 @@ create table if not exists users (
 	name varchar(255) not null,
 	pass varchar(255) not null,
 	cfname varchar(253) not null,
-	cfkey varchar(253) not null
+	cfkey varchar(253) not null,
+	default_ns varchar(253),
+	default_a varchar(253),
+	default_www varchar(253),
+	default_wcard varchar(253),
+	default_cname varchar(253)
 );
 create table if not exists zones (
 	id varchar(253) primary key,
@@ -11,6 +16,7 @@ create table if not exists zones (
 	zonename varchar(253)not null,
 	ns varchar(253),
 	status varchar(253) not null,
+	sync boolean not null,
 	foreign key (userid)
 		references users(id)
 );

@@ -4,14 +4,32 @@
  @author <dimitry.lukin@gmail.com>
  @version 0.201608241730
 */
-// Get all zone names for client and place in array: id => array [ zonename => zonename, ns => nses, status
-function getAllZones($client_id, $client_key) {
+
+include dirname(__FILE__)."/Db.php";
+include dirname(__FILE__)."/CloudFlare/Api.php";
+include dirname(__FILE__)."/CloudFlare/Zone/Dns.php";
+include dirname(__FILE__)."/CloudFlare/Zone.php";
+include dirname(__FILE__)."/Logger.php";
+
+
+
+
+//Connect to cf api
+function connect2CF($client_id, $client_key) {
 	$client = new Cloudflare\Api($client_id, $client_key);
 	if($client  === false){ print $client->error(); exit; }
 	$zone = new Cloudflare\Zone($client);
 	if($zone  === false){ print $dns->error(); exit; }
 	$dns = new Cloudflare\Zone\Dns($client);
 	if($dns  === false){ print $dns->error(); exit; }
+	return array($zone, $dns);
+}
+
+// Get all zone names for client and place in array: id => array [ zonename => zonename, ns => nses, status
+function getAllZones($client_id, $client_key) {
+	
+	list ($zone, $dns) = connect2CF($client_id, $client_key);
+	
 	$res = $zone->zones();
 	$resarr = get_object_vars($res);
 	$result = $resarr['result'];
@@ -49,13 +67,13 @@ function getZoneData($d, $id, $zname){
 	}
 	return $zoneData;
 }
+/////////////////////////////////////////////////////
 // write all info from array to db without testing
 function array2db($user_id, $array, $db, $l){
 	foreach($array as $i => $zone ){
 		$q = "INSERT INTO `zones` ( id, userid, zonename, ns, status ) VALUES ('".$zone['id']."', 
 			".$user_id.", '".$zone['zonename']."', 
 			'".$zone['ns']."', '".$zone['status']."')";
-//print($q."\n");
 		$dbres = $db->query($q) or $l->log($db->error()." with query ".$q, '[ERROR]');
 		foreach($zone['records'] as $j => $record){
 
@@ -65,6 +83,112 @@ function array2db($user_id, $array, $db, $l){
 //print($q."\n");
 		}
 	}
+}
+// sync all data from db to cf
+function db2cf($email, $id, $key, $db, $l){
+	// Get records from db, record by record
+	$q = "SELECT zonename from zones where sync = 0 and userid = ".$id;
+	$res = $db->query($q) or die($db->error()."\n");
+	$zones = getAllZones($email, $key);
+	print_r($zones);
+	foreach($res as $index => $zone){
+		$zoneName = $zone['zonename'];
+	// Check if zone exists
+		foreach($zones as $id => $zoneFromCF ){
+			if($zoneName != $zoneFromCF['zonename']) {
+				$log->log("To create ".$zoneName."\n");
+	// Upload zone and records to cf
+				$res = syncZone2CF($zonename, $email, $key);
+						
+				break;
+			} else {
+				$log->log("Duplicate ".$zoneName."\n");
+				break;
+			}
+		}
+		
+	}
+}
+// Sync all db data to cf. Zones, records 
+// 1. Get existing zones from cf into temp table
+// 2. Get only different zones from db
+// 3. create zone in cf with zone attributes from db
+// 4. get zone id from cf and update zoneid field to cf id and sync fiels to true
+// 5. create all needed dns records in zone
+function syncAllZones2CF($userdbid, $db, $email, $key, $log){
+
+	list ($z, $d) = connect2CF($email, $key);
+	$res = $z->zones(null,null,null,1000);
+	$resarr = get_object_vars($res);
+	$q = "create temporary table zonestemp (name varchar(255))";
+	$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
+	if(count($resarr) == 0 ) {
+		$q = "INSERT INTO zonestemp VALUES ('empty_array')";
+		$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
+	} else {
+		$result = $resarr['result'];
+		foreach($result as $i => $r) {
+			$zonearr = get_object_vars($r);
+			$q = "INSERT INTO zonestemp VALUES ('".$zonearr['name']."')";
+			$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
+		}
+	}
+	$q = "select id, zonename, ns from zones where userid = ".$userdbid." and zones.zonename not in ( select name from zonestemp )";
+	$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
+	foreach($dbres as $i => $zone2insert ){
+		$res = $z->create($zone2insert['zonename']);
+		$resarr = get_object_vars($res);
+		$result = $resarr['result'];
+		$created = get_object_vars($result);
+		$zid = $created['id']; $status = $created['status'];
+		$q = " SET `foreign_key_checks` = 0; ";
+		$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
+		$q = " UPDATE zones SET `sync` = true,  `id` = '".$zid."', `status` = '".$status."' 
+			where `zonename` = '".$zone2insert['zonename']."';";
+		$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
+		$q = " UPDATE records set `zoneid` = '".$zid."' where `zoneid` = '".$zone2insert['id']."';";
+		$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
+		$q = " SET `foreign_key_checks` = 1;";
+		$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
+		$q = "SELECT content from records where `type` = 'a' and zoneid = '".$zid."'";
+		$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
+		foreach($dbres as $i => $record2insert ){
+			$res = $d->create($zid, 'A', $zone2insert['zonename'], $record2insert['content'], 120);
+		}
+		$q = "SELECT content from records where `type` = 'www' and zoneid = '".$zid."'";
+		$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
+		foreach($dbres as $i => $record2insert ){
+			$res = $d->create($zid, 'A', "www.".$zone2insert['zonename'], $record2insert['content'], 120);
+		}
+		$q = "SELECT content from records where `type` = 'wcard' and zoneid = '".$zid."'";
+		$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
+		foreach($dbres as $i => $record2insert ){
+			$res = $d->create($zid, 'A', "*.".$zone2insert['zonename'], $record2insert['content'], 120);
+		}
+		$q = "SELECT content from records where `type` = 'cname' and zoneid = '".$zid."'";
+		$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
+		foreach($dbres as $i => $record2insert ){
+			$res = $d->create($zid, 'CNAME', $zone2insert['zonename'], $record2insert['content'], 120);
+		}
+
+	}
+
+}
+
+
+function delAllZonesFromCF($client_id, $client_key) {
+	list ($zone, $dns) = connect2CF($client_id, $client_key);
+	
+	$res = $zone->zones(null,null, null, 1000);
+	$resarr = get_object_vars($res);
+	$result = $resarr['result'];
+
+
+	foreach($result as $i => $r) {
+		$zonearr = get_object_vars($r);
+		$res = $zone->delete_zone($zonearr['id']);
+	}
+	
 }
 
 ?>

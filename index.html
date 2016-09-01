@@ -132,7 +132,7 @@
   <li><a data-toggle="modal" data-target="#adddomains"><i class="fa fa-user"></i> Bulk Add Domains </a></li>
   <li><a data-toggle="modal" data-target="#editdomains"><i class="fa fa-user"></i> Bulk Edit Domains </a></li>
   <li><a data-toggle="modal" data-target="#deletedomains"><i class="fa fa-user"></i> Bulk Delete Domains </a></li>
-  <li><a data-toggle="modal" data-target="#downloadCSV"><i class="fa fa-user"></i> Download Full CSV </a></li>
+  <li><a data-toggle="modal" data-target="#csvupload"><i class="fa fa-user"></i> Download Full CSV </a></li>
 </ul>
 </div>
 </div>
@@ -163,7 +163,7 @@
 	$key = $rows[0]['cfkey'];
 	$id = $rows[0]['id'];
 */
-	$rows = $db->select("select id, zonename, ns, status from zones where userid = ".$id) or die($db->error()."\n");
+	$rows = $db->select("select id, zonename, ns, sync, status from zones where userid = ".$id) or die($db->error()."\n");
 	foreach($rows as $i => $r) {
 
 		echo "<tr>";
@@ -181,7 +181,11 @@
 		$q = "select content from records where type = 'cname' and zoneid = '".$r['id']."'";
 		$a = $db->select($q);
 		echo "<td>".(isset($a[0]['content']) ? $a[0]['content'] : "NONE" )."</td>";
-		echo "<td><span class='label bg-green'>".$r['status']."</span></td>";
+		echo "<td>";
+		if($r['sync'] == 1 ){echo "<span class='label bg-green'>Synced</span>";
+		} else {echo "<span class='label bg-red'>NotSynced</span>";}
+		echo "<br><span class='label bg-blue'>".$r['status']."</span>";
+		echo "</td>";
 		echo "</tr>";
 	}
 	
@@ -353,6 +357,32 @@ jQuery(document).ready(function () {
 </div>
 <!-- END Delete Domains Modal -->
 
+<!-- Start CSV File Upload Modal -->
+<div class="modal fade" id="csvupload" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form class="cmxform" method="post" action="/dashboard">
+        <div class="modal-header">
+          <div class="modal-title"><i class="fa fa-lock pr5"></i>Upload CSV File</div>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user"></i> </span>
+		<label class="control-label">Select File</label>
+		<input id="input-1" type="file" class="file">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer"> <span class="panel-title-sm pull-left" style="padding-top: 7px;"></span>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary bg-grey2">Upload CSV</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- END CSV File Upload Modal  -->
 
 
 
