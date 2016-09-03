@@ -1,13 +1,3 @@
-<?php 
-	$cfname = "dimitry.lukin@gmail.com";
-        include dirname(__FILE__)."/phpscripts/cflib.php";      
-        $log = new FileLogger("/var/log/cfapi.log");
-        $db = new Db() or die($db->error()."\n");
-        $rows = $db->select("select `cfname`, `cfkey`, `id`, `default_a`, `default_mx`, `default_cname` from `users` where `cfname` = '".$cfname."'") or die($db->error()."\n");
-        $key = $rows[0]['cfkey'];
-        $id = $rows[0]['id'];
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -491,61 +481,26 @@
       <div class="row">
         <div class="col-md-6">
           <div class="panel">
-            <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-lock"></span> CF settings </span> </div>
+            <div class="panel-heading"> <span class="panel-title"> <span class="glyphicon glyphicon-lock"></span> Field Validation </span> </div>
             <div class="panel-body">
-              <div class="alert alert-theme">Enter your CF data here!</div>
+              <div class="alert alert-theme">Validating a form with Fusion Admin is simple! </div>
               <form class="cmxform" id="altForm" method="get">
                 <div class="form-group">
-                  <label for="email">CF login</label>
-                  <input id="email" name="email" type="text" class="form-control" placeholder="yourmail@example.com" required />
+                  <label for="name">Your Name</label>
+                  <input id="name" name="name" type="text" class="form-control" placeholder="Roger Awesome" required />
                 </div>
                 <div class="form-group">
-                  <label for="apikey">CF APY key</label>
-                  <input id="apikey" name="apikey" type="text" class="form-control" placeholder="38g307g37f37f3078f307f" required />
+                  <label for="wage">Desired Wage</label>
+                  <input id="wage" name="wage" type="text" class="form-control" placeholder="$100.00" required/>
                 </div>
                 <div class="form-group">
-                  <label for="a">Default A record</label>
-                  <input id="a" name="a" type="text" class="form-control" placeholder="127.0.0.1" />
+                  <label> Your Phone Number </label>
+                  <input type="text" class="form-control" maxlength="10" autocomplete="off" placeholder="* Optional">
                 </div>
                 <div class="form-group">
-                  <label for="cname">Default CNAME record</label>
-                  <input id="cname" name="cname" type="text" class="form-control" placeholder="example.com" />
+                  <label> Your Email </label>
+                  <input type="text" class="form-control" maxlength="10" autocomplete="off" placeholder="* Optional">
                 </div>
-                <div class="form-group">
-                  <label for="mx">Default MX record</label>
-                  <input id="mx" name="mx" type="text" class="form-control" placeholder="mx.gmail.com" />
-                </div>
-
-		<div class="form-group">
-                 <label class="col-md-3 control-label ">Always online</label>
-                  <div class="switch switch-green switch-inline">
-                     <input id="online" type="checkbox" checked>
-                     <label for="online"></label>
-                  </div>
-		</div>
-
-
-                <div class="form-group">
-                  <label for="spinner1" class="col-md-3 control-label">Firewall Security Level</label>
-                  <div class="col-md-3">
-                    <select id="multiselect1">
-                      <option value="off">Essentially Off</option>
-                      <option value="low">Low</option>
-                      <option value="med">Medium</option>
-                      <option value="high" selected>High</option>
-                      <option value="attack">I'm under attack!</option>
-                    </select>
-                  </div>
-                </div>
-
-		<div class="form-group">
-                 <label class="col-md-3 control-label ">Browser Integrity Check</label>
-                  <div class="switch switch-green switch-inline">
-                     <input id="integritycheck" type="checkbox" checked>
-                     <label for="integritycheck"></label>
-                  </div>
-		</div>
-
                 <div class="form-group">
                   <input class="submit btn bg-purple pull-right" type="submit" value="Submit" />
                 </div>

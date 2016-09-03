@@ -7,6 +7,7 @@ create table if not exists users (
 	default_ns varchar(253),
 	default_a varchar(253),
 	default_www varchar(253),
+	default_mx varchar(253),
 	default_wcard varchar(253),
 	default_cname varchar(253)
 );
