@@ -8,31 +8,31 @@
  example:
  example.com;ns0.example.com,ns1.example.com;1.2.3.4;1.2.3.5;1.2.3.6;test.com
  @author dimitry.lukin@gmail.com
- @version 0.201608251122
+ @version 0.201609142318
 */
 
-$defaultNS = "ns.default.ex";
-$defaultA = "1.1.1.1";
-$defaultWWW = "1.1.1.1";
-$defaultWCARD = "1.1.1.1";
-$defaultCNAME = "test.test";
-
 $cfname = "dimitry.lukin@gmail.com";
-$quotedCfname = "'".$cfname."'";
 $fname = dirname(__FILE__)."/domains.csv";
 
-include dirname(__FILE__)."/Db.php";
-include dirname(__FILE__)."/Logger.php";
-require_once dirname(__FILE__)."/cflib.php";
+//include dirname(__FILE__)."/Db.php";
+//include dirname(__FILE__)."/Logger.php";
+include dirname(__FILE__)."/cflib.php";
 
 $log = new FileLogger("/var/log/cfapi.log");
 
 
 $db = new Db() or die($db->error()."\n");
-$rows = $db->select("select cfkey, id from users where cfname = ".$quotedCfname) or die($db->error()."\n");
+$rows = $db->select("select cfkey, id, default_ns, default_a, default_www, default_mx, default_wcard, default_cname 
+				from users where cfname = '".$cfname."'") or die($db->error()."\n");
 
 $key = $rows[0]['cfkey'];
 $id = $rows[0]['id'];
+$defaultNS = $rows[0]['default_ns'];
+$defaultA = $rows[0]['default_a'];
+$defaultWWW = $rows[0]['default_www'];
+$defaultMX = $rows[0]['default_mx'];
+$defaultWCARD = $rows[0]['default_wcard'];
+$defaultCNAME = $rows[0]['default_cname'];
 
 $handle = fopen($fname, "r");
 if ($handle) {
@@ -55,22 +55,29 @@ foreach($data as $i => $record){
 	        if (isset($record[3]) and $record[3] != "" ) { $WWW = $record[3]; } else { $WWW = $defaultWWW; };
 	        if (isset($record[4]) and $record[4] != "" ) { $WCARD = $record[4]; } else { $WCARD = $defaultWCARD; };
 	        if (isset($record[5]) and $record[5] != "" ) { $CNAME = $record[5]; } else { $CNAME = $defaultCNAME; };
+		$MX = $defaultMX;
 
 		$md5zone = md5($record[0]);
-		$q = "INSERT INTO `zones` (`id`, `userid`, `zonename`, `ns`, `sync`) 
-			VALUES ('".$md5zone."', ".$id.", '".$record[0]."', '".$NS."', false )";
+		$q = "INSERT INTO `zones` (`id`, `userid`, `zonename`, `sync`) 
+			VALUES ('".$md5zone."', ".$id.", '".$record[0]."', false )";
 			$res = $db->query($q); if (!$res) {  printf("Errormessage: %s\n", $db->error()); }
-			$q = "INSERT INTO `records` (`zoneid`,`type`,`content`)
+			$q = "INSERT INTO `records` (`zoneid`,`type`,`data`)
 			VALUES ('".$md5zone."', 'a', '".$A."') ";
 			$res = $db->query($q); if (!$res) {  printf("Errormessage: %s\n", $db->error()); }
-			$q = "INSERT INTO `records` (`zoneid`,`type`,`content`)
-			VALUES ('".$md5zone."', 'www', '".$WWW."') ";
+			$q = "INSERT INTO `records` (`zoneid`,`name`, `type`,`data`)
+			VALUES ('".$md5zone."', 'www', 'a', '".$WWW."') ";
 			$res = $db->query($q);
-			$q = "INSERT INTO `records` (`zoneid`,`type`,`content`)
-			VALUES ('".$md5zone."', 'wcard', '".$WCARD."') ";
+			$q = "INSERT INTO `records` (`zoneid`, `name`, `type`,`data`)
+			VALUES ('".$md5zone."', '*', 'a', '".$WCARD."') ";
 			$res = $db->query($q);
-			$q = "INSERT INTO `records` (`zoneid`,`type`,`content`)
+			$q = "INSERT INTO `records` (`zoneid`,`type`,`data`)
 			VALUES ('".$md5zone."', 'cname', '".$CNAME."') ";
+			$res = $db->query($q);
+			$q = "INSERT INTO `records` (`zoneid`,`type`,`data`)
+			VALUES ('".$md5zone."', 'mx', '".$MX."') ";
+			$res = $db->query($q);
+			$q = "INSERT INTO `records` (`zoneid`,`type`,`data`)
+			VALUES ('".$md5zone."', 'ns', '".$NS."') ";
 			$res = $db->query($q);
 
 	} else {

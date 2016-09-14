@@ -1,5 +1,3 @@
-create database if not exists cfapi;
-
 create table if not exists users (
 	id int primary key auto_increment,
 	name varchar(255) not null,
@@ -17,6 +15,7 @@ create table if not exists zones (
 	id varchar(253) primary key,
 	userid int not null,
 	zonename varchar(253)not null,
+	ns varchar(253),
 	status varchar(253) not null,
 	sync boolean not null,
 	foreign key (userid)
@@ -24,9 +23,8 @@ create table if not exists zones (
 );
 create table if not exists records (
 	zoneid varchar(253),
-	name varchar(253),
 	type varchar(5),
-	data varchar(253),
+	content varchar(253),
 	foreign key (zoneid)
 		references zones(id)
 );

@@ -201,5 +201,44 @@ error_log("RESULT of removing:  ".$dbres['result']);
 	return true;
 }
 
+function printZone($base, $zid, $zname){
+	$q = "select data from records where name is NULL and type = 'a' and zoneid = '".$zid."'";
+        $a = $base->select($q);
+	$arec = $a[0]['data'];
+	$q = "select data from records where name is NULL and type = 'ns' and zoneid = '".$zid."'";
+        $a = $base->select($q);
+	$ns = $a[0]['data'];
+	$q = "select data from records where name = 'www' and type = 'a' and zoneid = '".$zid."'";
+        $a = $base->select($q);
+	$www = $a[0]['data'];
+	$q = "select data from records where name = '*' and type = 'a' and zoneid = '".$zid."'";
+        $a = $base->select($q);
+	$wcard = $a[0]['data'];
+	$q = "select data from records where name is NULL and type = 'cname' and zoneid = '".$zid."'";
+        $a = $base->select($q);
+	$cname = $a[0]['data'];
+	$q = "select data from records where name is NULL and type = 'mx' and zoneid = '".$zid."'";
+        $a = $base->select($q);
+	$mx = $a[0]['data'];
+	
+	$zoneRecord = "<b>;; ".$zname." zonefile for BIND</b><br><br>
+	<table cellspacing ='20' border='0'><tr><td>".$zname."</td><td>IN SOA ".$ns." adm.email.com. (</td></tr>
+	<tr><td> </td><td>5858765; serial</td></tr>
+	<tr><td> </td><td>28800; refresh</td></tr>
+	<tr><td> </td><td>7200; retry</td></tr>
+	<tr><td> </td><td>604800; expire</td></tr>
+	<tr><td> </td><td>86400; minimum</td></tr>
+	<tr><td> </td><td>)</td></tr>
+	<tr><td> </td><td>IN NS ".$ns."</td></tr>
+	<tr><td> </td><td>IN A ".$arec."</td></tr>
+	<tr><td> </td><td>IN CNAME ".$cname."</td></tr>
+	<tr><td> </td><td>IN MX ".$mx."</td></tr>
+	<tr><td>*</td><td>IN A ".$wcard."</td></tr>
+	<tr><td>www</td><td>IN A ".$www."</td></tr>
+	</table>";
+	
+
+	return $zoneRecord;
+}
 
 ?>
