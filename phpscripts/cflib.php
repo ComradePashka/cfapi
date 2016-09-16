@@ -133,7 +133,7 @@ function syncAllZones2CF($userdbid, $db, $email, $key, $log){
 			$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
 		}
 	}
-	$q = "select id, zonename, ns from zones where userid = ".$userdbid." and zones.zonename not in ( select name from zonestemp )";
+	$q = "select id, zonename from zones where userid = ".$userdbid." and zones.zonename not in ( select name from zonestemp )";
 	$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
 	foreach($dbres as $i => $zone2insert ){
 		$res = $z->create($zone2insert['zonename']);
@@ -150,25 +150,32 @@ function syncAllZones2CF($userdbid, $db, $email, $key, $log){
 		$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
 		$q = " SET `foreign_key_checks` = 1;";
 		$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
-		$q = "SELECT content from records where `type` = 'a' and zoneid = '".$zid."'";
+		$q = "SELECT name, data from records where `type` = 'a' and zoneid = '".$zid."'";
 		$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
 		foreach($dbres as $i => $record2insert ){
-			$res = $d->create($zid, 'A', $zone2insert['zonename'], $record2insert['content'], 120);
+			$res = $d->create($zid, 'A', $record2insert['name'], $record2insert['data'], 120);
 		}
-		$q = "SELECT content from records where `type` = 'www' and zoneid = '".$zid."'";
+		$q = "SELECT name, data from records where `type` = 'cname' and zoneid = '".$zid."'";
 		$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
 		foreach($dbres as $i => $record2insert ){
-			$res = $d->create($zid, 'A', "www.".$zone2insert['zonename'], $record2insert['content'], 120);
+			$res = $d->create($zid, 'CNAME', 'w', $record2insert['data'], 120);
 		}
-		$q = "SELECT content from records where `type` = 'wcard' and zoneid = '".$zid."'";
+		$q = "SELECT name, data from records where `type` = 'mx' and zoneid = '".$zid."'";
 		$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
+		$prio = 10;
 		foreach($dbres as $i => $record2insert ){
-			$res = $d->create($zid, 'A', "*.".$zone2insert['zonename'], $record2insert['content'], 120);
+			$res = $d->create($zid, 'MX', $record2insert['name'], $record2insert['data'], 120, $prio);
+			$prio = $prio +10;
 		}
-		$q = "SELECT content from records where `type` = 'cname' and zoneid = '".$zid."'";
+		$q = "SELECT name, data from records where `type` = 'ns' and zoneid = '".$zid."'";
 		$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
 		foreach($dbres as $i => $record2insert ){
-			$res = $d->create($zid, 'CNAME', $zone2insert['zonename'], $record2insert['content'], 120);
+			$res = $d->create($zid, 'NS', $record2insert['name'], $record2insert['data'], 120);
+		}
+		$q = "SELECT name, data from records where `type` = 'txt' and zoneid = '".$zid."'";
+		$dbres = $db->query($q) or $log->log($db->error()." with query ".$q, '[ERROR]');
+		foreach($dbres as $i => $record2insert ){
+			$res = $d->create($zid, 'TXT', $record2insert['name'], $record2insert['data'], 120);
 		}
 
 	}
@@ -202,36 +209,35 @@ error_log("RESULT of removing:  ".$dbres['result']);
 }
 
 function printZone($base, $zid, $zname){
-	$q = "select data from records where name is NULL and type = 'a' and zoneid = '".$zid."'";
+	$q = "select data from records where name = '@' and type = 'a' and zoneid = '".$zid."'";
         $a = $base->select($q);
 	$arec = $a[0]['data'];
-	$q = "select data from records where name is NULL and type = 'ns' and zoneid = '".$zid."'";
-        $a = $base->select($q);
-	$ns = $a[0]['data'];
+//	$q = "select data from records where name = '@' and type = 'ns' and zoneid = '".$zid."'";
+//	$a = $base->select($q);
+//	$ns = $a[0]['data'];
 	$q = "select data from records where name = 'www' and type = 'a' and zoneid = '".$zid."'";
         $a = $base->select($q);
 	$www = $a[0]['data'];
 	$q = "select data from records where name = '*' and type = 'a' and zoneid = '".$zid."'";
         $a = $base->select($q);
 	$wcard = $a[0]['data'];
-	$q = "select data from records where name is NULL and type = 'cname' and zoneid = '".$zid."'";
-        $a = $base->select($q);
-	$cname = $a[0]['data'];
-	$q = "select data from records where name is NULL and type = 'mx' and zoneid = '".$zid."'";
+//	$q = "select data from records where name is 'w' and type = 'cname' and zoneid = '".$zid."'";
+//      $a = $base->select($q);
+//	$cname = $a[0]['data'];
+	$q = "select data from records where name = '@' and type = 'mx' and zoneid = '".$zid."'";
         $a = $base->select($q);
 	$mx = $a[0]['data'];
 	
 	$zoneRecord = "<b>;; ".$zname." zonefile for BIND</b><br><br>
-	<table cellspacing ='20' border='0'><tr><td>".$zname."</td><td>IN SOA ".$ns." adm.email.com. (</td></tr>
+	<table cellspacing ='20' border='0'><tr><td>".$zname."</td><td>IN SOA ".$zname." adm.email.com. (</td></tr>
 	<tr><td> </td><td>5858765; serial</td></tr>
 	<tr><td> </td><td>28800; refresh</td></tr>
 	<tr><td> </td><td>7200; retry</td></tr>
 	<tr><td> </td><td>604800; expire</td></tr>
 	<tr><td> </td><td>86400; minimum</td></tr>
 	<tr><td> </td><td>)</td></tr>
-	<tr><td> </td><td>IN NS ".$ns."</td></tr>
+	<tr><td> </td><td>IN NS ".$zname."</td></tr>
 	<tr><td> </td><td>IN A ".$arec."</td></tr>
-	<tr><td> </td><td>IN CNAME ".$cname."</td></tr>
 	<tr><td> </td><td>IN MX ".$mx."</td></tr>
 	<tr><td>*</td><td>IN A ".$wcard."</td></tr>
 	<tr><td>www</td><td>IN A ".$www."</td></tr>

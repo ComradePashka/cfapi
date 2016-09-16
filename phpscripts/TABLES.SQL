@@ -29,13 +29,21 @@ create table if not exists records (
 	data varchar(253),
 	foreign key (zoneid)
 		references zones(id)
+	ON DELETE CASCADE ON UPDATE CASCADE
 );
-/*
+
 create table if not exists logs (
-	userid key users.id
-	data
+	userid int not null,
+	data varchar(512),
+        foreign key (userid)
+                 references users(id)
+
 );
+
 create table if not exists audit (
-	userid key users.id
+	userid int not null,
+	data varchar(512),
+        foreign key (userid)
+                 references users(id)
 );
-*/
+

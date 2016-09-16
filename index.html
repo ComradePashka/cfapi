@@ -1,7 +1,7 @@
 
 <?php
+	require_once dirname(__FILE__)."/phpscripts/cflib.php";
 	$cfname = "dimitry.lukin@gmail.com";
-	include dirname(__FILE__)."/phpscripts/cflib.php";	
 	$log = new FileLogger("/var/log/cfapi.log");
 	$db = new Db() or die($db->error()."\n");
 	$rows = $db->select("select cfkey, id from users where cfname = '".$cfname."'") or die($db->error()."\n");
@@ -14,10 +14,10 @@
 		exec("php ".dirname(__FILE__)."/phpscripts/csv2db.php ".$uploadfile);
 	}
 
-        if($_POST['formtype'] == 'deldomain') {
-		
-		deleteZoneFromDB($db, $_POST['DEL_DomainNames'], $log);
-	}
+//        if($_POST['formtype'] == 'deldomain') {
+//		
+//		deleteZoneFromDB($db, $_POST['DEL_DomainNames'], $log);
+//	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -94,8 +94,6 @@
 <?php 
 	$q = "SELECT COUNT(*) AS cn FROM `zones` WHERE `userid` = ".$id; 
 	$r = $db->select($q)  or die($db->error()."\n");
-//	$c = $r->fetch_assoc();
-//	print_r($r)
 	print($r[0]['cn']);
 ?> 
 						</b></h2>
@@ -151,7 +149,7 @@
 
               </div>
             </div>
-            <div class="panel-body pbn">
+<div class="panel-body pbn">
 <table class="table table-striped table-bordered table-hover" id="datatable">
 <thead>
 <tr>
@@ -166,14 +164,12 @@
 </thead
 <tbody>
 <?php
-/*	$cfname = "dimitry.lukin@gmail.com";
-	$quotedCfname = "'".$cfname."'";
-	include dirname(__FILE__)."/phpscripts/Db.php";	
+	$cfname = "dimitry.lukin@gmail.com";
+//	include dirname(__FILE__)."/phpscripts/Db.php";	
 	$db = new Db() or die($db->error()."\n");
-	$rows = $db->select("select cfkey, id from users where cfname = ".$quotedCfname) or die($db->error()."\n");
+	$rows = $db->select("select cfkey, id from users where cfname = '".$cfname."'") or die($db->error()."\n");
 	$key = $rows[0]['cfkey'];
 	$id = $rows[0]['id'];
-*/
 	$rows = $db->select("select id, zonename, sync, status from zones where userid = ".$id) or die($db->error()."\n");
 	foreach($rows as $i => $r) {
 
@@ -189,10 +185,10 @@
 		<div class='modal-dialog modal-lg'> 
 			<div class='modal-content'><br>".printZone($db, $r['id'], $r['zonename'])."</div></div>
 		</div></td>";
-                $q = "select data from records where name is NULL and type = 'ns' and zoneid = '".$r['id']."'";
+                $q = "select data from records where name = '@' and type = 'ns' and zoneid = '".$r['id']."'";
                 $a = $db->select($q);
                 echo "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
-		$q = "select data from records where name is NULL and type = 'a' and zoneid = '".$r['id']."'";
+		$q = "select data from records where name = '@' and type = 'a' and zoneid = '".$r['id']."'";
 		$a = $db->select($q);
 		echo "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
 		$q = "select data from records where name = 'www' and type = 'a' and zoneid = '".$r['id']."'";
@@ -201,7 +197,7 @@
 		$q = "select data from records where name = '*' and type = 'a' and zoneid = '".$r['id']."'";
 		$a = $db->select($q);
 		echo "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
-		$q = "select data from records where name is NULL and type = 'cname' and zoneid = '".$r['id']."'";
+		$q = "select data from records where name = '@' and type = 'cname' and zoneid = '".$r['id']."'";
 		$a = $db->select($q);
 		echo "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
 		echo "<td>";
@@ -250,6 +246,7 @@
 <script type="text/javascript" src="js/main.js"></script> 
 <script type="text/javascript" src="js/ajax.js"></script> 
 <script type="text/javascript" src="js/custom.js"></script> 
+
 <script type="text/javascript">
 jQuery(document).ready(function () {
 	  
@@ -276,10 +273,29 @@ jQuery(document).ready(function () {
   // Init Xeditable Plugin
   $.fn.editable.defaults.mode = 'popup';
   $('.xedit').editable();
-
+  // 
+  $("#deldomainbtn").click(function(){
+     event.preventDefault();
+     var vDelDomains = $("#DEL_DomainNames").val();
+     if(vDelDomains==''){
+       alert("Please enter Domain to delete");
+     }
+     else{
+       $.ajax({ type: "POST",
+		url: "deldomains.php",
+		data: "domains="+vDelDomains,
+		cache: false,
+	        success: function (data) {
+		  $("#deletedomains").modal('hide');
+                  $("#resultModalContent").html(data);
+		  $("#resultModalTitle").text("Delete domains result");
+		  $("#resultModal").modal('show');
+                }
+       });
+     }
+  });
 });
 </script>
-
 
 
 
@@ -287,7 +303,7 @@ jQuery(document).ready(function () {
 <div class="modal fade" id="adddomains" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form class="cmxform" method="post" action="/index.html">
+      <form class="cmxform">
         <div class="modal-header">
           <div class="modal-title"><i class="fa fa-lock pr5"></i>Add Domain Names</div>
         </div>
@@ -312,7 +328,7 @@ jQuery(document).ready(function () {
 <div class="modal fade" id="editdomains" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form class="cmxform" method="post" action="/index.html">
+      <form class="cmxform">
         <div class="modal-header">
           <div class="modal-title"><i class="fa fa-lock pr5"></i>Edit Domain Names</div>
         </div>
@@ -361,21 +377,22 @@ jQuery(document).ready(function () {
 <div class="modal fade" id="deletedomains" role="dialog" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form class="cmxform" method="post" action="/index.html">
+      <form class="cmxform" id="delDomainForm" method = "POST">  
         <div class="modal-header">
           <div class="modal-title"><i class="fa fa-lock pr5"></i>Delete Domain Names</div>
         </div>
         <div class="modal-body">
+	 <div id = "delDomainResult"></div>
           <div class="form-group">
             <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user"></i> </span>
-              <textarea class="form-control" rows="8" name="DEL_DomainNames" placeholder="Enter 1 domain per line"></textarea>
+              <textarea class="form-control" rows="8" id="DEL_DomainNames" name="DEL_DomainNames" placeholder="Enter 1 domain per line"></textarea>
 	      <input type="hidden" name="formtype" value="deldomain" />
             </div>
           </div>
         </div>
         <div class="modal-footer"> <span class="panel-title-sm pull-left" style="padding-top: 7px;"></span>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary bg-grey2">Delete Domains</button>
+          <button type="submit" id="deldomainbtn" class="btn btn-primary bg-grey2">Delete Domains</button>
         </div>
       </form>
     </div>
@@ -412,7 +429,19 @@ jQuery(document).ready(function () {
 <!-- END CSV File Upload Modal  -->
 
 
+<div class="modal fade" id="resultModal" role="dialog" aria-hidden="true">
+ <div class="modal-dialog">
+   <div class="modal-header">
+        <div class="modal-title" id="resultModalTitle"><i class="fa fa-lock pr5"></i>Bulk operation result</div>
+   </div>
 
+   <div class="modal-content">
+      <div class="modal-body">
+	<div id="resultModalContent"></div>
+      </div>
+   </div>
+ </div>
+</div>
 
 </body>
 </html>

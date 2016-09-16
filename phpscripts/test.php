@@ -16,6 +16,6 @@ $client = new Cloudflare\Api('dimitry.lukin@gmail.com', 'e373091e2d730a6473d1b00
 $dns = new Cloudflare\Zone\Dns($client);
 //print $dns->{'result'};
 
-$res = $dns->create('428141799e1ba104c771b55a5c6516fe', 'A', 'name.com', '127.0.0.1', 120);
-//print $res->{'result'};
+$res = $dns->create('5eca462bed05ba6192ab1b33568621c2', 'CNAME', '@', 'cname.name.com');
+print_r( $res );
 ?>

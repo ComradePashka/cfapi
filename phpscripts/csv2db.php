@@ -61,8 +61,8 @@ foreach($data as $i => $record){
 		$q = "INSERT INTO `zones` (`id`, `userid`, `zonename`, `sync`) 
 			VALUES ('".$md5zone."', ".$id.", '".$record[0]."', false )";
 			$res = $db->query($q); if (!$res) {  printf("Errormessage: %s\n", $db->error()); }
-			$q = "INSERT INTO `records` (`zoneid`,`type`,`data`)
-			VALUES ('".$md5zone."', 'a', '".$A."') ";
+			$q = "INSERT INTO `records` (`zoneid`,`name`,`type`,`data`)
+			VALUES ('".$md5zone."', '@', 'a', '".$A."') ";
 			$res = $db->query($q); if (!$res) {  printf("Errormessage: %s\n", $db->error()); }
 			$q = "INSERT INTO `records` (`zoneid`,`name`, `type`,`data`)
 			VALUES ('".$md5zone."', 'www', 'a', '".$WWW."') ";
@@ -70,15 +70,15 @@ foreach($data as $i => $record){
 			$q = "INSERT INTO `records` (`zoneid`, `name`, `type`,`data`)
 			VALUES ('".$md5zone."', '*', 'a', '".$WCARD."') ";
 			$res = $db->query($q);
-			$q = "INSERT INTO `records` (`zoneid`,`type`,`data`)
-			VALUES ('".$md5zone."', 'cname', '".$CNAME."') ";
+			$q = "INSERT INTO `records` (`zoneid`,`name`, `type`,`data`)
+			VALUES ('".$md5zone."', '@', 'cname', '".$CNAME."') ";
 			$res = $db->query($q);
-			$q = "INSERT INTO `records` (`zoneid`,`type`,`data`)
-			VALUES ('".$md5zone."', 'mx', '".$MX."') ";
+			$q = "INSERT INTO `records` (`zoneid`,`name`,`type`,`data`)
+			VALUES ('".$md5zone."', '@', 'mx', '".$MX."') ";
 			$res = $db->query($q);
-			$q = "INSERT INTO `records` (`zoneid`,`type`,`data`)
-			VALUES ('".$md5zone."', 'ns', '".$NS."') ";
-			$res = $db->query($q);
+//			$q = "INSERT INTO `records` (`zoneid`,`type`,`data`)
+//			VALUES ('".$md5zone."', 'ns', '".$NS."') ";
+//			$res = $db->query($q);
 
 	} else {
 //		$log->log("There is duplicate zone name ".$record[0],'[WARNING]');
