@@ -247,4 +247,50 @@ function printZone($base, $zid, $zname){
 	return $zoneRecord;
 }
 
+function getUserData($cfname){
+	$a = array();
+	$db = new Db() or die($db->error()."\n");
+	$rows = $db->select("select cfkey, id, default_ns, default_a, default_www, default_mx, default_wcard, default_cname 
+	                                from users where cfname = '".$cfname."'") or die($db->error()."\n");
+
+	$a['key'] = $rows[0]['cfkey'];
+	$a['id'] = $rows[0]['id'];
+	$a['defaultNS'] = $rows[0]['default_ns'];
+	$a['defaultA'] = $rows[0]['default_a'];
+	$a['defaultWWW'] = $rows[0]['default_www'];
+	$a['defaultMX'] = $rows[0]['default_mx'];
+	$a['defaultWCARD'] = $rows[0]['default_wcard'];
+	$a['defaultCNAME'] = $rows[0]['default_cname'];
+
+	return $a;
+
+}
+
+function writeDefaults2zone($db, $z, $id, $a){
+                $md5zone = md5($z);
+                $q = "INSERT INTO `zones` (`id`, `userid`, `zonename`, `sync`) 
+                        VALUES ('".$md5zone."', ".$id.", '".$z."', false )";
+                        $res = $db->query($q); if (!$res) {  printf("Errormessage: %s\n", $db->error()); }
+                        $q = "INSERT INTO `records` (`zoneid`,`name`,`type`,`data`)
+                        VALUES ('".$md5zone."', '@', 'a', '".$a['A']."') ";
+                        $res = $db->query($q); if (!$res) {  printf("Errormessage: %s\n", $db->error()); }
+                        $q = "INSERT INTO `records` (`zoneid`,`name`, `type`,`data`)
+                        VALUES ('".$md5zone."', 'www', 'a', '".$a['WWW']."') ";
+                        $res = $db->query($q);
+                        $q = "INSERT INTO `records` (`zoneid`, `name`, `type`,`data`)
+                        VALUES ('".$md5zone."', '*', 'a', '".$a['WCARD']."') ";
+                        $res = $db->query($q);
+                        $q = "INSERT INTO `records` (`zoneid`,`name`, `type`,`data`)
+                        VALUES ('".$md5zone."', '@', 'cname', '".$a['CNAME']."') ";
+                        $res = $db->query($q);
+                        $q = "INSERT INTO `records` (`zoneid`,`name`,`type`,`data`)
+                        VALUES ('".$md5zone."', '@', 'mx', '".$a['MX']."') ";
+                        $res = $db->query($q);
+//                      $q = "INSERT INTO `records` (`zoneid`,`type`,`data`)
+//                      VALUES ('".$md5zone."', 'ns', '".$a['NS']."') ";
+//                      $res = $db->query($q);
+
+}
 ?>
+
+

@@ -20,8 +20,10 @@ include dirname(__FILE__)."/cflib.php";
 
 $log = new FileLogger("/var/log/cfapi.log");
 
+$userArr = array();
+$userArr = getUserData($cfname);
 
-$db = new Db() or die($db->error()."\n");
+/*$db = new Db() or die($db->error()."\n");
 $rows = $db->select("select cfkey, id, default_ns, default_a, default_www, default_mx, default_wcard, default_cname 
 				from users where cfname = '".$cfname."'") or die($db->error()."\n");
 
@@ -33,6 +35,7 @@ $defaultWWW = $rows[0]['default_www'];
 $defaultMX = $rows[0]['default_mx'];
 $defaultWCARD = $rows[0]['default_wcard'];
 $defaultCNAME = $rows[0]['default_cname'];
+*/
 
 $handle = fopen($fname, "r");
 if ($handle) {
@@ -50,12 +53,16 @@ foreach($data as $i => $record){
 	$q = "SELECT `zonename` from `zones` where `zonename` = '".$record[0]."'";
 	$res = $db->query($q);
 	if($res->num_rows == 0 ){
-	        if (isset($record[1]) and $record[1] != "" ) { $NS = $record[1]; } else { $NS = $defaultNS; };
-	        if (isset($record[2]) and $record[2] != "" ) { $A = $record[2]; } else { $A = $defaultA; };
-	        if (isset($record[3]) and $record[3] != "" ) { $WWW = $record[3]; } else { $WWW = $defaultWWW; };
-	        if (isset($record[4]) and $record[4] != "" ) { $WCARD = $record[4]; } else { $WCARD = $defaultWCARD; };
-	        if (isset($record[5]) and $record[5] != "" ) { $CNAME = $record[5]; } else { $CNAME = $defaultCNAME; };
+	        if (isset($record[1]) and $record[1] != "" ) { $NS = $record[1]; } else { $NS = $userArr['defaultNS']; };
+	        if (isset($record[2]) and $record[2] != "" ) { $A = $record[2]; } else { $A = $userArr['defaultA']; };
+	        if (isset($record[3]) and $record[3] != "" ) { $WWW = $record[3]; } else { $WWW = $userArr['defaultWWW']; };
+	        if (isset($record[4]) and $record[4] != "" ) { $WCARD = $record[4]; } else { $WCARD = $userArr['defaultWCARD']; };
+	        if (isset($record[5]) and $record[5] != "" ) { $CNAME = $record[5]; } else { $CNAME = $userArr['defaultCNAME']; };
 		$MX = $defaultMX;
+
+		writeDefaults2zone($record[0], $userArr['id'], 
+			array('A' = $A, 'NS' = $NS, 'WWW' = $WWW, 'WCARD' = $WCARD, 'CNAME' = $CNAME));
+/*
 
 		$md5zone = md5($record[0]);
 		$q = "INSERT INTO `zones` (`id`, `userid`, `zonename`, `sync`) 
@@ -79,7 +86,7 @@ foreach($data as $i => $record){
 //			$q = "INSERT INTO `records` (`zoneid`,`type`,`data`)
 //			VALUES ('".$md5zone."', 'ns', '".$NS."') ";
 //			$res = $db->query($q);
-
+*/
 	} else {
 //		$log->log("There is duplicate zone name ".$record[0],'[WARNING]');
 		print("There is duplicate zone name ".$record[0]."\n");

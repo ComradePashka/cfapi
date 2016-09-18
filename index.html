@@ -14,10 +14,6 @@
 		exec("php ".dirname(__FILE__)."/phpscripts/csv2db.php ".$uploadfile);
 	}
 
-//        if($_POST['formtype'] == 'deldomain') {
-//		
-//		deleteZoneFromDB($db, $_POST['DEL_DomainNames'], $log);
-//	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -294,6 +290,26 @@ jQuery(document).ready(function () {
        });
      }
   });
+  $("#adddomainbtn").click(function(){
+     event.preventDefault();
+     var vAddDomains = $("#ADD_DomainNames").val();
+     if(vAddDomains==''){
+       alert("Please enter Domain to add");
+     }
+     else{
+       $.ajax({ type: "POST",
+		url: "adddomains.php",
+		data: "domains="+vAddDomains,
+		cache: false,
+	        success: function (data) {
+		  $("#adddomains").modal('hide');
+                  $("#resultModalContent").html(data);
+		  $("#resultModalTitle").text("Add domains result");
+		  $("#resultModal").modal('show');
+                }
+       });
+     }
+  });
 });
 </script>
 
@@ -310,13 +326,13 @@ jQuery(document).ready(function () {
         <div class="modal-body">
           <div class="form-group">
             <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user"></i> </span>
-              <textarea class="form-control" rows="8" name="ADD_DomainNames" placeholder="Enter 1 domain per line"></textarea>
+              <textarea class="form-control" rows="8" id="ADD_DomainNames" name="ADD_DomainNames" placeholder="Enter 1 domain per line"></textarea>
             </div>
           </div>
         </div>
         <div class="modal-footer"> <span class="panel-title-sm pull-left" style="padding-top: 7px;"></span>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary bg-grey2">Add Domains</button>
+          <button type="submit" id="adddomainbtn" class="btn btn-primary bg-grey2">Add Domains</button>
         </div>
       </form>
     </div>
@@ -382,7 +398,6 @@ jQuery(document).ready(function () {
           <div class="modal-title"><i class="fa fa-lock pr5"></i>Delete Domain Names</div>
         </div>
         <div class="modal-body">
-	 <div id = "delDomainResult"></div>
           <div class="form-group">
             <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user"></i> </span>
               <textarea class="form-control" rows="8" id="DEL_DomainNames" name="DEL_DomainNames" placeholder="Enter 1 domain per line"></textarea>
