@@ -209,25 +209,56 @@ error_log("RESULT of removing:  ".$dbres['result']);
 }
 
 function printZone($base, $zid, $zname){
+	$arec="";	
 	$q = "select data from records where name = '@' and type = 'a' and zoneid = '".$zid."'";
-        $a = $base->select($q);
-	$arec = $a[0]['data'];
+        if($a = $base->select($q)){ $arec = ($a[0]['data']!="")?"<tr><td></td><td>IN A ".$a[0]['data']."</td></tr>":""; }
 //	$q = "select data from records where name = '@' and type = 'ns' and zoneid = '".$zid."'";
 //	$a = $base->select($q);
 //	$ns = $a[0]['data'];
+	$www="";
 	$q = "select data from records where name = 'www' and type = 'a' and zoneid = '".$zid."'";
-        $a = $base->select($q);
-	$www = $a[0]['data'];
+        if($a = $base->select($q)){ $www = ($a[0]['data']!="")?"<tr><td>www</td><td>IN A ".$a[0]['data']."</td></tr>":""; }
+	$wcard = "";
 	$q = "select data from records where name = '*' and type = 'a' and zoneid = '".$zid."'";
-        $a = $base->select($q);
-	$wcard = $a[0]['data'];
+	if($a = $base->select($q)){ $wcard = ($a[0]['data']!="")?"<tr><td>*</td><td>IN A ".$a[0]['data']."</td></tr>":""; }
+	$arecs = "";
+	$q = "select name, data from records where not name = '*' 
+						and not name = '@' 
+						and not name = 'www' 
+						and type = 'a' and zoneid = '".$zid."'";
+        if ($a = $base->query($q)){
+	   	while ($d = $a->fetch_array()) {
+			$arecs =  $arecs."<tr><td>".$d['name']."</td> <td>IN A ".$d['data']."</td></tr>";
+		}
+	}
+	$mxrecs = "";
+	$q = "select name, data from records where  not name = '@' 
+						and type = 'mx' and zoneid = '".$zid."'";
+        if ($a = $base->query($q)){
+	   	while ($d = $a->fetch_array()) {
+			$mxrecs =  $mxrecs."<tr><td>".$d['name']."</td> <td>IN MX ".$d['data']."</td></tr>";
+		}
+	}
+	$cnamerecs = "";
+	$q = "select name, data from records where  type = 'cname' and zoneid = '".$zid."'";
+        if ($a = $base->query($q)){
+	   	while ($d = $a->fetch_array()) {
+			$cnamerecs =  $cnamerecs."<tr><td>".$d['name']."</td> <td>IN CNAME ".$d['data']."</td></tr>";
+		}
+	}
+	$txtrecs = "";
+	$q = "select name, data from records where  type = 'txt' and zoneid = '".$zid."'";
+        if ($a = $base->query($q)){
+	   	while ($d = $a->fetch_array()) {
+			$txtrecs =  $txtrecs."<tr><td>".$d['name']."</td> <td>IN TXT ".$d['data']."</td></tr>";
+		}
+	}
 //	$q = "select data from records where name is 'w' and type = 'cname' and zoneid = '".$zid."'";
 //      $a = $base->select($q);
 //	$cname = $a[0]['data'];
+	$mx = "";
 	$q = "select data from records where name = '@' and type = 'mx' and zoneid = '".$zid."'";
-        $a = $base->select($q);
-	$mx = $a[0]['data'];
-	
+	if($a = $base->select($q)){ $mx = ($a[0]['data']!="")?"<tr><td></td><td>IN MX ".$a[0]['data']."</td></tr>":""; }
 	$zoneRecord = "<b>;; ".$zname." zonefile for BIND</b><br><br>
 	<table cellspacing ='20' border='0'><tr><td>".$zname."</td><td>IN SOA ".$zname." adm.email.com. (</td></tr>
 	<tr><td> </td><td>5858765; serial</td></tr>
@@ -236,12 +267,8 @@ function printZone($base, $zid, $zname){
 	<tr><td> </td><td>604800; expire</td></tr>
 	<tr><td> </td><td>86400; minimum</td></tr>
 	<tr><td> </td><td>)</td></tr>
-	<tr><td> </td><td>IN NS ".$zname."</td></tr>
-	<tr><td> </td><td>IN A ".$arec."</td></tr>
-	<tr><td> </td><td>IN MX ".$mx."</td></tr>
-	<tr><td>*</td><td>IN A ".$wcard."</td></tr>
-	<tr><td>www</td><td>IN A ".$www."</td></tr>
-	</table>";
+	<tr><td> </td><td>IN NS ".$zname."</td></tr>"
+	.$arec.$mx.$wcard.$www.$arecs.$cnamerecs.$mxrecs.$txtrecs."</table>";	
 	
 
 	return $zoneRecord;

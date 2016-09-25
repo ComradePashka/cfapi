@@ -1,4 +1,3 @@
-
 <?php
 	require_once dirname(__FILE__)."/phpscripts/cflib.php";
 	$cfname = "dimitry.lukin@gmail.com";
@@ -310,9 +309,40 @@ jQuery(document).ready(function () {
        });
      }
   });
+  $("#editdomainbtn").click(function(){
+     event.preventDefault();
+     var dnsHost = $("#EDIT_dnshost").val();
+     var dnsValue = $("#EDIT_dnsvalue").val();
+     var vEditDomains = $("#EDIT_DomainNames").val();
+     var recType = $("#selectTypeBtn").text();
+     if(vEditDomains==''){
+       alert("Please enter Domains to edit");
+     }
+     else{
+       $.ajax({ type: "POST",
+		url: "editdomains.php",
+		data: { domains: vEditDomains, recordType: recType, dnshost: dnsHost, dnsvalue: dnsValue },
+		cache: false,
+	        success: function (data) {
+		  $("#editdomains").modal('hide');
+                  $("#resultModalContent").html(data);
+		  $("#resultModalTitle").text("Edit domains result");
+		  $("#resultModal").modal('show');
+                }
+       });
+     }
+  });
 });
 </script>
-
+<script> 
+$(function(){
+    $(".radio").click(function(){
+      $("#selectTypeBtn").text($(this).text());
+//      $("#selectTypeBtn").val($(this).val());
+//	alert($(this).text());
+   });
+});
+</script>
 
 
 <!-- Start Add Domains Modal -->
@@ -351,37 +381,37 @@ jQuery(document).ready(function () {
         <div class="modal-body">
           <div class="form-group">
             <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user"></i> </span>
-              <textarea class="form-control" rows="8" name="ADD_DomainNames" placeholder="Enter 1 domain per line"></textarea>
+              <textarea class="form-control" rows="8" id="EDIT_DomainNames" name="EDIT_DomainNames" placeholder="Enter 1 domain per line"></textarea>
             </div>
             <div class="form-group">
             <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user"></i> </span>
 <br />
               <div class="btn-group">
-              <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="RecordType">DNS Record Type <b class="caret"></b></button>
-              <ul class="multiselect-container dropdown-menu"><div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span><input class="form-control multiselect-search" type="text" placeholder="Search"></div>
-                <li class="active"><a href="javascript:void(0);"><label class="radio"><input type="radio" name="multiselect" value="0"> A Record</label></a></li>
-                <li><a href="javascript:void(0);"><label class="radio"><input type="radio" name="multiselect" value="1"> Cname</label></a></li>
-                <li><a href="javascript:void(0);"><label class="radio"><input type="radio" name="multiselect" value="1"> MX Record</label></a></li>
-                <li><a href="javascript:void(0);"><label class="radio"><input type="radio" name="multiselect" value="1"> Txt Record</label></a></li>
+              <button type="button" id="selectTypeBtn" class="multiselect dropdown-toggle btn btn-default" value= "7" data-toggle="dropdown" title="RecordType">DNS Record Type <b class="caret"></b></button>
+              <ul class="multiselect dropdown-menu" id="recordTypeList">
+                <li class = "active"><label class="radio"><a href="javascript:void()"><input type="radio"  value="0"> A Record</a></label></li>
+                <li><label class="radio"><a href="javascript:void()"><input type="radio"  value="1"> Cname</a></label></li>
+                <li><label class="radio"><a href="javascript:void()"><input type="radio"  value="2"> MX Record</a></label></li>
+                <li><label class="radio"><a href="javascript:void()"><input type="radio"  value="3"> Txt Record</a></label></li>
                 </ul>
-                </div>
+               </div>
             </div>
           </div>
             <div class="form-group">
               <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user"></i> </span>
-                <input type="dnsrecordvalue" class="form-control" placeholder="Host" name="dnshost" />
+                <input type="dnsrecordvalue" class="form-control" placeholder="Host" id="EDIT_dnshost" name="dnshost" />
               </div>
             </div>
             <div class="form-group">
               <div class="input-group"> <span class="input-group-addon"><i class="fa fa-user"></i> </span>
-                <input type="dnsrecordvalue" class="form-control" placeholder="Points To" name="dnsvalue" />
+                <input type="dnsrecordvalue" class="form-control" placeholder="Points To" id="EDIT_dnsvalue" name="dnsvalue" />
               </div>
             </div>
           </div>
         </div>
         <div class="modal-footer"> <span class="panel-title-sm pull-left" style="padding-top: 7px;"></span>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary bg-grey2">Edit Domains</button>
+          <button type="submit" id="editdomainbtn" class="btn btn-primary bg-grey2">Edit Domains</button>
         </div>
       </form>
     </div>

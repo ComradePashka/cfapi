@@ -29,7 +29,8 @@ create table if not exists records (
 	data varchar(253),
 	foreign key (zoneid)
 		references zones(id)
-	ON DELETE CASCADE ON UPDATE CASCADE
+	ON DELETE CASCADE ON UPDATE CASCADE,
+	key basekey (zoneid, name, type)
 );
 
 create table if not exists logs (
