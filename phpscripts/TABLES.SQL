@@ -34,10 +34,12 @@ create table if not exists records (
 );
 
 create table if not exists logs (
+	ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	source varchar(512) not null,
 	userid int not null,
-	data varchar(512),
-        foreign key (userid)
-                 references users(id)
+	action varchar(512),
+	responce varchar(512),
+	level varchar(20) not null
 
 );
 

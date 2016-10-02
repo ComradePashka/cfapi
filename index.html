@@ -1,7 +1,6 @@
 <?php
 	require_once dirname(__FILE__)."/phpscripts/cflib.php";
 	$cfname = "dimitry.lukin@gmail.com";
-	$log = new FileLogger("/var/log/cfapi.log");
 	$db = new Db() or die($db->error()."\n");
 	$rows = $db->select("select cfkey, id from users where cfname = '".$cfname."'") or die($db->error()."\n");
 	$key = $rows[0]['cfkey'];

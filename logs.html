@@ -1,4 +1,11 @@
+<?php
+         require_once dirname(__FILE__)."/phpscripts/cflib.php";
+         $cfname = "dimitry.lukin@gmail.com";
+         $db = new Db() or die($db->error()."\n");
+?>
+
 <!DOCTYPE html>
+
 <html>
 <head>
 <!-- Meta, title, CSS, favicons, etc. -->
@@ -69,7 +76,12 @@
           <div class="panel panel-overflow mb10">
             <div class="panel-body pn pl20">
               <div class="icon-bg"><i class="fa fa-bar-chart-o text-blue"></i></div>
-              <h2 class="mt15 lh15 text-grey2"><b>50</b></h2>
+<?php
+	$q = "select count(*) as c from logs;";
+	$r = $db->select($q)  or die($db->error()."\n");
+
+         echo '     <h2 class="mt15 lh15 text-grey2"><b>'.$r[0]['c'].'</b></h2>';
+?>
               <h5 class="text-muted">Logs</h5>
             </div>
           </div>
@@ -78,7 +90,12 @@
           <div class="panel panel-overflow mb10">
             <div class="panel-body pn pl20">
               <div class="icon-bg"><i class="fa fa-bar-chart-o text-blue"></i></div>
-              <h2 class="mt15 lh15 text-teal2"><b>2</b></h2>
+<?php
+	$q = "select count(*) as c from logs where unix_timestamp(ts) > unix_timestamp(now()-1800) and level = '[ERROR]';;";
+	$r = $db->select($q)  or die($db->error()."\n");
+
+         echo '     <h2 class="mt15 lh15 text-blue2"><b>'.$r[0]['c'].'</b></h2>';
+?>
               <h5 class="text-muted">Failures Past 30</h5>
             </div>
           </div>
@@ -87,7 +104,12 @@
           <div class="panel panel-overflow mb10">
             <div class="panel-body pn pl20">
               <div class="icon-bg"><i class="fa fa-bar-chart-o text-blue"></i></div>
-              <h2 class="mt15 lh15 text-blue2"><b>4</b></h2>
+<?php
+	$q = "select count(*) as c from logs where unix_timestamp(ts) > unix_timestamp(now()-900) and level = '[ERROR]';;";
+	$r = $db->select($q)  or die($db->error()."\n");
+
+         echo '     <h2 class="mt15 lh15 text-blue2"><b>'.$r[0]['c'].'</b></h2>';
+?>
               <h5 class="text-muted">Failures Past 15</h5>
             </div>
           </div>
@@ -96,7 +118,12 @@
           <div class="panel panel-overflow mb10">
             <div class="panel-body pn pl20">
               <div class="icon-bg"><i class="fa fa-bar-chart-o text-blue"></i></div>
-              <h2 class="mt15 lh15 text-blue2"><b>1</b></h2>
+<?php
+	$q = "select count(*) as c from logs where unix_timestamp(ts) > unix_timestamp(now()-86400) and level = '[ERROR]';;";
+	$r = $db->select($q)  or die($db->error()."\n");
+
+         echo '     <h2 class="mt15 lh15 text-blue2"><b>'.$r[0]['c'].'</b></h2>';
+?>
               <h5 class="text-muted">Failures Today</h5>
             </div>
           </div>
@@ -114,312 +141,25 @@
 <thead>
 <tr>
 <th>Time Stamp</th>
+<th>Source</th>
 <th>Attempted Action</th>
 <th>Response</th>
-<th>Submit</th>
+<th>Level</th>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>2016-07-14 20:25:25</td>
-<td>Change Browser Check setting</td>
-<td>131idc Browser Check Off Success</td>
-<td>Submit Again</td>
-</tr>
-<tr>
-<td>2016-07-14 20:25:15</td>
-<td>Change Security Level setting</td>
-<td>131idc Change Security Level setting HIGH Success</td>
-<td>Submit Again</td>
-</tr>
-<tr>
-<td>2016-07-14 20:25:10</td>
-<td>Change Security Level setting</td>
-<td>131idc Change Security Level setting HIGH Success</td>
-<td>Submit Again</td>
-</tr>
-<tr>
-<td>Row 4, Cell 1</td>
-<td>Row 4, Cell 2</td>
-<td>Row 4, Cell 3</td>
-<td>Row 4, Cell 4</td>
-</tr>
-<tr>
-<td>Row 5, Cell 1</td>
-<td>Row 5, Cell 2</td>
-<td>Row 5, Cell 3</td>
-<td>Row 5, Cell 4</td>
-</tr>
-<tr>
-<td>Row 6, Cell 1</td>
-<td>Row 6, Cell 2</td>
-<td>Row 6, Cell 3</td>
-<td>Row 6, Cell 4</td>
-</tr>
-<tr>
-<td>Row 7, Cell 1</td>
-<td>Row 7, Cell 2</td>
-<td>Row 7, Cell 3</td>
-<td>Row 7, Cell 4</td>
-</tr>
-<tr>
-<td>Row 8, Cell 1</td>
-<td>Row 8, Cell 2</td>
-<td>Row 8, Cell 3</td>
-<td>Row 8, Cell 4</td>
-</tr>
-<tr>
-<td>Row 9, Cell 1</td>
-<td>Row 9, Cell 2</td>
-<td>Row 9, Cell 3</td>
-<td>Row 9, Cell 4</td>
-</tr>
-<tr>
-<td>Row 10, Cell 1</td>
-<td>Row 10, Cell 2</td>
-<td>Row 10, Cell 3</td>
-<td>Row 10, Cell 4</td>
-</tr>
-<tr>
-<td>Row 11, Cell 1</td>
-<td>Row 11, Cell 2</td>
-<td>Row 11, Cell 3</td>
-<td>Row 11, Cell 4</td>
-</tr>
-<tr>
-<td>Row 12, Cell 1</td>
-<td>Row 12, Cell 2</td>
-<td>Row 12, Cell 3</td>
-<td>Row 12, Cell 4</td>
-</tr>
-<tr>
-<td>Row 13, Cell 1</td>
-<td>Row 13, Cell 2</td>
-<td>Row 13, Cell 3</td>
-<td>Row 13, Cell 4</td>
-</tr>
-<tr>
-<td>Row 14, Cell 1</td>
-<td>Row 14, Cell 2</td>
-<td>Row 14, Cell 3</td>
-<td>Row 14, Cell 4</td>
-</tr>
-<tr>
-<td>Row 15, Cell 1</td>
-<td>Row 15, Cell 2</td>
-<td>Row 15, Cell 3</td>
-<td>Row 15, Cell 4</td>
-</tr>
-<tr>
-<td>Row 16, Cell 1</td>
-<td>Row 16, Cell 2</td>
-<td>Row 16, Cell 3</td>
-<td>Row 16, Cell 4</td>
-</tr>
-<tr>
-<td>Row 17, Cell 1</td>
-<td>Row 17, Cell 2</td>
-<td>Row 17, Cell 3</td>
-<td>Row 17, Cell 4</td>
-</tr>
-<tr>
-<td>Row 18, Cell 1</td>
-<td>Row 18, Cell 2</td>
-<td>Row 18, Cell 3</td>
-<td>Row 18, Cell 4</td>
-</tr>
-<tr>
-<td>Row 19, Cell 1</td>
-<td>Row 19, Cell 2</td>
-<td>Row 19, Cell 3</td>
-<td>Row 19, Cell 4</td>
-</tr>
-<tr>
-<td>Row 20, Cell 1</td>
-<td>Row 20, Cell 2</td>
-<td>Row 20, Cell 3</td>
-<td>Row 20, Cell 4</td>
-</tr>
-<tr>
-<td>Row 21, Cell 1</td>
-<td>Row 21, Cell 2</td>
-<td>Row 21, Cell 3</td>
-<td>Row 21, Cell 4</td>
-</tr>
-<tr>
-<td>Row 22, Cell 1</td>
-<td>Row 22, Cell 2</td>
-<td>Row 22, Cell 3</td>
-<td>Row 22, Cell 4</td>
-</tr>
-<tr>
-<td>Row 23, Cell 1</td>
-<td>Row 23, Cell 2</td>
-<td>Row 23, Cell 3</td>
-<td>Row 23, Cell 4</td>
-</tr>
-<tr>
-<td>Row 24, Cell 1</td>
-<td>Row 24, Cell 2</td>
-<td>Row 24, Cell 3</td>
-<td>Row 24, Cell 4</td>
-</tr>
-<tr>
-<td>Row 25, Cell 1</td>
-<td>Row 25, Cell 2</td>
-<td>Row 25, Cell 3</td>
-<td>Row 25, Cell 4</td>
-</tr>
-<tr>
-<td>Row 26, Cell 1</td>
-<td>Row 26, Cell 2</td>
-<td>Row 26, Cell 3</td>
-<td>Row 26, Cell 4</td>
-</tr>
-<tr>
-<td>Row 27, Cell 1</td>
-<td>Row 27, Cell 2</td>
-<td>Row 27, Cell 3</td>
-<td>Row 27, Cell 4</td>
-</tr>
-<tr>
-<td>Row 28, Cell 1</td>
-<td>Row 28, Cell 2</td>
-<td>Row 28, Cell 3</td>
-<td>Row 28, Cell 4</td>
-</tr>
-<tr>
-<td>Row 29, Cell 1</td>
-<td>Row 29, Cell 2</td>
-<td>Row 29, Cell 3</td>
-<td>Row 29, Cell 4</td>
-</tr>
-<tr>
-<td>Row 30, Cell 1</td>
-<td>Row 30, Cell 2</td>
-<td>Row 30, Cell 3</td>
-<td>Row 30, Cell 4</td>
-</tr>
-<tr>
-<td>Row 31, Cell 1</td>
-<td>Row 31, Cell 2</td>
-<td>Row 31, Cell 3</td>
-<td>Row 31, Cell 4</td>
-</tr>
-<tr>
-<td>Row 32, Cell 1</td>
-<td>Row 32, Cell 2</td>
-<td>Row 32, Cell 3</td>
-<td>Row 32, Cell 4</td>
-</tr>
-<tr>
-<td>Row 33, Cell 1</td>
-<td>Row 33, Cell 2</td>
-<td>Row 33, Cell 3</td>
-<td>Row 33, Cell 4</td>
-</tr>
-<tr>
-<td>Row 34, Cell 1</td>
-<td>Row 34, Cell 2</td>
-<td>Row 34, Cell 3</td>
-<td>Row 34, Cell 4</td>
-</tr>
-<tr>
-<td>Row 35, Cell 1</td>
-<td>Row 35, Cell 2</td>
-<td>Row 35, Cell 3</td>
-<td>Row 35, Cell 4</td>
-</tr>
-<tr>
-<td>Row 36, Cell 1</td>
-<td>Row 36, Cell 2</td>
-<td>Row 36, Cell 3</td>
-<td>Row 36, Cell 4</td>
-</tr>
-<tr>
-<td>Row 37, Cell 1</td>
-<td>Row 37, Cell 2</td>
-<td>Row 37, Cell 3</td>
-<td>Row 37, Cell 4</td>
-</tr>
-<tr>
-<td>Row 38, Cell 1</td>
-<td>Row 38, Cell 2</td>
-<td>Row 38, Cell 3</td>
-<td>Row 38, Cell 4</td>
-</tr>
-<tr>
-<td>Row 39, Cell 1</td>
-<td>Row 39, Cell 2</td>
-<td>Row 39, Cell 3</td>
-<td>Row 39, Cell 4</td>
-</tr>
-<tr>
-<td>Row 40, Cell 1</td>
-<td>Row 40, Cell 2</td>
-<td>Row 40, Cell 3</td>
-<td>Row 40, Cell 4</td>
-</tr>
-<tr>
-<td>Row 41, Cell 1</td>
-<td>Row 41, Cell 2</td>
-<td>Row 41, Cell 3</td>
-<td>Row 41, Cell 4</td>
-</tr>
-<tr>
-<td>Row 42, Cell 1</td>
-<td>Row 42, Cell 2</td>
-<td>Row 42, Cell 3</td>
-<td>Row 42, Cell 4</td>
-</tr>
-<tr>
-<td>Row 43, Cell 1</td>
-<td>Row 43, Cell 2</td>
-<td>Row 43, Cell 3</td>
-<td>Row 43, Cell 4</td>
-</tr>
-<tr>
-<td>Row 44, Cell 1</td>
-<td>Row 44, Cell 2</td>
-<td>Row 44, Cell 3</td>
-<td>Row 44, Cell 4</td>
-</tr>
-<tr>
-<td>Row 45, Cell 1</td>
-<td>Row 45, Cell 2</td>
-<td>Row 45, Cell 3</td>
-<td>Row 45, Cell 4</td>
-</tr>
-<tr>
-<td>Row 46, Cell 1</td>
-<td>Row 46, Cell 2</td>
-<td>Row 46, Cell 3</td>
-<td>Row 46, Cell 4</td>
-</tr>
-<tr>
-<td>Row 47, Cell 1</td>
-<td>Row 47, Cell 2</td>
-<td>Row 47, Cell 3</td>
-<td>Row 47, Cell 4</td>
-</tr>
-<tr>
-<td>Row 48, Cell 1</td>
-<td>Row 48, Cell 2</td>
-<td>Row 48, Cell 3</td>
-<td>Row 48, Cell 4</td>
-</tr>
-<tr>
-<td>Row 49, Cell 1</td>
-<td>Row 49, Cell 2</td>
-<td>Row 49, Cell 3</td>
-<td>Row 49, Cell 4</td>
-</tr>
-<tr>
-<td>Row 50, Cell 1</td>
-<td>Row 50, Cell 2</td>
-<td>Row 50, Cell 3</td>
-<td>Row 50, Cell 4</td>
-</tr>
+<?php
+        $rows = $db->select("select cfkey, id from users where cfname = '".$cfname."'") or die($db->error()."\n");
+        $key = $rows[0]['cfkey'];
+        $id = $rows[0]['id'];
+        $rows = $db->select("select ts, source, action, responce, level from logs limit 1250") or die($db->error()."\n");
+        foreach($rows as $i => $r) {
+
+                echo "<tr><td>".$r['ts']."</td><td>".$r['source']."</td>
+		<td>".$r['action']."</td><td>".$r['responce']."</td><td>".$r['level']."</td></tr>";
+	}
+
+?>
 </tbody>
 </table>
             </div>

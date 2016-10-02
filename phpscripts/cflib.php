@@ -25,6 +25,14 @@ function connect2CF($client_id, $client_key) {
 	return array($zone, $dns);
 }
 
+// Logging
+function logSQL($source, $action, $result, $level){
+	$db = new Db() or die($db->error()."\n");
+	$q = "insert into logs (`source`, `action`, `responce`, `level`) 
+		values ('".$source."', '".$action."', '".$result."', '".$level."')";
+	$res = $db->query($q) or die("Error in ".$q." request: ".$db->error()."\n");
+}
+
 // Get all zone names for client and place in array: id => array [ zonename => zonename, ns => nses, status
 function getAllZones($client_id, $client_key) {
 	
@@ -316,6 +324,7 @@ function writeDefaults2zone($db, $z, $id, $a){
 //                      $q = "INSERT INTO `records` (`zoneid`,`type`,`data`)
 //                      VALUES ('".$md5zone."', 'ns', '".$a['NS']."') ";
 //                      $res = $db->query($q);
+			logSQL(__FUNCTION__, "Writing ".$z." to db", "Successful","[NOTICE]");
 
 }
 ?>
