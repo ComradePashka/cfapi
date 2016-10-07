@@ -30,7 +30,7 @@
 		'dt' => 0,
 	        'formatter' => function( $d, $row ) {
 		    return "
-		<button class='btn btn-default btn-sm' data-toggle='modal' data-target='#".$d."'>Zone:'.$row['zonename'].'</button>
+		<button class='btn btn-default btn-sm' data-toggle='modal' data-target='#".$d."'>Zone:".$row['zonename']."</button>
 		<div id='".$d."' class='modal fade' role='dialog' aria-hidden='true'>
 		<div class='modal-dialog modal-lg'>
 			<div class='modal-content'><br>printZone(db, r['id'], r['zonename'])</div></div>
