@@ -37,37 +37,37 @@
 		</div>";
 	        }
 	    ),
-	    array( 'db' => 'id',  'dt' => 1,
+	    array( 'db' => 'zonename',  'dt' => 1,
 	        'formatter' => function( $d, $row ) use ($db) {
-		  $q = "select data from records where name = '@' and type = 'ns' and zoneid = '".$d."'";
+		  $q = "select data from records where name = '@' and type = 'ns' and zoneid = '".$row['id']."'";
 		  $a = $db->select($q);
 		  return "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
 	        }
 	    ),
-	    array( 'db' => 'id',  'dt' => 2,
+	    array( 'db' => 'sync',  'dt' => 2,
 	        'formatter' => function( $d, $row ) use ($db) {
-		  $q = "select data from records where name = '@' and type = 'a' and zoneid = '".$d."'";
+		  $q = "select data from records where name = '@' and type = 'a' and zoneid = '".$row['id']."'";
 		  $a = $db->select($q);
 		  return "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
 	        }
 	    ),
-	    array( 'db' => 'id',  'dt' => 3,
+	    array( 'db' => 'status',  'dt' => 3,
 	        'formatter' => function( $d, $row ) use ($db) {
-		  $q = "select data from records where name = 'www' and type = 'a' and zoneid = '".$d."'";
+		  $q = "select data from records where name = 'www' and type = 'a' and zoneid = '".$row['id']."'";
 		  $a = $db->select($q);
 		  return "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
 	        }
 	    ),
 	    array( 'db' => 'id',  'dt' => 4,
 	        'formatter' => function( $d, $row ) use ($db) {
-		  $q = "select data from records where name = '*' and type = 'a' and zoneid = '".$d."'";
+		  $q = "select data from records where name = '*' and type = 'a' and zoneid = '".$row['id']."'";
 		  $a = $db->select($q);
 		  return "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
 	        }
 	    ),
 	    array( 'db' => 'id',  'dt' => 5,
 	        'formatter' => function( $d, $row ) use ($db) {
-		  $q = "select data from records where name = '@' and type = 'cname' and zoneid = '".$d."'";
+		  $q = "select data from records where name = '@' and type = 'cname' and zoneid = '".$row['id']."'";
 		  $a = $db->select($q);
 		  return "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
 	        }
