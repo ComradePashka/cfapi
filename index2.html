@@ -220,7 +220,7 @@ jQuery(document).ready(function () {
   // Auto update for every 5 sec
   setInterval( function () {
     table.ajax.reload();
-  }, 5000 );
+  }, 60000 );
   
   // Add Placeholder text to datatables filter bar
   $('.dataTables_filter input').attr("placeholder", "Enter Filter Terms Here....");
@@ -248,6 +248,7 @@ jQuery(document).ready(function () {
                   $("#resultModalContent").html(data);
 		  $("#resultModalTitle").text("Delete domains result");
 		  $("#resultModal").modal('show');
+                  table.ajax.reload();
                 }
        });
      }
@@ -268,7 +269,6 @@ jQuery(document).ready(function () {
                   $("#resultModalContent").html(data);
 		  $("#resultModalTitle").text("Add domains result");
 		  $("#resultModal").modal('show');
-  // reload dynamic data
                   table.ajax.reload();
                 }
        });
@@ -293,6 +293,7 @@ jQuery(document).ready(function () {
                   $("#resultModalContent").html(data);
 		  $("#resultModalTitle").text("Edit domains result");
 		  $("#resultModal").modal('show');
+                  table.ajax.reload();
                 }
        });
      }
