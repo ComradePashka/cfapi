@@ -37,9 +37,48 @@
 		</div>";
 	        }
 	    ),
-	    array( 'db' => 'zonename',  'dt' => 1 ),
-	    array( 'db' => 'sync',   'dt' => 2 ),
-	    array( 'db' => 'status',     'dt' => 3 ),
+	    array( 'db' => 'id',  'dt' => 1,
+	        'formatter' => function( $d, $row ) {
+		  $q = "select data from records where name = '@' and type = 'ns' and zoneid = '".$d."'";
+		  $a = $db->select($q);
+		  return "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
+	        }
+	    ),
+	    array( 'db' => 'id',  'dt' => 2,
+	        'formatter' => function( $d, $row ) {
+		  $q = "select data from records where name = '@' and type = 'a' and zoneid = '".$d."'";
+		  $a = $db->select($q);
+		  return "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
+	        }
+	    ),
+	    array( 'db' => 'id',  'dt' => 3,
+	        'formatter' => function( $d, $row ) {
+		  $q = "select data from records where name = 'www' and type = 'a' and zoneid = '".$d."'";
+		  $a = $db->select($q);
+		  return "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
+	        }
+	    ),
+	    array( 'db' => 'id',  'dt' => 4,
+	        'formatter' => function( $d, $row ) {
+		  $q = "select data from records where name = '*' and type = 'a' and zoneid = '".$d."'";
+		  $a = $db->select($q);
+		  return "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
+	        }
+	    ),
+	    array( 'db' => 'id',  'dt' => 5,
+	        'formatter' => function( $d, $row ) {
+		  $q = "select data from records where name = '@' and type = 'cname' and zoneid = '".$d."'";
+		  $a = $db->select($q);
+		  return "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
+	        }
+	    ),
+	    array( 'db' => 'id',  'dt' => 6,
+	        'formatter' => function( $d, $row ) {		  
+		  return (($row['sync'] == 1) ? "<span class='label bg-green'>Synced</span>" : "<span class='label bg-red'>NotSynced</span>") .
+			"<br><span class='label bg-blue'>".$row['status']."</span>";
+	        }
+	    )		
+//	    array( 'db' => 'status', 'dt' => 6 ),
 	);
 	$whereAll = 'userid = ' . $id;
 //	datatables Helper
