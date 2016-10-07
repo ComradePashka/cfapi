@@ -1,6 +1,6 @@
 <?php
 	$cfname = "dimitry.lukin@gmail.com";
-//	include dirname(__FILE__)."/phpscripts/Db.php";	
+	include dirname(__FILE__)."/phpscripts/Db.php";	
 	$db = new Db() or die($db->error()."\n");
 	$rows = $db->select("select cfkey, id from users where cfname = '".$cfname."'") or die($db->error()."\n");
 	$key = $rows[0]['cfkey'];
@@ -15,7 +15,7 @@
 */
 
 //	get system db config instead if copy settings
-	$config = parse_ini_file(dirname(__FILE__)."/config.ini"); 
+	$config = parse_ini_file(dirname(__FILE__)."/phpscripts/config.ini"); 
 	$sql_details = array(
 	    'user' => $config['dbuser'],
 	    'pass' => $config['dbpass'],
@@ -30,7 +30,7 @@
 		'dt' => 0,
 	        'formatter' => function( $d, $row ) {
 		    return "
-		<button class='btn btn-default btn-sm' data-toggle='modal' data-target='#".$d."'>--zonename--</button>
+		<button class='btn btn-default btn-sm' data-toggle='modal' data-target='#".$d."'>Zone:'.$row['zonename'].'</button>
 		<div id='".$d."' class='modal fade' role='dialog' aria-hidden='true'>
 		<div class='modal-dialog modal-lg'>
 			<div class='modal-content'><br>printZone(db, r['id'], r['zonename'])</div></div>
@@ -46,7 +46,7 @@
 	require( 'phpscripts/ssp.class.php' ); 
 //	use compex() instead of simple() due to user filtering purpose
 	echo json_encode(
-	    SSP::complex ( $_GET, $sql_details, $table, $primaryKey, $columns, null,  )
+	    SSP::complex ( $_GET, $sql_details, $table, $primaryKey, $columns, null, $whereAll )
 	);
 
 /* 
