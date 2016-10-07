@@ -1,6 +1,7 @@
 <?php
 	$cfname = "dimitry.lukin@gmail.com";
-	include dirname(__FILE__)."/phpscripts/Db.php";	
+	require_once dirname(__FILE__)."/phpscripts/cflib.php";
+	include dirname(__FILE__)."/phpscripts/Db.php";
 	$db = new Db() or die($db->error()."\n");
 	$rows = $db->select("select cfkey, id from users where cfname = '".$cfname."'") or die($db->error()."\n");
 	$key = $rows[0]['cfkey'];
@@ -30,10 +31,10 @@
 		'dt' => 0,
 	        'formatter' => function( $d, $row ) {
 		    return "
-		<button class='btn btn-default btn-sm' data-toggle='modal' data-target='#".$d."'>Zone:".$row['zonename']."</button>
+		<button class='btn btn-default btn-sm' data-toggle='modal' data-target='#".$d."'>".$row['zonename']."</button>
 		<div id='".$d."' class='modal fade' role='dialog' aria-hidden='true'>
 		<div class='modal-dialog modal-lg'>
-			<div class='modal-content'><br>printZone(db, r['id'], r['zonename'])</div></div>
+			<div class='modal-content'><br>" . printZone($db, $d, $row['zonename']) . "</div></div>
 		</div>";
 	        }
 	    ),
@@ -41,39 +42,39 @@
 	        'formatter' => function( $d, $row ) use ($db) {
 		  $q = "select data from records where name = '@' and type = 'ns' and zoneid = '".$row['id']."'";
 		  $a = $db->select($q);
-		  return "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
+		  return isset($a[0]['data']) ? $a[0]['data'] : "NONE";
 	        }
 	    ),
 	    array( 'db' => 'sync',  'dt' => 2,
 	        'formatter' => function( $d, $row ) use ($db) {
 		  $q = "select data from records where name = '@' and type = 'a' and zoneid = '".$row['id']."'";
 		  $a = $db->select($q);
-		  return "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
+		  return isset($a[0]['data']) ? $a[0]['data'] : "NONE";
 	        }
 	    ),
 	    array( 'db' => 'status',  'dt' => 3,
 	        'formatter' => function( $d, $row ) use ($db) {
 		  $q = "select data from records where name = 'www' and type = 'a' and zoneid = '".$row['id']."'";
 		  $a = $db->select($q);
-		  return "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
+		  return isset($a[0]['data']) ? $a[0]['data'] : "NONE";
 	        }
 	    ),
 	    array( 'db' => 'id',  'dt' => 4,
 	        'formatter' => function( $d, $row ) use ($db) {
 		  $q = "select data from records where name = '*' and type = 'a' and zoneid = '".$row['id']."'";
 		  $a = $db->select($q);
-		  return "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
+		  return isset($a[0]['data']) ? $a[0]['data'] : "NONE";
 	        }
 	    ),
 	    array( 'db' => 'id',  'dt' => 5,
 	        'formatter' => function( $d, $row ) use ($db) {
 		  $q = "select data from records where name = '@' and type = 'cname' and zoneid = '".$row['id']."'";
 		  $a = $db->select($q);
-		  return "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
+		  return isset($a[0]['data']) ? $a[0]['data'] : "NONE";
 	        }
 	    ),
 	    array( 'db' => 'status',  'dt' => 6,
-	        'formatter' => function( $d, $row ) use ($db) {
+	        'formatter' => function( $d, $row ) {
 		  return (($row['sync'] == 1) ? "<span class='label bg-green'>Synced</span>" : "<span class='label bg-red'>NotSynced</span>") .
 			"<br><span class='label bg-blue'>".$row['status']."</span>";
 	        }

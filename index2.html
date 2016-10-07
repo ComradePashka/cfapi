@@ -206,7 +206,7 @@ jQuery(document).ready(function () {
      
 
   // Init Datatables with Tabletools Addon	
-  var datatable = $('#datatable').dataTable( {
+  var table = $('#datatable').dataTable( {
 	"aoColumnDefs": [{ 'bSortable': false, 'aTargets': [ -1 ] }],
 	"oLanguage": { "oPaginate": {"sPrevious": "", "sNext": ""} },
 	"iDisplayLength": 25,
@@ -216,6 +216,11 @@ jQuery(document).ready(function () {
         "serverSide": true,
         "ajax": "getzones.php"
   });	
+
+  // Auto update for every 5 sec
+  setInterval( function () {
+    table.ajax.reload();
+  }, 5000 );
   
   // Add Placeholder text to datatables filter bar
   $('.dataTables_filter input').attr("placeholder", "Enter Filter Terms Here....");
@@ -264,7 +269,7 @@ jQuery(document).ready(function () {
 		  $("#resultModalTitle").text("Add domains result");
 		  $("#resultModal").modal('show');
   // reload dynamic data
-                  datatable.ajax.reload();
+                  table.ajax.reload();
                 }
        });
      }
