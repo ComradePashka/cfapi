@@ -1,7 +1,7 @@
 <?php
 	$cfname = "dimitry.lukin@gmail.com";
 	require_once dirname(__FILE__)."/phpscripts/cflib.php";
-	include dirname(__FILE__)."/phpscripts/Db.php";
+//	include dirname(__FILE__)."/phpscripts/Db.php";
 	$db = new Db() or die($db->error()."\n");
 	$rows = $db->select("select cfkey, id from users where cfname = '".$cfname."'") or die($db->error()."\n");
 	$key = $rows[0]['cfkey'];
