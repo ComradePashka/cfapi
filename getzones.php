@@ -1,7 +1,6 @@
 <?php
 	$cfname = "dimitry.lukin@gmail.com";
 	require_once dirname(__FILE__)."/phpscripts/cflib.php";
-//	include dirname(__FILE__)."/phpscripts/Db.php";
 	$db = new Db() or die($db->error()."\n");
 	$rows = $db->select("select cfkey, id from users where cfname = '".$cfname."'") or die($db->error()."\n");
 	$key = $rows[0]['cfkey'];
@@ -15,7 +14,7 @@
 	https://datatables.net/examples/data_sources/server_side.html
 */
 
-//	get system db config instead if copy settings
+//	get system db config instead of copying settings
 	$config = parse_ini_file(dirname(__FILE__)."/phpscripts/config.ini"); 
 	$sql_details = array(
 	    'user' => $config['dbuser'],
@@ -52,7 +51,7 @@
 		  return isset($a[0]['data']) ? $a[0]['data'] : "NONE";
 	        }
 	    ),
-	    array( 'db' => 'status',  'dt' => 3,
+	    array( 'db' => 'id',  'dt' => 3,
 	        'formatter' => function( $d, $row ) use ($db) {
 		  $q = "select data from records where name = 'www' and type = 'a' and zoneid = '".$row['id']."'";
 		  $a = $db->select($q);
@@ -79,56 +78,14 @@
 			"<br><span class='label bg-blue'>".$row['status']."</span>";
 	        }
 	    )		
-//	    array( 'db' => 'status', 'dt' => 6 ),
 	);
-	$whereAll = 'userid = ' . $id;
+
 //	datatables Helper
-	require( 'phpscripts/ssp.class.php' ); 
 //	use compex() instead of simple() due to user filtering purpose
+	$whereAll = 'userid = ' . $id;
+	require( 'phpscripts/ssp.class.php' ); 
 	echo json_encode(
 	    SSP::complex ( $_GET, $sql_details, $table, $primaryKey, $columns, null, $whereAll )
 	);
-
-/* 
-//	old code
-
-	$rows = $db->select("select id, zonename, sync, status from zones where userid = ".$id) or die($db->error()."\n");
-	foreach($rows as $i => $r) {
-
-		echo "<tr>";
-		echo "<td>
-		<button class='btn btn-default btn-sm' 
-			data-toggle='modal' 
-			data-target='#".$r['id']."'>".$r['zonename']."
-		</button><div id='".$r['id']."' 
-			class='modal fade'  
-			role='dialog' 
-			aria-hidden='true'>  
-		<div class='modal-dialog modal-lg'> 
-			<div class='modal-content'><br>".printZone($db, $r['id'], $r['zonename'])."</div></div>
-		</div></td>";
-                $q = "select data from records where name = '@' and type = 'ns' and zoneid = '".$r['id']."'";
-                $a = $db->select($q);
-                echo "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
-		$q = "select data from records where name = '@' and type = 'a' and zoneid = '".$r['id']."'";
-		$a = $db->select($q);
-		echo "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
-		$q = "select data from records where name = 'www' and type = 'a' and zoneid = '".$r['id']."'";
-		$a = $db->select($q);
-		echo "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
-		$q = "select data from records where name = '*' and type = 'a' and zoneid = '".$r['id']."'";
-		$a = $db->select($q);
-		echo "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
-		$q = "select data from records where name = '@' and type = 'cname' and zoneid = '".$r['id']."'";
-		$a = $db->select($q);
-		echo "<td>".(isset($a[0]['data']) ? $a[0]['data'] : "NONE" )."</td>";
-		echo "<td>";
-		if($r['sync'] == 1 ){echo "<span class='label bg-green'>Synced</span>";
-		} else {echo "<span class='label bg-red'>NotSynced</span>";}
-		echo "<br><span class='label bg-blue'>".$r['status']."</span>";
-		echo "</td>";
-		echo "</tr>";
-	}
-*/
 	
 ?>
