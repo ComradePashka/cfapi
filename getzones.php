@@ -29,7 +29,7 @@
 	    array(
 		'db' => 'id',
 		'dt' => 0,
-	        'formatter' => function( $d, $row ) {
+	        'formatter' => function( $d, $row ) use ($db) {
 		    return "
 		<button class='btn btn-default btn-sm' data-toggle='modal' data-target='#".$d."'>".$row['zonename']."</button>
 		<div id='".$d."' class='modal fade' role='dialog' aria-hidden='true'>
